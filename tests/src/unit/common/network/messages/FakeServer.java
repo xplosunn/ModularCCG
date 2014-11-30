@@ -20,7 +20,7 @@ import static org.junit.Assert.fail;
  */
 public class FakeServer extends Thread{
     private ServerSocket socket = null;
-    public final ArrayList<LoggingClientHandler> handlers = new ArrayList<LoggingClientHandler>();
+    public final ArrayList<LoggingClientHandler> handlers = new ArrayList<>();
     public boolean running = true;
 
     public FakeServer(){

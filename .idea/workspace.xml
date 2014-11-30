@@ -5,620 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf2fe988-55a2-4916-baae-0f2e89b0a8c7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/Ability.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/AbilityLibraryTest$$anonfun$before$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/AbilityLibraryTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/table/AbilityTableRow$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/table/AbilityTableRow.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/Card.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/CardAbilityEffect.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/CardDraw.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/CardPreviewPanel$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/CardPreviewPanel$$anon$2$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/CardPreviewPanel$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/CardPreviewPanel$$anonfun$update$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/CardPreviewPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/CardTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/ChatRooms$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/ChatRooms$ChatRoom$$anonfun$addUser$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/ChatRooms$ChatRoom$$anonfun$sendMessage$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/ChatRooms$ChatRoom.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/ChatRooms.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/ChatToClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/ChatToServer$TARGET.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/ChatToServer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/ClientHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/ClientPlusServer$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/ClientPlusServer$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/ClientPlusServer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/ClientSession$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/ClientSession$Constants$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/ClientSession$SessionVars$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/ClientSession.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/Deck$$anonfun$validate$1$$anonfun$apply$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/Deck$$anonfun$validate$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/Deck.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/DeckChooser$$anonfun$save$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/DeckChooser$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/DeckChooser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/table/DeckTableRow$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/table/DeckTableRow$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/table/DeckTableRow.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$10$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$11$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$11.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$12$$anon$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$12.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$13$$anon$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$13.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$14.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$8$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$9$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest$$anon$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/DeckTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/DefenseLines$GraphicalLines.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/DefenseLines.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/client/window/tab/panel/DefenseLinesTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$addCardToBePlayed$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$attack$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$attack$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$1$$anonfun$apply$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11$$anonfun$apply$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11$$anonfun$apply$5$$anonfun$apply$mcVI$sp$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11$$anonfun$apply$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$defend$1$$anonfun$apply$mcVI$sp$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$defend$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$defend$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$findSummonInBattleField$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processDeathTriggers$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$1$$anonfun$apply$mcZI$sp$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$4$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processPlayCard$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processPlayCard$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processPlayCard$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processPlayCard$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processPlayCard$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setAttackers$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1$$anonfun$apply$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1$$anonfun$apply$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$9$$anonfun$apply$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$CurrentTurn$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$7$$anonfun$apply$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$attackersAnnounced$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$hand$1$$anonfun$apply$mcVI$sp$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$hand$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$nextStep$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$nextStep$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$InternalGamePanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest$$anonfun$fullFiveTurnSequence$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest$$anonfun$fullFiveTurnSequence$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest$$anonfun$fullFiveTurnSequenceWithMessages$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest$$anonfun$nextGameID$1$$anonfun$apply$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest$$anonfun$nextGameID$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/ErrorLog$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/ErrorLog.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/FakeClientHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/FakeDuel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/FakeServer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/FakeServerHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$1$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$4$$anon$17$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$4$$anon$17.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$4$$anon$18$$anonfun$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$4$$anon$18.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$4$$anon$19$$anonfun$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$4$$anon$19.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$15.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$16$$anon$11$$anon$23$$anonfun$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$16$$anon$11$$anon$23.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$16$$anon$11$$anon$24$$anonfun$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$16$$anon$11$$anon$24.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$16$$anon$11.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$16$$anon$12$$anonfun$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$16$$anon$12.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$16.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$6$$anon$20$$anonfun$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$6$$anon$20.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$7$$anon$21$$anonfun$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$7$$anon$21.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$8$$anon$22$$anonfun$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$8$$anon$22.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5$$anon$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$9$$anon$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anon$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1$$anon$13$$anon$14$$anon$25$$anon$28.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1$$anon$13$$anon$14$$anon$25.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1$$anon$13$$anon$14$$anon$26$$anon$29.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1$$anon$13$$anon$14$$anon$26.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1$$anon$13$$anon$14.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1$$anon$13$$anon$27$$anon$30.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1$$anon$13$$anon$27.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1$$anon$13.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$setAbilities$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$$anonfun$updateDeckLabelText$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Game.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/GameAction$ACTIONS.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/GameAction.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/GameChange$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/GameChange$Value$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/GameChange$Zone$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/GameChange.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/exception/GameException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/GameInfo$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/GameInfo$TYPES.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/GameInfo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$attackerOf$1$$anonfun$apply$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$attackerOf$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$attackers$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1$$anonfun$apply$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1$$anonfun$apply$7$$anonfun$apply$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1$$anonfun$apply$7$$anonfun$apply$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1$$anonfun$apply$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkPlayerState$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$defendersOf$1$$anonfun$apply$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$defendersOf$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$hasDefenders$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setAttackers$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setDefenders$1$$anonfun$apply$4$$anonfun$apply$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setDefenders$1$$anonfun$apply$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setDefenders$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/game/GameSteps.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/exception/GameTiedException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/game/Games$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/Games$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/game/Games.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/Games.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/GraphicalRemoteCard$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/GraphicalRemoteCard$$anon$2$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/GraphicalRemoteCard$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/GraphicalRemoteCard.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/opensource/apache/HashCodeBuilder.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/InfoToClient$TYPE.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/InfoToClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/LayeredPaneDemo$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/LayeredPaneDemo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/LayeredPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$$anon$1$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$$anonfun$addChat$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$$anonfun$addChatMessage$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$$anonfun$addChatUser$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$ChatTab$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$ChatTab$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$ChatTab$$anonfun$updateUsersTextArea$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab$ChatTab.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/LobbyTab.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/LoggingClientHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/LoginRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/LoginResponse$TYPE.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/LoginResponse.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/LoginWindow$$anon$3$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/LoginWindow$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/LoginWindow$$anon$4$$anon$1$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/LoginWindow$$anon$4$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/LoginWindow$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/LoginWindow$$anon$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/LoginWindow.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/Main$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/Main.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/MainWindow$$anon$1$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/MainWindow$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/MainWindow$$anonfun$removeGameTab$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/MainWindow.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/MessageToClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/MessageToServer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$6$$anonfun$apply$mcVI$sp$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$$anonfun$gameInfo$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToClientTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToServerTest$$anonfun$gameAction$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToServerTest$$anonfun$gameAction$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToServerTest$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToServerTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$$anon$2$$anonfun$1$$anonfun$applyOrElse$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$$anon$2$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$$anonfun$addCards$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$$anonfun$client$window$tab$panel$MulliganPanel$$selectedCardIDs$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$CardRep$$anon$3$$anon$4$$anonfun$mouseClicked$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$CardRep$$anon$3$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$CardRep$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel$CardRep.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/MulliganPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/NetworkMessage.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/NetworkValues.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/PlayTab$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/PlayTab$$anon$2$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/PlayTab$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/PlayTab$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/PlayTab.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Player$$anonfun$drawCardFrom$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Player$$anonfun$setupDeck$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Player$$anonfun$shuffleDeck$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Player$Zone$$anonfun$summons$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Player$Zone.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/Player.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$1$$anonfun$removeCard$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8$$anon$13$$anon$3$$anonfun$2$$anon$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8$$anon$13$$anon$3$$anonfun$2$$anon$11.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8$$anon$13$$anon$3$$anonfun$2$$anon$12$$anon$14.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8$$anon$13$$anon$3$$anonfun$2$$anon$12.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8$$anon$13$$anon$3$$anonfun$2$$anon$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8$$anon$13$$anon$3$$anonfun$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8$$anon$13$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8$$anon$13.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow$$anon$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7$PileWindow.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2$$anon$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$4$$anonfun$cards$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$5$$anon$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$$anon$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel$Positions$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/PlayerPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/PlayerValueChange.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/exception/PlayerWonException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/RandomTests.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/game/RemoteCard.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/game/RemoteCardTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/RequestToServer$REQUEST.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/RequestToServer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/ResponseToClient$TYPE.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/serverToClient/ResponseToClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/Server$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/Server.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler$$anonfun$handleMessage$1$$anonfun$apply$mcVI$sp$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler$$anonfun$handleMessage$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler$$anonfun$requestJoinChat$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler$Chat$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler$Duel$$anonfun$queue$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler$Duel$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/client/network/ServerHandlerTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/ServerRun$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/ServerRun.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/Spell.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbility.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1$$anonfun$apply$1$$anonfun$apply$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1$$anonfun$apply$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$2$$anonfun$apply$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$4$$anonfun$apply$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$5$$anonfun$apply$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6$$anonfun$apply$6$$anonfun$apply$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6$$anonfun$apply$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$SpellAbilityEffect.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anon$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$13.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$11.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$12.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$3$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$3$$anonfun$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$3$$anonfun$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$3$$anonfun$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$8$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1$$anonfun$apply$mcVI$sp$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$decreaseSummonStats$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$drawCard$1$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$drawCard$1$$anonfun$apply$mcVI$sp$14.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$drawCard$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$drawCardFromRandomOpponent$1$$anon$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$drawCardFromRandomOpponent$1$$anonfun$apply$mcVI$sp$17.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$drawCardFromRandomOpponent$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anon$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$18.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$19.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killRandomSummon$1$$anon$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killRandomSummon$1$$anonfun$apply$mcVI$sp$5$$anonfun$apply$mcVI$sp$16$$anon$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killRandomSummon$1$$anonfun$apply$mcVI$sp$5$$anonfun$apply$mcVI$sp$16.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killRandomSummon$1$$anonfun$apply$mcVI$sp$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killRandomSummon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$manaUp$1$$anon$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$manaUp$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$15.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$manaUp$1$$anonfun$apply$mcVI$sp$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$manaUp$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$$anonfun$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$$anonfun$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$$anonfun$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$$anonfun$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$$anonfun$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/SpellTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$6$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$7$$anonfun$2$$anonfun$applyOrElse$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$7$$anonfun$2$$anonfun$applyOrElse$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$7$$anonfun$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$8$$anonfun$3$$anonfun$applyOrElse$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$8$$anonfun$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$9$$anonfun$4$$anonfun$applyOrElse$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$9$$anonfun$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/Summon.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbility$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbility.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$1$$anonfun$apply$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$1$$anonfun$apply$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$2$$anonfun$apply$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$3$$anonfun$apply$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$3$$anonfun$apply$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$3$$anonfun$apply$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$5$$anonfun$apply$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$SummonAbilityEffect.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anon$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anon$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$13.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$14.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$15.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$digger$1$$anonfun$apply$mcVI$sp$1$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$digger$1$$anonfun$apply$mcVI$sp$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$digger$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1$$anon$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1$$anon$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$grenade$1$$anon$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$grenade$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$poisonholder$1$$anonfun$apply$mcVI$sp$2$$anon$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$poisonholder$1$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$poisonholder$1$$anonfun$apply$mcVI$sp$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$poisonholder$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anon$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$11.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$5$$anonfun$apply$mcVI$sp$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$12.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$8$$anon$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbilityLibrary$$anonfun$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbilityLibrary$$anonfun$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbilityLibrary$$anonfun$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbilityLibrary$$anonfun$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbilityLibrary$$anonfun$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbilityLibrary$$anonfun$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbilityLibrary$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SummonAbilityLibrary.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/card/SummonTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/SummonValueChange.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/TestArray$$anon$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/TestArray$$anonfun$funcArray$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/TestArray$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/launch/TestArray.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/UnitTestConstants$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/tests/unit/UnitTestConstants.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/Users$.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/server/server/services/Users.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/ZoneChange.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/blankcard.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/resources/blankcard.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/Ability.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/AbilityLibraryTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/table/AbilityTableRow.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/Card.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/card/ability/CardAbilityEffect.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/change/CardDraw.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/CardPreviewPanel.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/card/CardTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/services/ChatRooms.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/serverToClient/ChatToClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/clientToServer/ChatToServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/ClientHandler.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/launch/ClientPlusServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/ClientSession.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/Deck.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/DeckChooser.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/table/DeckTableRow.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/card/DeckTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/panel/DefenseLines.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/client/window/tab/panel/DefenseLinesTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/Duel.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/DuelTab.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/DuelTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/services/ErrorLog.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/FakeClientHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/FakeDuel.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServerHandler.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/ForgeTab.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/Game.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/clientToServer/GameAction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/card/GameCard.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/change/GameChange.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/exception/GameException.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/serverToClient/GameInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/GameState.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/game/GameSteps.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/exception/GameTiedException.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/game/Games.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/services/Games.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/panel/GraphicalRemoteCard.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/opensource/apache/HashCodeBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/serverToClient/InfoToClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/launch/LayeredPaneDemo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/panel/LayeredPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/LobbyTab.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/network/messages/LoggingClientHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/clientToServer/LoginRequest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/serverToClient/LoginResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/LoginWindow.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/Main.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/MainWindow.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/serverToClient/MessageToClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/clientToServer/MessageToServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/network/messages/MessagesToClientTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/network/messages/MessagesToServerTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Modular CCG.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectFilesBackup/Modular CCG.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/panel/MulliganPanel.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/NetworkMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/NetworkValues.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/PlayTab.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/Player.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/panel/PlayerPanel.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/change/PlayerValueChange.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/exception/PlayerWonException.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/launch/RandomTests.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/game/RemoteCard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/game/RemoteCardTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/clientToServer/RequestToServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/network/messages/serverToClient/ResponseToClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/Server.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/network/ServerHandler.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/client/network/ServerHandlerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/ServerRun.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/Spell.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/SpellAbility.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/card/ability/SpellAbilityEffectLibrary.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/SpellAbilityLibrary.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/card/SpellTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/client/window/tab/panel/StepPanel.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/Summon.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/SummonAbility.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/game/card/ability/SummonAbilityEffectLibrary.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/SummonAbilityLibrary.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/common/card/SummonTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/change/SummonValueChange.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/launch/TestArray.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/server/services/Users.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/change/ZoneChange.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/client.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectFilesBackup/client/client.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/common.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectFilesBackup/common/common.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/highlighting (Cópia em conflito de Hugo-PC 2014-10-17).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/highlighting.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc (Cópia em conflito de Hugo-PC 2014-10-17).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules (Cópia em conflito de Hugo-PC 2014-10-17).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/scala_compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectFilesBackup/.idea/libraries/scala_library.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/scala_sdk.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectFilesBackup/server/server.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/server.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectFilesBackup/tests/tests.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/tests.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de HS-PC 2014-06-30).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de HS-PC 2014-07-04).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de Hugo-PC 2014-10-17).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de HugoSousa-PC 2014-09-18).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de HugoSousa-PC 2014-10-06).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace (xs-EP43-DS3's conflicted copy 2014-09-23).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace (xs-EP43-DS3's conflicted copy 2014-11-05).xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServer.java" afterPath="$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="yayScala.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -769,8 +157,8 @@
       <file leaf-file-name="FakeServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334" vertical-offset="137" max-vertical-offset="816">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36790124" vertical-offset="4" max-vertical-offset="816">
+              <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -848,6 +236,7 @@
         <option value="$PROJECT_DIR$/common/src/common/network/messages/serverToClient/GameInfo.java" />
         <option value="$PROJECT_DIR$/client/src/client/network/ServerHandler.scala" />
         <option value="$PROJECT_DIR$/server/src/server/game/Player.scala" />
+        <option value="$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServer.java" />
       </list>
     </option>
   </component>
@@ -2016,12 +1405,19 @@
       <workItem from="1417233930958" duration="995000" />
       <workItem from="1417292035757" duration="689000" />
       <workItem from="1417295896548" duration="4061000" />
-      <workItem from="1417308988373" duration="14750000" />
+      <workItem from="1417308988373" duration="15855000" />
     </task>
+    <task id="LOCAL-00001" summary=" msg">
+      <created>1417327538030</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1417327538031</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187376000" />
+    <option name="totallyTimeSpent" value="188481000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2045,7 +1441,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2058,7 +1454,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290469" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29363784" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29363784" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32830188" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26096824" sideWeight="0.4994012" order="0" side_tool="false" content_ui="combo" />
@@ -2094,7 +1490,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value=" msg" />
+    <option name="LAST_COMMIT_MESSAGE" value=" msg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2521,8 +1918,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="137" max-vertical-offset="816">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.36790124" vertical-offset="4" max-vertical-offset="816">
+          <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
           <folding />
         </state>
       </provider>
