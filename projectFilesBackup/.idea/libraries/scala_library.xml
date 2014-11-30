@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="scala-library">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Installed/scala/lib/scala-swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Installed/scala/lib/scala-actors.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Installed/scala/lib/akka-actors.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/../../Installed/scala/doc" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

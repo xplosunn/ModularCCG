@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="scala-sdk" type="Scala">
+    <properties>
+      <compiler-classpath>
+        <root url="file://C:/Dropbox/Installed/scala/lib/scala-compiler.jar" />
+        <root url="file://C:/Dropbox/Installed/scala/lib/scala-library.jar" />
+        <root url="file://C:/Dropbox/Installed/scala/lib/scala-reflect.jar" />
+      </compiler-classpath>
+    </properties>
+    <CLASSES>
+      <root url="jar://C:/Dropbox/Installed/scala/lib/akka-actors.jar!/" />
+      <root url="jar://C:/Dropbox/Installed/scala/lib/scala-actors.jar!/" />
+      <root url="jar://C:/Dropbox/Installed/scala/lib/scala-swing.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://C:/Dropbox/Installed/scala/doc" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
