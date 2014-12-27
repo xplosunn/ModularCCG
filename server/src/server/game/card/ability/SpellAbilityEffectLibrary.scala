@@ -1,7 +1,8 @@
 package server.game.card.ability
 
-import common.card.ability.change.{GameChange, PlayerValueChange, SummonValueChange}
-import server.game.card.GameSummon
+import common.card.ability.change._
+import common.game.RemoteCard
+import server.game.card.{GameCard, GameSummon}
 import server.game.{GameState, Player}
 
 import scala.collection.mutable.ArrayBuffer
@@ -60,9 +61,13 @@ object SpellAbilityEffectLibrary {
 
   effects(4) = new SpellAbilityEffect(false, (level: Int, state: GameState) => {
     val retn = new ArrayBuffer[GameChange]()
-    for (i <- 0 until level){
-      state.activePlayer.drawCardFrom(state.nonActivePlayer)
-    }
+    val deck = state.nonActivePlayer.deck.cards
+    if (deck.size > 0)
+      for (i <- 0 until level) {
+        val remoteCard = new RemoteCard(state.game.nextCardID, state.activePlayer.handler.getUserName, deck(new Random().nextInt(deck.size)).card)
+        state.activePlayer.hand.cards += GameCard.build(remoteCard.card, state.activePlayer, remoteCard.id)
+        retn += new NewCard(remoteCard, GameChange.Zone.HAND)
+      }
     retn
   })
 

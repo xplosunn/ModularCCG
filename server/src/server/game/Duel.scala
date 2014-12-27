@@ -35,7 +35,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   val p1 = new Player(playerOneDeck, playerOneHandler, this)
   val p2 = new Player(playerTwoDeck, playerTwoHandler, this)
   val id = Duel.nextGameID
-  protected val gameState = new GameState(Array(p1,p2))
+  protected val gameState = new GameState(Array(p1,p2), this)
   private val mulligans = new Array[Array[Int]](2)
 
   private var _nextCardID = -1
@@ -227,7 +227,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     for (i <- changes.indices) {
       changes(i) match {
         case change: CardDraw =>
-          changesToNAP(i) = new CardDraw(change.deckOwner, change.drawingPlayer, null, change.deckEnded)
+          changesToNAP(i) = new CardDraw(change.drawingPlayer, null, change.deckEnded)
         case any => changesToNAP(i) = any
       }
     }
@@ -269,7 +269,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       for(op<-players){
         if(op!=p){
           for(_<- 0 until 3)
-            changes += new CardDraw(op.handler.getUserName,op.handler.getUserName, null, false)
+            changes += new CardDraw(op.handler.getUserName, null, false)
         }
       }
       val changeArray = new Array[GameChange](changes.size)
@@ -336,7 +336,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
 
     val messageToNAP = GameInfo.nextTurn(id,activePlayerName,
       Array[GameChange](
-        new CardDraw(activePlayerName,activePlayerName,null, cardDrawnChange.deckEnded),
+        new CardDraw(activePlayerName,null, cardDrawnChange.deckEnded),
         playerChange
       ))
     val messageToAP = GameInfo.nextTurn(id,activePlayerName,

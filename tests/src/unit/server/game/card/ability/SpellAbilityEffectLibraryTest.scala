@@ -173,7 +173,7 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
   }
 
   @Test
-  def drawCardFromRandomOpponent(){
+  def copyCardFromRandomOpponent(){
     val testAbilityLibraryIndex = 4
     for(testAbilityLevel <- 1 to 3){
       val testSpell = new GameSpell(new Spell{addAbility(testAbilityLibraryIndex, testAbilityLevel)}, ap, 300)
@@ -187,17 +187,17 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
       assertTrue(ap.hand.cards.size == 1)
       testDuel.addCardToBePlayed(testSpell.id)
       Thread.sleep(processMillis)
-      assertTrue(ap.hand.cards.size == testAbilityLevel)
-      assertTrue(ap.hand.cards.count( gc => gc.owner == nap) == testAbilityLevel)
+      assertEquals(testAbilityLevel, ap.hand.cards.size)
+      assertTrue(ap.hand.cards.count( gc => gc.owner == ap) == testAbilityLevel)
 
       assertTrue(ap.pile.cards.size == 1)
-      assertTrue(nap.deck.cards.size == startingDeckCards - testAbilityLevel)
+      assertTrue(nap.deck.cards.size == startingDeckCards)
       ap.pile.cards.clear()
     }
   }
 
   @Test
-  def drawCardFromRandomOpponentEmptyDeck(){
+  def copyCardFromRandomOpponentEmptyDeck(){
     nap.deck.cards.clear()
     val testSpell = new GameSpell(new Spell{addAbility(4, 1)}, ap, 300)
     assertEquals(30, ap.lifeTotal)
@@ -208,7 +208,7 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
     testDuel.addCardToBePlayed(testSpell.id)
     Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(ap.pile.cards.contains(testSpell))
-    assertEquals(26,ap.lifeTotal)
+    assertTrue(ap.hand.cards.isEmpty)
   }
 
   @Test

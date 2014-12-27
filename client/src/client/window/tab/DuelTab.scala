@@ -20,6 +20,7 @@ class DuelTab(val username: String, val gameID: Int, val players: Array[String])
                                    case _ => false }
   val idsOfSummonsPlayedThisTurn = new ArrayBuffer[Int]()
   var potentialDefender: GraphicalRemoteCard = null
+  //val cards: Map[Int,GraphicalRemoteCard] = Map()
 
   def cardPlayed(card: RemoteCard, changes: Array[GameChange]){
     var graphicalCard: GraphicalRemoteCard = null
@@ -169,16 +170,13 @@ class DuelTab(val username: String, val gameID: Int, val players: Array[String])
     for(c<-changes){
       c match{
         case change: CardDraw =>
-          val infoPanel = internalGamePanel.playerPanel(change.deckOwner).playerInfoPanel
+          val infoPanel = internalGamePanel.playerPanel(change.drawingPlayer).playerInfoPanel
           infoPanel.setDeckSize(infoPanel.getDeckSize-1)
           val card = new GraphicalRemoteCard(change.card,this)
           internalGamePanel.playerPanel(change.drawingPlayer).handPanel.addCard(card)
           if(change.deckEnded)
             infoPanel.setLife(infoPanel.getLife-4)
-          if(change.deckOwner == change.drawingPlayer)
-            changesLog += change.drawingPlayer + " drew a card from his/her deck. "
-          else
-            changesLog += change.drawingPlayer + " drew a card from " + change.deckOwner + "'s deck. "
+          changesLog += change.drawingPlayer + " drew a card from his/her deck. "
 
         case change: PlayerValueChange =>
           val panel = internalGamePanel.playerPanel(change.playerName)
@@ -255,6 +253,23 @@ class DuelTab(val username: String, val gameID: Int, val players: Array[String])
             }
             playerPanel.battleFieldPanel.repaint()
           })
+
+        case change: NewCard =>
+          change.zone match{
+            case GameChange.Zone.BATTLEFIELD =>
+              val battleFieldPanel = internalGamePanel.playerPanel(change.remoteCard.owner).battleFieldPanel
+              battleFieldPanel.contents += new GraphicalRemoteCard(change.remoteCard, this)
+              battleFieldPanel.repaint()
+            case GameChange.Zone.HAND =>
+              val handPanel = internalGamePanel.playerPanel(change.remoteCard.owner).handPanel
+              handPanel.contents += new GraphicalRemoteCard(change.remoteCard, this)
+              handPanel.repaint()
+            case GameChange.Zone.PILE =>
+              val infoPanel = internalGamePanel.playerPanel(change.remoteCard.owner).playerInfoPanel
+              infoPanel.pile += new GraphicalRemoteCard(change.remoteCard, this)
+              infoPanel.updatePile()
+          }
+
       }
     }
     logTextArea.text += System.lineSeparator() + changesLog

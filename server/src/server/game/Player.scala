@@ -46,23 +46,19 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
     def drawTop = if(cards.size > 0) cards.remove(cards.size-1) else null
   }
   def drawCard: CardDraw = {
-    drawCardFrom(this)
-  }
-
-  def drawCardFrom(player: Player): CardDraw = {
-    if(player.deck.cards.size > 0){
-      hand.cards += player.deck.drawTop
+    if(deck.cards.size > 0){
+      hand.cards += deck.drawTop
       val cardDrawn = hand.cards.last
-      new CardDraw(player.handler.getUserName, handler.getUserName, new RemoteCard(cardDrawn.id, cardDrawn.owner.handler.getUserName, cardDrawn.card), false)
+      new CardDraw(handler.getUserName, new RemoteCard(cardDrawn.id, cardDrawn.owner.handler.getUserName, cardDrawn.card), false)
     }
     else{
       lifeTotal -= 4
       var cardIndex = new Random().nextInt(30)
-      for(tuple<- player.submittedDeck.cards){
+      for(tuple<- submittedDeck.cards){
         if(cardIndex > tuple._2)
           cardIndex -= tuple._2
         else
-          return new CardDraw(player.handler.getUserName, handler.getUserName, new RemoteCard(game.nextCardID, player.handler.getUserName, tuple._1), true)
+          return new CardDraw(handler.getUserName, new RemoteCard(game.nextCardID, handler.getUserName, tuple._1), true)
       }
       null
     }
