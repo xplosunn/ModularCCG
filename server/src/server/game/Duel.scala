@@ -404,9 +404,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       synchronized {
         while (CurrentTurn.ongoingPhase) {
           if (gameState.attackersSet) {
-            val attackers = gameState.attackers
-            val attackerIDs = new Array[Int](attackers.size)
-            attackers.indices.foreach(i => attackerIDs(i) = attackers(i).id)
+            val attackerIDs = gameState.attackers.collect({case a => a.id}).toArray
             gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.attackers(id, attackerIDs)))
             CurrentTurn.ongoingPhase = false
           }
@@ -440,13 +438,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       synchronized {
         while (!done) {
           if (gameState.defendersSet) {
-            val defenses = gameState.defenses
-            val defenseIDs = new Array[Array[Int]](defenses.size)
-            for (i <- defenses.indices) {
-              defenseIDs(i) = new Array[Int](defenses(i).size)
-              for (j <- defenses(i).indices)
-                defenseIDs(i)(j) = defenses(i)(j).id
-            }
+            val defenseIDs = gameState.defenses.collect({case (gs, d) => Array[Int](gs.id) ++ d.collect({case g => g.id})}).toArray
             gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.defenders(id, defenseIDs)))
             done = true
           }
@@ -473,19 +465,19 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       p2.handler.sendMessageToClient(phaseMessage)
       var battleChanges = new Array[GameChange](0)
       var playerLifeChanged = false
-      gameState.defenses.foreach(defense => {
-        (1 until defense.size).toStream.foreach(defenderIndex => {
-          defense(0).changeLifeBy(0-defense(defenderIndex).power)
-          defense(defenderIndex).changeLifeBy(0-defense(0).power)
-          battleChanges ++= Array(new SummonValueChange(defense(defenderIndex).id, GameChange.Value.LIFE, defense(defenderIndex).life))
+      gameState.defenses.foreach({case (attacker, defenders) => {
+        defenders.foreach(defender => {
+          attacker.changeLifeBy(0-defender.power)
+          defender.changeLifeBy(0-attacker.power)
+          battleChanges ++= Array(new SummonValueChange(defender.id, GameChange.Value.LIFE, defender.life))
         })
-        if(defense.size > 1)
-          battleChanges ++= Array(new SummonValueChange(defense(0).id, GameChange.Value.LIFE, defense(0).life))
+        if(defenders.size > 1)
+          battleChanges ++= Array(new SummonValueChange(attacker.id, GameChange.Value.LIFE, attacker.life))
         else{
-          gameState.nonActivePlayer.changeLifeBy(0-defense(0).power)
+          gameState.nonActivePlayer.changeLifeBy(0-attacker.power)
           playerLifeChanged = true
         }
-      })
+      }})
       if(playerLifeChanged){
         val player = gameState.nonActivePlayer
         battleChanges ++= Array(new PlayerValueChange(player.handler.getUserName, GameChange.Value.LIFE, player.lifeTotal))
@@ -495,7 +487,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       p1.handler.sendMessageToClient(battleResultsMessage)
       p2.handler.sendMessageToClient(battleResultsMessage)
 
-      gameState.defenses.foreach(d => d.foreach(summon => {
+      gameState.defenses.foreach(d => (d._2 + d._1).foreach(summon => {
         (0 until summon.card.MAXIMUM_ABILITIES).toStream.takeWhile(i => summon.card.abilityLevel(i) != -1).foreach(i => {
           if(SummonAbilityLibrary.abilityList(summon.card.abilityLibraryIndex(i)).timing == SummonAbility.ON_COMBAT){
             val triggerChanges = SummonAbilityEffectLibrary.effects(summon.card.abilityLibraryIndex(i)).apply(summon.card.abilityLevel(i), gameState, summon)

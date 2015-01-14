@@ -209,6 +209,7 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
     Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(ap.pile.cards.contains(testSpell))
     assertTrue(ap.hand.cards.isEmpty)
+    assertEquals(30, ap.lifeTotal)
   }
 
   @Test

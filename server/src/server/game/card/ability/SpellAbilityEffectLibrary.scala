@@ -10,7 +10,7 @@ import scala.util.Random
 
 object SpellAbilityEffectLibrary {
   class SpellAbilityEffect(changesBattleFieldState: Boolean,
-                           val apply: (Int,GameState) => ArrayBuffer[GameChange])
+                           val apply: (Int, GameState) => ArrayBuffer[GameChange])
     extends CardAbilityEffect(changesBattleFieldState){}
 
   val effects = new Array[SpellAbilityEffect](6)
@@ -21,8 +21,8 @@ object SpellAbilityEffectLibrary {
       p.battlefield.summons.foreach((s: GameSummon) => {
         s.changeLifeBy(0 - level)
         s.changePowerBy(0 - level)
-        retn += new SummonValueChange(s.id, GameChange.Value.LIFE,s.life)
-        retn += new SummonValueChange(s.id, GameChange.Value.POWER,s.power)
+        retn += new SummonValueChange(s.id, GameChange.Value.LIFE, s.life)
+        retn += new SummonValueChange(s.id, GameChange.Value.POWER, s.power)
       })
     })
     retn
@@ -40,8 +40,8 @@ object SpellAbilityEffectLibrary {
 
   effects(2) = new SpellAbilityEffect(false, (level: Int, state: GameState) => {
     val retn = new ArrayBuffer[GameChange]()
-      state.activePlayer.manaTotal += level
-    retn += new PlayerValueChange(state.activePlayer.handler.getUserName,GameChange.Value.MANA,state.activePlayer.manaTotal)
+    state.activePlayer.manaTotal += level
+    retn += new PlayerValueChange(state.activePlayer.handler.getUserName, GameChange.Value.MANA, state.activePlayer.manaTotal)
     retn
   })
 

@@ -4,7 +4,9 @@ import common.card.ability.{SummonAbility, SummonAbilityLibrary}
 import server.game.card.GameSummon
 import server.game.exception.{GameTiedException, PlayerWonException}
 
-import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable
+import scala.collection.mutable._
+import scala.tools.nsc.util.MultiHashMap
 import scala.util.Random
 
 class GameState (val players: Array[Player], val game: Game) {
@@ -14,7 +16,7 @@ class GameState (val players: Array[Player], val game: Game) {
   var activePlayerIndex: Int = new Random().nextInt(players.size)
   //Holds all the summons up for combat each of the turns. The first summon in each array is the attacker
   //and the rest are blockers.
-  private var battleSummons = new ArrayBuffer[ArrayBuffer[GameSummon]]
+  private val battleSummons = new HashMap[GameSummon, Set[GameSummon]] with MultiMap[GameSummon, GameSummon]
   //Holds the death triggers that haven't been processed yet. It couples the invoker with the index of
   //the ability on the SummonAbilityLibrary and the level of the ability
   private var deathTriggers = new ArrayBuffer[(GameSummon, Int, Int)]
@@ -33,52 +35,33 @@ class GameState (val players: Array[Player], val game: Game) {
     activePlayerIndex = (activePlayerIndex + 1) % players.size
     attackersSetThisTurn = false
     defendersSetThisTurn = false
-    battleSummons = new ArrayBuffer[ArrayBuffer[GameSummon]]
+    battleSummons.clear()
     val turnOwner = players(activePlayerIndex)
     turnOwner.manaTotal += 1
     turnOwner.refillMana()
   }
 
-  def defendersOf(s: GameSummon): ArrayBuffer[GameSummon] = {
-    val res = new ArrayBuffer[GameSummon]()
-    for(battleArray<-battleSummons){
-      if(battleArray(0) == s){
-       for(j<-1 until battleArray.size)
-         res += battleArray(j)
-      }
-    }
-    res
+  def defendersOf(s: GameSummon): Set[GameSummon] = {
+    battleSummons.get(s).get
   }
 
   def attackerOf(s: GameSummon): GameSummon = {
-    for(battleArray<-battleSummons){
-      for(j<- 1 until battleArray.size){
-        if(battleArray(j) == s){
-          return battleArray(0)
-        }
-      }
-    }
-    null
+    battleSummons.collectFirst({case (gs, set) if set.contains(s) => gs}).get
   }
 
-  def attackers: ArrayBuffer[GameSummon] = {
-    val summons = new ArrayBuffer[GameSummon]()
-    for(i<-battleSummons.indices)
-      summons += battleSummons(i)(0)
-    summons
+  def attackers: collection.Set[GameSummon] = {
+    battleSummons.keySet
   }
 
   def attackerCount: Int = battleSummons.size
 
-  def defenses: ArrayBuffer[ArrayBuffer[GameSummon]] = battleSummons
-
+  def defenses = battleSummons
 
   def setAttackers(attackers: ArrayBuffer[GameSummon]){
     synchronized{
       if(!attackersSetThisTurn){
         attackersSetThisTurn = true
-        for(attacker <- attackers)
-          battleSummons += ArrayBuffer(attacker)
+        attackers.foreach(attacker => battleSummons.put(attacker, Set[GameSummon]()))
       }
     }
   }
@@ -89,11 +72,7 @@ class GameState (val players: Array[Player], val game: Game) {
     synchronized{
       if(!defendersSetThisTurn){
         defendersSetThisTurn = true
-        for(defenseArray <- defenses)
-          for(battleArray <- battleSummons)
-            if(battleArray(0) == defenseArray(0))
-              for(i<- 1 until defenseArray.size)
-                battleArray += defenseArray(i)
+        defenses.foreach(defense => (defense - defense(0)).foreach(defender => battleSummons.addBinding(defense(0), defender)))
       }
     }
   }
@@ -101,10 +80,7 @@ class GameState (val players: Array[Player], val game: Game) {
   def defendersSet = defendersSetThisTurn
 
   def hasDefenders(summon: GameSummon): Boolean = {
-    for(battleArray<-battleSummons)
-      if(battleArray(0) == summon && battleArray.size > 1)
-        return true
-    false
+    battleSummons.get(summon).size > 0
   }
 
   def nextDeathTrigger: (GameSummon, Int, Int) = {

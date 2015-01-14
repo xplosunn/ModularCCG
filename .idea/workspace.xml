@@ -4,62 +4,70 @@
     <bookmark url="file://$PROJECT_DIR$/common/src/common/card/ability/change/CardDraw.scala" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf2fe988-55a2-4916-baae-0f2e89b0a8c7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/common/card/ability/change/NewCard.scala" />
-      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Player$$anonfun$drawCardFrom$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\tests\unit\server\game\card\ability\SpellAbilityEffectLibraryTest$$anonfun$drawCardFromRandomOpponent$1$$anon$8.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\tests\unit\server\game\card\ability\SpellAbilityEffectLibraryTest$$anonfun$drawCardFromRandomOpponent$1$$anonfun$apply$mcVI$sp$17.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\tests\unit\server\game\card\ability\SpellAbilityEffectLibraryTest$$anonfun$drawCardFromRandomOpponent$1.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/common/common/card/ability/change/CardDraw.class" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/change/CardDraw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processPlayCard$5.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processPlayCard$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$9$$anonfun$apply$10.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$9$$anonfun$apply$10.class" />
+    <list default="true" id="cf2fe988-55a2-4916-baae-0f2e89b0a8c7" name="Default" comment="NewCard">
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$attack$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$battle$1$$anonfun$apply$3.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$battle$2$$anonfun$apply$11$$anonfun$apply$5$$anonfun$apply$mcVI$sp$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$battle$2$$anonfun$apply$11$$anonfun$apply$5.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$defend$1$$anonfun$apply$mcVI$sp$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$defend$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$4$$anonfun$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$setDefenses$1$$anonfun$apply$7.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$setupGame$2$$anonfun$apply$9$$anonfun$apply$10.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\Duel$$anonfun$setupGame$2$$anonfun$apply$9.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$attackerOf$1$$anonfun$apply$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$attackers$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$checkBattlefieldState$1$$anonfun$apply$6.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$checkBattlefieldState$1$$anonfun$apply$7$$anonfun$apply$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$checkBattlefieldState$1$$anonfun$apply$7$$anonfun$apply$8.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$checkBattlefieldState$1$$anonfun$apply$7.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$defendersOf$1$$anonfun$apply$3.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$defendersOf$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$hasDefenders$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$setDefenders$1$$anonfun$apply$4$$anonfun$apply$5.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\HugoSousa\Documents\GitHub\ModularCCG\out\production\server\server\game\GameState$$anonfun$setDefenders$1$$anonfun$apply$4.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$attack$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$attack$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11$$anonfun$apply$4.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11$$anonfun$apply$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$defend$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$defend$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processDeathTriggers$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processDeathTriggers$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$4.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$processMulligans$1$$anonfun$apply$mcZI$sp$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1$$anonfun$apply$6.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1$$anonfun$apply$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$8.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anon$1.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anon$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anon$2.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anon$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$1.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$3.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$4.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$5.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$6.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2$$anonfun$apply$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$7$$anonfun$apply$8.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$7$$anonfun$apply$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$7.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1$$anonfun$apply$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$applyChanges$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$InternalGamePanel.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$InternalGamePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/FakeServer.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/FakeServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$attackersAnnounced$1.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$attackersAnnounced$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$hand$1$$anonfun$apply$mcVI$sp$1.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$hand$1$$anonfun$apply$mcVI$sp$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$hand$1.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$hand$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$nextStep$1.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$nextStep$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$nextStep$2.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/DuelTab$$anonfun$nextStep$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$attackerOf$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$attackerOf$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkPlayerState$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkPlayerState$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setAttackers$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setAttackers$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setDefenders$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setDefenders$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Player$$anonfun$shuffleDeck$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Player$$anonfun$shuffleDeck$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Player.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1$$anonfun$apply$1$$anonfun$apply$2.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1$$anonfun$apply$1$$anonfun$apply$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1$$anonfun$apply$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1$$anonfun$apply$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$2$$anonfun$apply$3.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$2$$anonfun$apply$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$2.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$3.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$4$$anonfun$apply$4.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$4$$anonfun$apply$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$4.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$5$$anonfun$apply$5.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$5$$anonfun$apply$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$5.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6$$anonfun$apply$6$$anonfun$apply$7.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6$$anonfun$apply$6$$anonfun$apply$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6$$anonfun$apply$6.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6$$anonfun$apply$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$$anonfun$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$SpellAbilityEffect.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SpellAbilityEffectLibrary$SpellAbilityEffect.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anon$9.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anon$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anon$10.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anon$10.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$18.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$18.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$19.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$19.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1$$anonfun$apply$mcVI$sp$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest$$anonfun$killEachPlayerSummon$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$$anonfun$5.class" afterPath="$PROJECT_DIR$/out/production/common/common/card/ability/SpellAbilityLibrary$$anonfun$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/common/card/ability/change/CardDraw.scala" afterPath="$PROJECT_DIR$/common/src/common/card/ability/change/CardDraw.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$3.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/card/ability/SummonAbilityEffectLibrary$$anonfun$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/server/game/card/ability/CardAbilityEffect.scala" afterPath="$PROJECT_DIR$/server/src/server/game/card/ability/CardAbilityEffect.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/server/game/Duel.scala" afterPath="$PROJECT_DIR$/server/src/server/game/Duel.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/client/window/tab/DuelTab.scala" afterPath="$PROJECT_DIR$/client/src/client/window/tab/DuelTab.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServer.java" afterPath="$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/server/game/GameState.scala" afterPath="$PROJECT_DIR$/server/src/server/game/GameState.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/server/game/Player.scala" afterPath="$PROJECT_DIR$/server/src/server/game/Player.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/server/game/exception/GameTiedException.scala" afterPath="$PROJECT_DIR$/server/src/server/game/exception/GameTiedException.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/server/game/card/ability/SpellAbilityEffectLibrary.scala" afterPath="$PROJECT_DIR$/server/src/server/game/card/ability/SpellAbilityEffectLibrary.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/common/card/ability/SpellAbilityLibrary.scala" afterPath="$PROJECT_DIR$/common/src/common/card/ability/SpellAbilityLibrary.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala" afterPath="$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="yayScala.iws" />
@@ -136,101 +144,111 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SpellAbilityEffectLibrary.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/server/game/card/ability/SpellAbilityEffectLibrary.scala">
+      <file leaf-file-name="Spell.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/common/card/Spell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="1581">
-              <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="815" max-vertical-offset="2652">
+              <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+              <folding>
+                <element signature="e#637#638#0" expanded="true" />
+                <element signature="e#661#662#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Card.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/common/card/Card.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpellAbilityEffectLibraryTest.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala">
+      <file leaf-file-name="GameState.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/server/game/GameState.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3349" max-vertical-offset="4267">
-              <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="866" max-vertical-offset="2125">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding>
+                <element signature="e#21#85#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DuelTab.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/client/window/tab/DuelTab.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4335" max-vertical-offset="5661">
-              <caret line="255" column="0" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Duel.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Duel.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/server/game/Duel.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.04927536" vertical-offset="1785" max-vertical-offset="8925">
-              <caret line="119" column="3" selection-start-line="119" selection-start-column="3" selection-end-line="119" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8789">
+              <caret line="444" column="55" selection-start-line="444" selection-start-column="55" selection-end-line="444" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerPanel.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/client/window/tab/panel/PlayerPanel.scala">
+      <file leaf-file-name="SummonAbilityEffectLibraryTest.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="2924">
-              <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="4097">
+              <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UnitTestConstants.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SummonAbilityEffectLibrary.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/server/game/card/ability/SummonAbilityEffectLibrary.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1632">
+              <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+              <folding>
+                <element signature="e#34#130#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnitTestConstants.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="238">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.26086956" vertical-offset="0" max-vertical-offset="391">
+              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/server/Server.scala">
+      <file leaf-file-name="MessagesToServerTest.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/src/unit/common/network/messages/MessagesToServerTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="408">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="2023">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/client/Main.scala">
+      <file leaf-file-name="Summon.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/common/card/Summon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="323">
-              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3128">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#862#863#0" expanded="true" />
+                <element signature="e#894#895#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginWindow.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/client/window/LoginWindow.scala">
+      <file leaf-file-name="DeckTest.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/src/unit/common/card/DeckTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="1241">
-              <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerHandler.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/client/network/ServerHandler.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="3043">
-              <caret line="26" column="77" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="77" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1003">
+              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -254,19 +272,14 @@
         <option value="$PROJECT_DIR$/common/src/common/card/Deck.java" />
         <option value="$PROJECT_DIR$/server/src/server/services/Games.scala" />
         <option value="$PROJECT_DIR$/client/src/client/window/DeckChooser.scala" />
-        <option value="$PROJECT_DIR$/tests/src/unit/common/card/DeckTest.scala" />
-        <option value="$PROJECT_DIR$/common/src/common/card/Card.java" />
-        <option value="$PROJECT_DIR$/common/src/common/card/Summon.java" />
         <option value="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/AbilityLibraryTest.scala" />
         <option value="$PROJECT_DIR$/client/src/client/window/tab/panel/GraphicalRemoteCard.scala" />
         <option value="$PROJECT_DIR$/client/src/client/window/tab/panel/StepPanel.scala" />
         <option value="$PROJECT_DIR$/tests/src/unit/client/window/tab/panel/DefenseLinesTest.java" />
         <option value="$PROJECT_DIR$/src/server/services/ErrorLog.scala" />
-        <option value="$PROJECT_DIR$/common/src/common/card/Spell.java" />
         <option value="$PROJECT_DIR$/server/src/server/game/card/GameSpell.scala" />
         <option value="$PROJECT_DIR$/server/src/server/game/card/GameSummon.scala" />
         <option value="$PROJECT_DIR$/server/src/server/game/card/GameCard.scala" />
-        <option value="$PROJECT_DIR$/server/src/server/game/card/ability/SummonAbilityEffectLibrary.scala" />
         <option value="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala" />
         <option value="$PROJECT_DIR$/tests/src/unit/common/network/messages/FakeServerHandler.java" />
         <option value="$PROJECT_DIR$/tests/src/unit/common/network/messages/MessagesToClientTest.scala" />
@@ -284,13 +297,20 @@
         <option value="$PROJECT_DIR$/common/src/common/card/ability/change/CardDraw.scala" />
         <option value="$PROJECT_DIR$/server/src/server/game/Player.scala" />
         <option value="$PROJECT_DIR$/common/src/common/card/ability/SpellAbilityLibrary.scala" />
+        <option value="$PROJECT_DIR$/common/src/common/card/ability/change/NewCard.scala" />
+        <option value="$PROJECT_DIR$/client/src/client/window/tab/DuelTab.scala" />
+        <option value="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala" />
+        <option value="$PROJECT_DIR$/server/src/server/game/card/ability/SummonAbilityEffectLibrary.scala" />
+        <option value="$PROJECT_DIR$/server/src/server/game/card/ability/CardAbilityEffect.scala" />
+        <option value="$PROJECT_DIR$/server/src/server/game/card/ability/SpellAbilityEffectLibrary.scala" />
+        <option value="$PROJECT_DIR$/server/src/server/game/exception/GameTiedException.scala" />
+        <option value="$PROJECT_DIR$/common/src/common/card/Card.java" />
+        <option value="$PROJECT_DIR$/common/src/common/card/Spell.java" />
+        <option value="$PROJECT_DIR$/tests/src/unit/common/card/DeckTest.scala" />
+        <option value="$PROJECT_DIR$/common/src/common/card/Summon.java" />
         <option value="$PROJECT_DIR$/server/src/server/game/GameState.scala" />
         <option value="$PROJECT_DIR$/server/src/server/game/Duel.scala" />
-        <option value="$PROJECT_DIR$/common/src/common/card/ability/change/NewCard.scala" />
-        <option value="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala" />
-        <option value="$PROJECT_DIR$/server/src/server/game/card/ability/SpellAbilityEffectLibrary.scala" />
         <option value="$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala" />
-        <option value="$PROJECT_DIR$/client/src/client/window/tab/DuelTab.scala" />
       </list>
     </option>
   </component>
@@ -344,7 +364,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -416,319 +435,10 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="card" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ability" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="card" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="card" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ability" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="card" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ability" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="change" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yayScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ModularCCG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
@@ -759,6 +469,22 @@
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="132" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="161" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="162" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="837" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="155" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="153" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="155" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="829" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -770,7 +496,7 @@
       <recent name="MyConsole" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientAndServer">
+  <component name="RunManager" selected="JUnit.All in tests">
     <configuration default="false" name="All in tests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="tests" />
@@ -1385,7 +1111,11 @@
       <workItem from="1418310291018" duration="5277000" />
       <workItem from="1418400014721" duration="3001000" />
       <workItem from="1419702417958" duration="55000" />
-      <workItem from="1419702544346" duration="108000" />
+      <workItem from="1419702544346" duration="4099000" />
+      <workItem from="1419709129365" duration="8065000" />
+      <workItem from="1419870018117" duration="2163000" />
+      <workItem from="1421081498040" duration="283000" />
+      <workItem from="1421215363884" duration="7976000" />
     </task>
     <task id="LOCAL-00001" summary=" msg">
       <created>1417327538030</created>
@@ -1399,11 +1129,17 @@
       <option name="project" value="LOCAL" />
       <updated>1417328446302</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="NewCard">
+      <created>1419702693261</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1419702693261</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205275000" />
+    <option name="totallyTimeSpent" value="227753000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1429,7 +1165,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33224756" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34584013" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -1439,13 +1175,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27169812" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290469" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37030995" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41435564" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31647635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32830188" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26096824" sideWeight="0.4994012" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2730711" sideWeight="0.4994012" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39151713" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24886535" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1458,7 +1195,6 @@
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47634584" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39151713" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1473,11 +1209,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
     <MESSAGE value=" msg" />
-    <option name="LAST_COMMIT_MESSAGE" value=" msg" />
+    <MESSAGE value="NewCard" />
+    <option name="LAST_COMMIT_MESSAGE" value="NewCard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1490,79 +1228,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/src/unit/common/card/SummonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1683">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/src/unit/common/card/DeckTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="885">
-          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/common/card/Summon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3094">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/common/card/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="360">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/AbilityLibraryTest.scala">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
-          <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/client/game/Games.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1360">
-          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/client/window/tab/panel/GraphicalRemoteCard.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/src/unit/client/window/tab/panel/DefenseLinesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.92991453" vertical-offset="0" max-vertical-offset="646">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/client/window/tab/panel/StepPanel.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1502" max-vertical-offset="2482">
-          <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/common/card/Spell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2618">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/src/launch/RandomTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
@@ -1574,13 +1239,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="969">
           <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server/game/card/ability/SummonAbilityEffectLibrary.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1632">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1602,13 +1260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="10711" max-vertical-offset="33388">
           <caret line="695" column="29" selection-start-line="695" selection-start-column="29" selection-end-line="695" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/client/window/tab/ForgeTab.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="3621">
-          <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1727,20 +1378,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server/game/Player.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1241">
-          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server/game/GameState.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2448">
-          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/common/card/ability/change/GameChange.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31903484" vertical-offset="0" max-vertical-offset="442">
@@ -1776,42 +1413,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3314" max-vertical-offset="4165">
-          <caret line="216" column="17" selection-start-line="216" selection-start-column="17" selection-end-line="216" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server/game/card/ability/SpellAbilityEffectLibrary.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1581">
-          <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3092" max-vertical-offset="4148">
-          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/server/Server.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1819,7 +1424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
           <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1827,7 +1431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="2822">
           <caret line="26" column="77" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1835,7 +1438,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="145" max-vertical-offset="1241">
           <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1843,7 +1445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="349" max-vertical-offset="2737">
           <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1851,7 +1452,122 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4085" max-vertical-offset="5525">
           <caret line="255" column="0" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/opensource/apache/HashCodeBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04927536" vertical-offset="952" max-vertical-offset="8840">
+          <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3060" max-vertical-offset="4165">
+          <caret line="188" column="33" selection-start-line="188" selection-start-column="33" selection-end-line="188" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/exception/PlayerWonException.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2173913" vertical-offset="0" max-vertical-offset="391">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/card/ability/CardAbilityEffect.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/exception/GameTiedException.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/card/ability/SpellAbilityEffectLibrary.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="404" max-vertical-offset="1581">
+          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/Player.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/client/window/tab/ForgeTab.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2628" max-vertical-offset="3621">
+          <caret line="173" column="31" selection-start-line="173" selection-start-column="31" selection-end-line="173" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/common/card/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="815" max-vertical-offset="2652">
+          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+          <folding>
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/unit/common/card/DeckTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="969">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/common/card/Summon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3128">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/common/card/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/GameState.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="866" max-vertical-offset="2125">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="e#21#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1860,8 +1576,42 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04927536" vertical-offset="1785" max-vertical-offset="8925">
-          <caret line="119" column="3" selection-start-line="119" selection-start-column="3" selection-end-line="119" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8789">
+          <caret line="444" column="55" selection-start-line="444" selection-start-column="55" selection-end-line="444" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="4097">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/card/ability/SummonAbilityEffectLibrary.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1632">
+          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+          <folding>
+            <element signature="e#34#130#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/unit/common/network/messages/MessagesToServerTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="2023">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26086956" vertical-offset="0" max-vertical-offset="391">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
           <folding />
         </state>
       </provider>
