@@ -109,9 +109,11 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
         assertTrue(nap.battlefield.cards.size == attackingSummonsCount)
 
         ap.hand.cards += testSummon
+        assertTrue(ap.hand.cards.contains(testSummon))
+        assertTrue(ap.availableMana == testSummon.cost)
         testDuel.addCardToBePlayed(testSummon.id)
         Thread.sleep(processMillis)
-        assertTrue(ap.battlefield.cards.size == 1)
+        assertTrue(testAbilityLevel + " " + ap.battlefield.cards.size, ap.battlefield.cards.size == 1)
         assertTrue(nap.battlefield.cards.size == attackingSummonsCount)
         testDuel.endTurn()
         Thread.sleep(processMillis)
@@ -148,7 +150,7 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
         assertTrue(addAbility(testAbilityLibraryIndex, testAbilityLevel))
         life(2)
       }, ap, 301)
-      val defender = new GameSummon(new Summon, nap, 400)
+      val defender = new GameSummon(new Summon{}, nap, 400)
 
       ap.battlefield.cards += undefendedEvader
       ap.battlefield.cards += defendedEvader
@@ -158,7 +160,8 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
       Thread.sleep(processMillis)
       testDuel.setAttackers(Array(undefendedEvader.id, defendedEvader.id))
       Thread.sleep(processMillis)
-      testDuel.setDefenses(Array((Integer.valueOf(defendedEvader.id), Integer.valueOf(defender.id))))
+      assertTrue(nap.lifeTotal == 30)
+      testDuel.setDefenses(Array((defendedEvader.id, defender.id)))
       Thread.sleep(processMillis)
 
       assertTrue(testAbilityLevel + " " + nap.lifeTotal, nap.lifeTotal == 29)

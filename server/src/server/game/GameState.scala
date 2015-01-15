@@ -4,9 +4,7 @@ import common.card.ability.{SummonAbility, SummonAbilityLibrary}
 import server.game.card.GameSummon
 import server.game.exception.{GameTiedException, PlayerWonException}
 
-import scala.collection.mutable
 import scala.collection.mutable._
-import scala.tools.nsc.util.MultiHashMap
 import scala.util.Random
 
 class GameState (val players: Array[Player], val game: Game) {
@@ -68,11 +66,11 @@ class GameState (val players: Array[Player], val game: Game) {
 
   def attackersSet = attackersSetThisTurn
 
-  def setDefenders(defenses: ArrayBuffer[ArrayBuffer[GameSummon]]){
+  def setDefenders(defenses: Array[(GameSummon, GameSummon)]){
     synchronized{
       if(!defendersSetThisTurn){
         defendersSetThisTurn = true
-        defenses.foreach(defense => (defense - defense(0)).foreach(defender => battleSummons.addBinding(defense(0), defender)))
+        defenses.foreach(defense => battleSummons.get(defense._1).get += defense._2) //.addBinding(defense._1, defense._2))
       }
     }
   }
@@ -80,7 +78,7 @@ class GameState (val players: Array[Player], val game: Game) {
   def defendersSet = defendersSetThisTurn
 
   def hasDefenders(summon: GameSummon): Boolean = {
-    battleSummons.get(summon).size > 0
+    battleSummons.get(summon).get.size > 0
   }
 
   def nextDeathTrigger: (GameSummon, Int, Int) = {
@@ -92,11 +90,8 @@ class GameState (val players: Array[Player], val game: Game) {
   
   def checkBattlefieldState() {
     players.foreach(player => {
-      val summonsToKill = new ArrayBuffer[GameSummon]()
-      player.battlefield.summons.foreach(summon =>
-        if (summon.life <= 0)
-          summonsToKill += summon
-        )
+      val summonsToKill = player.battlefield.summons.filter(gs => gs.life <= 0)
+
       player.battlefield.cards --= summonsToKill
       player.pile.cards ++= summonsToKill
       summonsToKill.foreach(summon => {

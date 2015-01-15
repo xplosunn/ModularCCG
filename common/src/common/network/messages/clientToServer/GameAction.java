@@ -1,5 +1,6 @@
 package common.network.messages.clientToServer;
 
+import scala.Int;
 import scala.Tuple2;
 
 public class GameAction extends MessageToServer {
@@ -50,12 +51,12 @@ public class GameAction extends MessageToServer {
     }
 
     //Set Defenders
-    public static GameAction setDefenders(int gameID, Tuple2<Integer, Integer>[] defenses){
+    public static GameAction setDefenders(int gameID, Tuple2<Int, Int>[] defenses){
         return new GameAction(gameID, ACTIONS.SET_DEFENDERS, defenses);
     }
 
-    public Tuple2<Integer,Integer>[] getDefenses(){
-        return (action == ACTIONS.SET_DEFENDERS) ? (Tuple2<Integer,Integer>[]) data : null;
+    public Tuple2<Int,Int>[] getDefenses(){
+        return (action == ACTIONS.SET_DEFENDERS) ? (Tuple2<Int,Int>[]) data : null;
     }
 
     //Next step and End turn

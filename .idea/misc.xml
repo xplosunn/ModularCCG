@@ -3,9 +3,8 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
-  <component name="IdProvider" IDEtalkID="BCCEE9A98AEB1CF89E1266456827BF6B" />
+  <component name="IdProvider" IDEtalkID="47E572C38BA4A5CC4F949E85BEBA34C2" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
-

@@ -71,7 +71,7 @@ class StepPanel(val duelTab: DuelTab) extends FlowPanel{
       case ButtonClicked(b) =>
         duelTab.currentStep match{
           case GameSteps.COMBAT_Defend =>
-            val defenses = new Array[(Integer, Integer)](duelTab.defenseLines.defenses.size())
+            val defenses = new Array[(Int, Int)](duelTab.defenseLines.defenses.size())
             for(i<-defenses.indices)
               defenses(i) = (new Integer(duelTab.defenseLines.defenses.get(i)._1.remoteCard.id) , new Integer(duelTab.defenseLines.defenses.get(i)._2.remoteCard.id))
             SessionVars.serverHandler.Duel.setDefenses(duelTab.gameID,defenses)

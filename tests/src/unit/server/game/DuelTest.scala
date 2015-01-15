@@ -144,7 +144,7 @@ class DuelTest {
     Thread.sleep(processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Defend))
     val defenderID = testDuel.getGameState.nonActivePlayer.battlefield.summons(0).id
-    testDuel.setDefenses(Array((attackerID.asInstanceOf[Integer], defenderID.asInstanceOf[Integer])))
+    testDuel.setDefenses(Array((attackerID, defenderID)))
 
     Thread.sleep(processMillis)
     testDuel.getGameState.players.foreach(p =>{
@@ -240,7 +240,7 @@ class DuelTest {
     Thread.sleep(processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Defend))
     val defenderID = testDuel.getGameState.nonActivePlayer.battlefield.summons(0).id
-    testDuel.setDefenses(Array((attackerID.asInstanceOf[Integer], defenderID.asInstanceOf[Integer])))
+    testDuel.setDefenses(Array((attackerID, defenderID)))
 
     Thread.sleep(processMillis)
     testDuel.getGameState.players.foreach(p => {

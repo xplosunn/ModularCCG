@@ -114,7 +114,7 @@ class ServerHandler(val username: String) extends Thread {
     }
   }
   object Duel{
-    def setDefenses(gameID: Int, defenses: Array[(Integer, Integer)]){
+    def setDefenses(gameID: Int, defenses: Array[(Int, Int)]){
       objOut.writeObject(GameAction.setDefenders(gameID, defenses))
     }
 

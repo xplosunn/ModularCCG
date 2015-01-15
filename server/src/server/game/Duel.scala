@@ -152,27 +152,14 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     }
   }
 
-  def setDefenses(defenseIDs: Array[(Integer, Integer)]){
+  def setDefenses(defenseIDs: Array[(Int, Int)]){
     if (CurrentTurn.currentStep == GameSteps.COMBAT_Defend && gameState.attackerCount > 0 && defenseIDs != null){
-      val defenses = new ArrayBuffer[ArrayBuffer[GameSummon]]()
-      defenseIDs.foreach(defenseTuple => {
-        var alreadyInDefensesArray = false
-        defenses.takeWhile(_ => !alreadyInDefensesArray).foreach(
-          d =>
-            if (d(0).id == defenseTuple._1) {
-              alreadyInDefensesArray = true
-              val defender = findSummonInBattleField(gameState.nonActivePlayer, defenseTuple._2)
-              if (defender != null)
-                d += defender
-            })
-        if(!alreadyInDefensesArray){
-          val attacker = findSummonInBattleField(gameState.activePlayer, defenseTuple._1)
-          val defender = findSummonInBattleField(gameState.nonActivePlayer, defenseTuple._2)
-          if(attacker != null && defender != null){
-            defenses += ArrayBuffer(attacker,defender)
-          }
-        }
-      })
+      def nonNullTuple(tuple: (GameSummon, GameSummon)) = tuple._1 != null && tuple._2 != null
+
+      val defenses = defenseIDs.collect({case (attackerID, defenderID) =>
+        (findSummonInBattleField(gameState.activePlayer, attackerID), findSummonInBattleField(gameState.nonActivePlayer, defenderID))})
+        .filter(nonNullTuple)
+
       synchronized {
         gameState.setDefenders(defenses)
         interrupt()
@@ -180,14 +167,8 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     }
   }
 
-  def findSummonInBattleField(owner: Player, id: Int): GameSummon = {
-    owner.battlefield.cards.foreach{
-      case summon: GameSummon =>
-        if(summon.id == id)
-          return summon
-
-    }
-    null
+  private def findSummonInBattleField(owner: Player, id: Int): GameSummon = {
+    owner.battlefield.cards.collectFirst({case gc: GameSummon if (gc.id == id) => gc}).get
   }
 
   /**
@@ -238,45 +219,21 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     gameState.checkPlayerState()
   }
 
-  def setupGame(){
+  private def setupGame(){
     val activePlayerIndex = gameState.activePlayerIndex
     val players = gameState.players
-    val names = new Array[String](players.size)
-    for(i<-players.indices){
-      names(i) = players((activePlayerIndex+i)%players.size).handler.getUserName
-    }
-    for(p<-players){
+    val names = players.collect({case p => p.handler.getUserName}).toArray
+    players.foreach(p => {
       p.handler.sendMessageToClient(GameInfo.gameStarted(id, names))
 
-      for(_<-0 until 6)
-        p.drawCard
-      val cards = new Array[RemoteCard](p.hand.cards.size)
-      for(i<-cards.indices){
-        val gameCard = p.hand.cards(i)
-        cards(i) = new RemoteCard(gameCard.id, gameCard.owner.handler.getUserName, gameCard.card)
-      }
+      (0 until 6).foreach(_=> p.drawCard)
 
+      val cards = p.hand.cards.collect({case gc => new RemoteCard(gc.id, gc.owner.handler.getUserName, gc.card)}).toArray
       p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, cards))
 
-       //code before mulls
-      val changes = new ArrayBuffer[GameChange]()
-      /*for(i<-0 until 3){
-        val localCard = p.drawCard
-        val remoteCard = new RemoteGameCard(localCard.id,localCard.owner.handler.getUserName,localCard.card)
-        changes += new CardDraw(p.handler.getUserName,p.handler.getUserName,remoteCard)
-      }*/
-
-      for(op<-players){
-        if(op!=p){
-          for(_<- 0 until 3)
-            changes += new CardDraw(op.handler.getUserName, null, false)
-        }
-      }
-      val changeArray = new Array[GameChange](changes.size)
-      for(i<-changes.indices)
-        changeArray(i) = changes(i)
-      p.handler.sendMessageToClient(GameInfo.gameChanges(id, changeArray))
-    }
+      val changes: Array[GameChange] = players.filter(op => op != p).take(3).collect({case op => new CardDraw(op.handler.getUserName, null, false)}).toArray
+      p.handler.sendMessageToClient(GameInfo.gameChanges(id, changes))
+    })
 
     //Mulligans
     var mulliganing = true
@@ -284,10 +241,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     synchronized{
       while (mulliganing) {
         val timeLeft = Duel.SECONDS_TO_MULLIGAN - stopWatch.elapsed(TimeUnit.SECONDS)
-        if (mulligansDone){
-          processMulligans()
-          mulliganing = false
-        } else if (timeLeft > 0 )
+        if (!mulligansDone && timeLeft > 0 )
           try {
             wait(timeLeft)
           } catch {
@@ -465,19 +419,19 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       p2.handler.sendMessageToClient(phaseMessage)
       var battleChanges = new Array[GameChange](0)
       var playerLifeChanged = false
-      gameState.defenses.foreach({case (attacker, defenders) => {
-        defenders.foreach(defender => {
-          attacker.changeLifeBy(0-defender.power)
-          defender.changeLifeBy(0-attacker.power)
-          battleChanges ++= Array(new SummonValueChange(defender.id, GameChange.Value.LIFE, defender.life))
-        })
-        if(defenders.size > 1)
+      gameState.defenses.foreach({case (attacker, defenders) =>
+        if(defenders.size >= 1){
+          defenders.foreach(defender => {
+            attacker.changeLifeBy(0-defender.power)
+            defender.changeLifeBy(0-attacker.power)
+            battleChanges ++= Array(new SummonValueChange(defender.id, GameChange.Value.LIFE, defender.life))
+          })
           battleChanges ++= Array(new SummonValueChange(attacker.id, GameChange.Value.LIFE, attacker.life))
-        else{
+        }else{
           gameState.nonActivePlayer.changeLifeBy(0-attacker.power)
           playerLifeChanged = true
         }
-      }})
+      })
       if(playerLifeChanged){
         val player = gameState.nonActivePlayer
         battleChanges ++= Array(new PlayerValueChange(player.handler.getUserName, GameChange.Value.LIFE, player.lifeTotal))

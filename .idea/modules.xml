@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Modular CCG.iml" filepath="$PROJECT_DIR$/Modular CCG.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ModularCCG.iml" filepath="$PROJECT_DIR$/ModularCCG.iml" />
       <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
@@ -10,4 +10,3 @@
     </modules>
   </component>
 </project>
-

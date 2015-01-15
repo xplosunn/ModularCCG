@@ -97,13 +97,13 @@ class MessagesToServerTest {
       case _ => fail()
     }
 
-    val defenderIntegers = Array((Integer.valueOf(0),Integer.valueOf(1)), (Integer.valueOf(0),Integer.valueOf(2)),
-      (Integer.valueOf(3),Integer.valueOf(4)), (Integer.valueOf(3),Integer.valueOf(5)), (Integer.valueOf(3),Integer.valueOf(6)),
-      (Integer.valueOf(7),Integer.valueOf(8)))
+    val defenses = Array((0,1), (0,2),
+      (3,4), (3,5), (3,6),
+      (7,8))
     val defenseTuples = Array((0,1), (0,2),
       (3,4), (3,5), (3,6),
       (7,8))
-    MessagesToServerTest.fakeClient.Duel.setDefenses(gameID, defenderIntegers)
+    MessagesToServerTest.fakeClient.Duel.setDefenses(gameID, defenses)
     Thread.sleep(UnitTestConstants.processMillis)
     MessagesToServerTest.server.handlers.get(0).recievedMessages.lastElement() match {
       case msg: GameAction =>
