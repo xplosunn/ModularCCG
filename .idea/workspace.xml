@@ -2,37 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2311d613-66e5-439a-9179-fd82ecc79346" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/highlighting (Cópia em conflito de Hugo-PC 2014-10-17).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/highlighting.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/scala_compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/scala_sdk.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc (Cópia em conflito de Hugo-PC 2014-10-17).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules (Cópia em conflito de Hugo-PC 2014-10-17).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de HS-PC 2014-06-30).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de HS-PC 2014-07-04).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de Hugo-PC 2014-10-17).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de HugoSousa-PC 2014-09-18).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace (Cópia em conflito de HugoSousa-PC 2014-10-06).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace (xs-EP43-DS3's conflicted copy 2014-09-23).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace (xs-EP43-DS3's conflicted copy 2014-11-05).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Modular CCG.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11$$anonfun$apply$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2$$anonfun$apply$11.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$findSummonInBattleField$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1$$anonfun$apply$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setDefenses$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2$$anonfun$apply$8.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anon$9.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anon$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$8$$anon$8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setAttackers$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/tests/launch/TestArray$$anon$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/tests/launch/TestArray$$anonfun$funcArray$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/tests/launch/TestArray$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/tests/launch/TestArray.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$addCardToBePlayed$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$addCardToBePlayed$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$attack$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$attack$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$battle$2.class" />
@@ -52,59 +27,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$$anonfun$setupGame$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel$.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel$.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/Duel.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/Duel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/DuelTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/ForgeTab.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/GameAction$ACTIONS.class" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/GameAction$ACTIONS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/GameAction.class" afterPath="$PROJECT_DIR$/out/production/common/common/network/messages/clientToServer/GameAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$attackerOf$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$attackerOf$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkBattlefieldState$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkPlayerState$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$checkPlayerState$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setAttackers$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setAttackers$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setDefenders$1.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState$$anonfun$setDefenders$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/server/server/game/GameState.class" afterPath="$PROJECT_DIR$/out/production/server/server/game/GameState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToServerTest$$anonfun$gameAction$2.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToServerTest$$anonfun$gameAction$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToServerTest.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/common/network/messages/MessagesToServerTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler$Duel$.class" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler$Duel$.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler.class" afterPath="$PROJECT_DIR$/out/production/client/client/network/ServerHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$8$$anonfun$3$$anonfun$applyOrElse$2.class" afterPath="$PROJECT_DIR$/out/production/client/client/window/tab/panel/StepPanel$$anon$8$$anonfun$3$$anonfun$applyOrElse$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$13.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$14.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$15.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7$$anonfun$apply$mcVI$sp$15.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1$$anonfun$apply$mcVI$sp$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$champion$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1$$anon$5.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1$$anon$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1$$anon$6.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1$$anon$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$evader$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$poisonholder$1$$anonfun$apply$mcVI$sp$2.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$poisonholder$1$$anonfun$apply$mcVI$sp$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$10.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$11.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$5$$anonfun$apply$mcVI$sp$9.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$5$$anonfun$apply$mcVI$sp$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$5.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$12.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$6$$anonfun$apply$mcVI$sp$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$6.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$8.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4$$anonfun$apply$mcVI$sp$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1$$anonfun$apply$mcVI$sp$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest$$anonfun$warlord$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tests/unit/UnitTestConstants$.class" afterPath="$PROJECT_DIR$/out/production/tests/unit/UnitTestConstants$.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/server/game/Duel.scala" afterPath="$PROJECT_DIR$/server/src/server/game/Duel.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/unit/server/game/DuelTest.scala" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/DuelTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/common/network/messages/clientToServer/GameAction.java" afterPath="$PROJECT_DIR$/common/src/common/network/messages/clientToServer/GameAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/server/game/GameState.scala" afterPath="$PROJECT_DIR$/server/src/server/game/GameState.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/unit/common/network/messages/MessagesToServerTest.scala" afterPath="$PROJECT_DIR$/tests/src/unit/common/network/messages/MessagesToServerTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/client/network/ServerHandler.scala" afterPath="$PROJECT_DIR$/client/src/client/network/ServerHandler.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/client/window/tab/panel/StepPanel.scala" afterPath="$PROJECT_DIR$/client/src/client/window/tab/panel/StepPanel.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala" afterPath="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala" afterPath="$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/client.iml" afterPath="$PROJECT_DIR$/client/client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/common.iml" afterPath="$PROJECT_DIR$/common/common.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/tests.iml" afterPath="$PROJECT_DIR$/tests/tests.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ModularCCG.iws" />
@@ -134,7 +58,7 @@
       <file leaf-file-name="SpellAbilityEffectLibraryTest.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3675">
+            <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="3780">
               <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
               <folding />
             </state>
@@ -144,7 +68,7 @@
       <file leaf-file-name="SummonAbilityEffectLibraryTest.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2022" max-vertical-offset="3660">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="3720">
               <caret line="150" column="15" selection-start-line="150" selection-start-column="15" selection-end-line="150" selection-end-column="15" />
               <folding />
             </state>
@@ -154,18 +78,33 @@
       <file leaf-file-name="Games.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/server/services/Games.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="1395">
+            <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="1545">
               <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Duel.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Duel.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/server/game/Duel.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0730253" vertical-offset="990" max-vertical-offset="7065">
-              <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7005">
+              <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
+              <folding>
+                <marker date="1421455520935" expanded="true" signature="3768:3956" placeholder="{...}" />
+                <marker date="1421455520935" expanded="true" signature="3720:3773" placeholder="(...)" />
+                <marker date="1421455520935" expanded="true" signature="4128:4197" placeholder="(...)" />
+                <marker date="1421455520935" expanded="true" signature="4152:4196" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnitTestConstants.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.13157895" vertical-offset="0" max-vertical-offset="684">
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -174,7 +113,7 @@
       <file leaf-file-name="DuelTest.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/DuelTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1542" max-vertical-offset="4065">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="4230">
               <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
               <folding />
             </state>
@@ -184,11 +123,9 @@
       <file leaf-file-name="GameState.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/server/game/GameState.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1800">
-              <caret line="70" column="32" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
-              <folding>
-                <element signature="e#21#85#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="1800">
+              <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -209,8 +146,8 @@
         <option value="$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala" />
         <option value="$PROJECT_DIR$/tests/src/unit/server/game/DuelTest.scala" />
         <option value="$PROJECT_DIR$/server/src/server/game/GameState.scala" />
-        <option value="$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala" />
         <option value="$PROJECT_DIR$/server/src/server/game/Duel.scala" />
+        <option value="$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala" />
       </list>
     </option>
   </component>
@@ -247,6 +184,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -266,9 +204,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ModularCCG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ModularCCG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ModularCCG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ModularCCG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="unit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ModularCCG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ModularCCG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,6 +278,121 @@
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
+  </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/server/src/server/game/Duel.scala</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/server/src/server/game/GameState.scala</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/tests/src/launch/TestArray.scala</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
   </component>
   <component name="RunManager" selected="JUnit.All in tests">
     <configuration default="false" name="SpellAbilityEffectLibraryTest.decreaseSummonStats" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -741,12 +847,20 @@
       <option name="number" value="Default" />
       <updated>1421258065862</updated>
       <workItem from="1421258069320" duration="528000" />
-      <workItem from="1421258628813" duration="20426000" />
+      <workItem from="1421258628813" duration="21348000" />
+      <workItem from="1421447581447" duration="2034000" />
     </task>
+    <task id="LOCAL-00001" summary="updates">
+      <created>1421293396599</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1421293396599</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20954000" />
+    <option name="totallyTimeSpent" value="23910000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -782,14 +896,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924527" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924527" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23003195" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -799,6 +912,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -816,6 +930,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -828,11 +944,63 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SpellAbilityEffectLibraryTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="3780">
+          <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/card/ability/SummonAbilityEffectLibraryTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="3720">
+          <caret line="150" column="15" selection-start-line="150" selection-start-column="15" selection-end-line="150" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/services/Games.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="1545">
+          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/Duel.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1421455520935" expanded="true" signature="3768:3956" placeholder="{...}" />
+            <marker date="1421455520935" expanded="true" signature="3720:3773" placeholder="(...)" />
+            <marker date="1421455520935" expanded="true" signature="4128:4197" placeholder="(...)" />
+            <marker date="1421455520935" expanded="true" signature="4152:4196" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/src/unit/server/game/DuelTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="4230">
+          <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/GameState.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="1800">
+          <caret line="70" column="32" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ModularCCG.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
           <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -856,7 +1024,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10144927" vertical-offset="0" max-vertical-offset="1035">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -864,7 +1031,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10144927" vertical-offset="0" max-vertical-offset="1035">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -872,7 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
           <caret line="47" column="66" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,7 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24122807" vertical-offset="0" max-vertical-offset="684">
           <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -896,7 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.02276176" vertical-offset="0" max-vertical-offset="659">
           <caret line="1" column="109" selection-start-line="1" selection-start-column="109" selection-end-line="1" selection-end-column="109" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,9 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
           <caret line="53" column="69" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -914,7 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1332" max-vertical-offset="2490">
           <caret line="116" column="58" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,7 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="2190">
           <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -962,32 +1120,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6798246" vertical-offset="0" max-vertical-offset="684">
           <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/GameState.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="1800">
+          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1033">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/server/game/Duel.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7005">
+          <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
+          <folding>
+            <marker date="1421455520935" expanded="true" signature="3768:3956" placeholder="{...}" />
+            <marker date="1421455520935" expanded="true" signature="3720:3773" placeholder="(...)" />
+            <marker date="1421455520935" expanded="true" signature="4128:4197" placeholder="(...)" />
+            <marker date="1421455520935" expanded="true" signature="4152:4196" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/src/unit/UnitTestConstants.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13157895" vertical-offset="0" max-vertical-offset="684">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server/game/GameState.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1800">
-          <caret line="70" column="32" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
-          <folding>
-            <element signature="e#21#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server/game/Duel.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0730253" vertical-offset="990" max-vertical-offset="7065">
-          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
           <folding />
         </state>
       </provider>
