@@ -70,7 +70,7 @@ class GameState (val players: Array[Player], val game: Game) {
     synchronized{
       if(!defendersSetThisTurn){
         defendersSetThisTurn = true
-        defenses.foreach(defense => battleSummons.get(defense._1).get += defense._2) //.addBinding(defense._1, defense._2))
+        defenses.foreach(defense => battleSummons.addBinding(defense._1, defense._2))
       }
     }
   }

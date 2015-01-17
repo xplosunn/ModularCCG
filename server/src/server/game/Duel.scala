@@ -122,29 +122,25 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     } catch {
       case e: PlayerWonException => reportWin(e)
       case e: GameTiedException => //TODO report tie
-      case e => e.printStackTrace() //TODO report error
+      case e: Throwable => e.printStackTrace() //TODO report error
     }
   }
 
   def addCardToBePlayed(cardID: Int){
-    for(card<-gameState.activePlayer.hand.cards)
-      if(card.id == cardID && card.card.cost <= gameState.activePlayer.availableMana){
-        gameState.activePlayer.availableMana -= card.card.cost
-        CurrentTurn.synchronized{
-          CurrentTurn.cardsToPlay += card
-        }
-        synchronized{interrupt()}
-        return
+    gameState.activePlayer.hand.cards
+      .filter(card => card.id == cardID && card.card.cost <= gameState.activePlayer.availableMana)
+      .foreach(card => {
+      gameState.activePlayer.availableMana -= card.card.cost
+      CurrentTurn.synchronized{
+        CurrentTurn.cardsToPlay += card
       }
+      synchronized{interrupt()}
+    })
   }
 
   def setAttackers(ids: Array[Int]){
     if (CurrentTurn.currentStep == GameSteps.COMBAT_Attack && ids != null) {
-      val attackers = new ArrayBuffer[GameSummon]()
-      gameState.activePlayer.battlefield.summons.foreach(
-        s => if (ids.contains(s.id) && !CurrentTurn.summonsPlayed.contains(s)) {
-          attackers += s
-        })
+      val attackers = gameState.activePlayer.battlefield.summons.filter(s => ids.contains(s.id) && !CurrentTurn.summonsPlayed.contains(s))
       synchronized {
         gameState.setAttackers(attackers)
         interrupt()
