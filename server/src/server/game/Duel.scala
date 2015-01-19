@@ -175,7 +175,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   private def processPlayCard(gameCard: GameCard){
     val activePlayer = gameState.activePlayer
     activePlayer.hand.cards -= gameCard
-    var changes = new Array[GameChange](0)
+    val changes = new ArrayBuffer[GameChange]()
     gameCard match {
       case gameCard: GameSummon =>
         CurrentTurn.summonsPlayed += gameCard
@@ -197,7 +197,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
           })
         activePlayer.pile.cards += gameCard
     }
-    val messageToAP = GameInfo.cardPlayed(id, new RemoteCard(gameCard.id, gameCard.owner.handler.getUserName, gameCard.card), changes)
+    val messageToAP = GameInfo.cardPlayed(id, new RemoteCard(gameCard.id, gameCard.owner.handler.getUserName, gameCard.card), changes.toArray)
     gameState.activePlayer.handler.sendMessageToClient(messageToAP)
 
     val changesToNAP = new Array[GameChange](changes.size)

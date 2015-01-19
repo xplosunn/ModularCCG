@@ -34,14 +34,9 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
 
   class Zone {
     val cards = new ArrayBuffer[GameCard]()
-    def summons: ArrayBuffer[GameSummon] = {
-      var summons = new ArrayBuffer[GameSummon]
-      cards.foreach((c: GameCard) => { c match {
-        case c: GameSummon => summons += c
-        case _ =>
-      }})
-      summons
-    }
+    def summons: ArrayBuffer[GameSummon] =
+      cards.collect({case s: GameSummon => s})
+
     def drawRandom = if(cards.size > 0) cards.remove(new Random().nextInt(cards.size)) else null
     def drawTop = if(cards.size > 0) cards.remove(cards.size-1) else null
   }
