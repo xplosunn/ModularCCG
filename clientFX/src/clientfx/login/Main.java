@@ -1,5 +1,6 @@
 package clientfx.login;
 
+import clientfx.lobby.Lobby;
 import clientfx.network.ServerHandler;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -10,26 +11,32 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 
-/**
- * Created by xs on 19-01-2015.
- */
+
 public class Main extends Application {
     @FXML private TextField userText;
     @FXML private Text actionText;
 
+    private static Stage primaryStage;
+
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        Scene scene = new Scene(root, 300, 200);
-
+        primaryStage = stage;
         stage.setTitle("Warsmith");
-        stage.setScene(scene);
-        stage.show();
+        loginWindow();
     }
 
     public static void main(String[] args) {
         launch();
+    }
+
+    private void loginWindow() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Scene scene = new Scene(root, 300, 200);
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public void handleSubmitButtonAction(){
@@ -38,12 +45,15 @@ public class Main extends Application {
             actionText.setText("Connecting...");
             ServerHandler handler = new ServerHandler(userName);
             boolean connect = handler.connect();
-            if(connect)
-                actionText.setText("Logged in!");
+            if(connect){
+                primaryStage.close();
+                new Lobby(handler);
+            }
             else
                 actionText.setText(handler.getErrorMessage());
         }
         else
             actionText.setText("Invalid user");
     }
+
 }
