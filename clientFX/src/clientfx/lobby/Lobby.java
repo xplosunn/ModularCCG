@@ -1,7 +1,10 @@
 package clientfx.lobby;
 
 import clientfx.lobby.tab.Chat;
+import clientfx.login.Main;
 import clientfx.network.ServerHandler;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -18,7 +22,8 @@ import java.io.IOException;
 public class Lobby {
 
     private final ServerHandler serverHandler;
-    private final Chat chat;
+    public final Chat chat;
+    private final Stage stage;
 
     public Lobby(ServerHandler serverHandler){
         this.serverHandler = serverHandler;
@@ -33,9 +38,25 @@ public class Lobby {
         chatTab.setClosable(false);
         tabPane.getTabs().add(chatTab);
 
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.setTitle("Warsmith");
         stage.setScene(scene);
+        stage.setOnCloseRequest(e -> {Platform.exit(); serverHandler.endConnection();});
+
+    }
+
+    public void show(){
         stage.show();
+    }
+
+    public void disconnect(){
+        Platform.runLater(() -> {
+            stage.close();
+            try {
+                new Main().start(new Stage());
+            } catch (Exception e) {
+                //TODO could not load login screen
+            }
+        });
     }
 }

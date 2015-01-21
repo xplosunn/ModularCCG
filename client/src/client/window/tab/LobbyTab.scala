@@ -88,7 +88,7 @@ object LobbyTab extends BorderPanel{
     }
   }
 
-  def addChat(name: String, users: ArrayBuffer[String]){
+  def addChat(name: String, users: Array[String]){
     val newTab = new ChatTab
     newTab.name = name
     users.foreach((user: String)=>{newTab.addChatUser(user)})

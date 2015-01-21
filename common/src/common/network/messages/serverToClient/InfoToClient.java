@@ -2,7 +2,10 @@ package common.network.messages.serverToClient;
 
 
 public class InfoToClient extends MessageToClient {
-    public enum TYPE {CHAT_USER_JOINED}
+    public static enum TYPE {
+        CHAT_USER_LEFT,
+        CHAT_USER_JOINED
+    }
     private TYPE type;
     private String origin;
     private String data;

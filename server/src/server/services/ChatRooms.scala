@@ -24,6 +24,7 @@ object ChatRooms {
     def removeUser(user: String){
       this.synchronized{
         users -= user
+        users.foreach((u: String)=>{Users.loggedClients.get(u).sendMessageToClient(new InfoToClient(InfoToClient.TYPE.CHAT_USER_LEFT, chatName, user))})
       }
     }
 
@@ -66,7 +67,7 @@ object ChatRooms {
   def joinChat(msg: RequestToServer, sender: String) {
     val chat = ChatRooms.rooms.get(msg.getRequestTarget)
     if(chat != null){
-      Users.loggedClients.get(sender).sendMessageToClient(new ResponseToClient(ResponseToClient.TYPE.OK, msg.getRequestID, chat.getUsers))
+      Users.loggedClients.get(sender).sendMessageToClient(new ResponseToClient(ResponseToClient.TYPE.OK, msg.getRequestID, chat.getUsers.toArray))
       chat.addUser(sender)
     }
     else{

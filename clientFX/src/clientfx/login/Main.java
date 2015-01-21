@@ -3,6 +3,7 @@ package clientfx.login;
 import clientfx.lobby.Lobby;
 import clientfx.network.ServerHandler;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,10 +45,11 @@ public class Main extends Application {
         if(userName.trim().length() > 0){
             actionText.setText("Connecting...");
             ServerHandler handler = new ServerHandler(userName);
+            Lobby lobby = new Lobby(handler);
             boolean connect = handler.connect();
             if(connect){
                 primaryStage.close();
-                new Lobby(handler);
+                lobby.show();
             }
             else
                 actionText.setText(handler.getErrorMessage());

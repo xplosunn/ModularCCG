@@ -1,15 +1,14 @@
 package common.network.messages.serverToClient;
 
-import scala.collection.mutable.ArrayBuffer;
 
 public class ResponseToClient extends MessageToClient {
     public enum TYPE{OK, DENIED}
 
     private int ID;
     private TYPE type;
-    private ArrayBuffer<String> data;
+    private String[] data;
 
-    public ResponseToClient(TYPE type, int ID, ArrayBuffer<String> data){
+    public ResponseToClient(TYPE type, int ID, String[] data){
         this.type = type;
         this.ID = ID;
         this.data = data;
@@ -23,7 +22,7 @@ public class ResponseToClient extends MessageToClient {
         return type;
     }
 
-    public ArrayBuffer<String> getData() {
+    public String[] getData() {
         return data;
     }
 }

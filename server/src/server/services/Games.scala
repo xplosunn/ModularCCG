@@ -52,7 +52,7 @@ object Games {
           handler.sendMessageToClient(new ResponseToClient(ResponseToClient.TYPE.OK, msg.getRequestID, null))
         }
         else if (queuedForDuel._1 == handler) {
-          handler.sendMessageToClient(new ResponseToClient(ResponseToClient.TYPE.DENIED, msg.getRequestID, ArrayBuffer("Already queued.")))
+          handler.sendMessageToClient(new ResponseToClient(ResponseToClient.TYPE.DENIED, msg.getRequestID, Array("Already queued.")))
         }
         else if(!queuedForDuel._1.isAlive){
           queuedForDuel = (handler, deck)
@@ -66,7 +66,7 @@ object Games {
         }
       }
     else
-      handler.sendMessageToClient(new ResponseToClient(ResponseToClient.TYPE.DENIED, msg.getRequestID, ArrayBuffer("Invalid deck.")))
+      handler.sendMessageToClient(new ResponseToClient(ResponseToClient.TYPE.DENIED, msg.getRequestID, Array("Invalid deck.")))
   }
 
   def playCard(gameID: Int, card: RemoteCard){

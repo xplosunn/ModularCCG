@@ -39,7 +39,7 @@ class MessagesToServerTest {
         assertTrue(msg.getMessage == "hi there")
         assertTrue(msg.getTargetType == ChatToServer.TARGET.ROOM)
         assertTrue(msg.getTarget == "main")
-      case _ => fail()
+      case msg => fail("" + msg.getClass.getName)
     }
   }
 
@@ -54,7 +54,7 @@ class MessagesToServerTest {
         assertTrue(msg.getAttackerIDs == null)
         assertTrue(msg.getCardID == -1)
         assertTrue(msg.getDefenses == null)
-      case _ => fail()
+      case msg => fail("" + msg.getClass.getName)
     }
 
     MessagesToServerTest.fakeClient.Duel.nextTurn(gameID)
