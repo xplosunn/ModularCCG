@@ -1,6 +1,7 @@
 package clientfx.lobby;
 
 import clientfx.lobby.tab.Chat;
+import clientfx.lobby.tab.Forge;
 import clientfx.login.Main;
 import clientfx.network.ServerHandler;
 import javafx.application.Platform;
@@ -23,11 +24,13 @@ public class Lobby {
 
     private final ServerHandler serverHandler;
     public final Chat chat;
+    private final Forge forge;
     private final Stage stage;
 
     public Lobby(ServerHandler serverHandler){
         this.serverHandler = serverHandler;
         this.chat = new Chat(serverHandler);
+        this.forge = new Forge();
         serverHandler.setLobby(this);
 
         TabPane tabPane = new TabPane();
@@ -37,6 +40,11 @@ public class Lobby {
         chatTab.setContent(chat.getRoot());
         chatTab.setClosable(false);
         tabPane.getTabs().add(chatTab);
+
+        Tab forgeTab = new Tab("Forge");
+        forgeTab.setContent(forge.getRoot());
+        forgeTab.setClosable(false);
+        tabPane.getTabs().add(forgeTab);
 
         stage = new Stage();
         stage.setTitle("Warsmith");

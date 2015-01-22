@@ -62,6 +62,8 @@ class ServerHandler(val username: String) extends Thread {
         msg.getType match{
         case InfoToClient.TYPE.CHAT_USER_JOINED =>
           LobbyTab.addChatUser(msg.getOrigin, msg.getData)
+        case InfoToClient.TYPE.CHAT_USER_LEFT =>
+            //TODO: not implemented
         }
 
       case msg: ChatToClient =>

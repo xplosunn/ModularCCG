@@ -5,11 +5,14 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
+import javafx.util.Callback;
 
 
 /**
@@ -46,6 +49,16 @@ public class Chat {
 
         ListView<String> msgListView = new ListView<>();
         messageList = FXCollections.observableArrayList();
+        msgListView.setCellFactory(list -> new ListCell<String>() {
+            {
+                Text text = new Text();
+                text.wrappingWidthProperty().bind(list.widthProperty().subtract(15));
+                text.textProperty().bind(itemProperty());
+
+                setPrefWidth(0);
+                setGraphic(text);
+            }
+        });
         msgListView.setItems(messageList);
 
         root.setCenter(msgListView);

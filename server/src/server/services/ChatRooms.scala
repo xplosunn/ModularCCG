@@ -16,7 +16,11 @@ object ChatRooms {
 
     def addUser(user: String){
       this.synchronized{
-        users.foreach((u: String)=>{Users.loggedClients.get(u).sendMessageToClient(new InfoToClient(InfoToClient.TYPE.CHAT_USER_JOINED, chatName, user))})
+        users.foreach((u: String)=>{
+          val handler = Users.loggedClients.get(u)
+          if(handler != null)
+            handler.sendMessageToClient(new InfoToClient(InfoToClient.TYPE.CHAT_USER_JOINED, chatName, user))
+        })
         users += user
       }
     }
@@ -24,7 +28,11 @@ object ChatRooms {
     def removeUser(user: String){
       this.synchronized{
         users -= user
-        users.foreach((u: String)=>{Users.loggedClients.get(u).sendMessageToClient(new InfoToClient(InfoToClient.TYPE.CHAT_USER_LEFT, chatName, user))})
+        users.foreach((u: String)=>{
+          val handler = Users.loggedClients.get(u)
+          if(handler != null)
+            handler.sendMessageToClient(new InfoToClient(InfoToClient.TYPE.CHAT_USER_LEFT, chatName, user))
+        })
       }
     }
 
@@ -35,7 +43,11 @@ object ChatRooms {
         if(!users.contains(sender))
           return
         val msgToSend = new ChatToClient(sender, chatName, msg.getMessage)
-        users.foreach((user: String)=>Users.loggedClients.get(user).sendMessageToClient(msgToSend))
+        users.foreach((user: String)=>{
+          val handler = Users.loggedClients.get(user)
+          if(handler != null)
+            handler.sendMessageToClient(msgToSend)
+        })
       }
     }
 
