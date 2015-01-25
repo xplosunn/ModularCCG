@@ -24,7 +24,7 @@ public class ServerHandler implements Runnable{
     private Socket socket;
     private ObjectOutputStream objOut;
     private ObjectInputStream objIn;
-    private String errorMessage;
+    private String lastErrorMessage;
     private boolean connected = false;
     private Lobby lobby;
 
@@ -47,19 +47,19 @@ public class ServerHandler implements Runnable{
                     new Thread(this).start();
                     return true;
                 case ALREADY_LOGGED:
-                    errorMessage = "User already logged";
+                    lastErrorMessage = "User already logged";
                     return false;
             }
         } catch (IOException e) {
-            errorMessage = "Could not reach server";
+            lastErrorMessage = "Could not reach server";
         } catch (ClassNotFoundException e) {
-            errorMessage = "Invalid response from server";
+            lastErrorMessage = "Invalid response from server";
         }
         return false;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getLastErrorMessage() {
+        return lastErrorMessage;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class ServerHandler implements Runnable{
 
     private void requestJoinChat(String room){
         int reqId = 0;
-        for(int i :responsesWaiting.keySet())
+        for(int i: responsesWaiting.keySet())
             if (i > reqId)
                 reqId = i+1;
         RequestToServer req = new RequestToServer(reqId, JOIN_CHAT, room);

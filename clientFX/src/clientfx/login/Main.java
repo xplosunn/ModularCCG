@@ -3,19 +3,23 @@ package clientfx.login;
 import clientfx.lobby.Lobby;
 import clientfx.network.ServerHandler;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class Main extends Application {
+public class Main extends Application implements Initializable {
     @FXML private TextField userText;
     @FXML private Text actionText;
 
@@ -38,6 +42,7 @@ public class Main extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
     public void handleSubmitButtonAction(){
@@ -52,10 +57,18 @@ public class Main extends Application {
                 lobby.show();
             }
             else
-                actionText.setText(handler.getErrorMessage());
+                actionText.setText(handler.getLastErrorMessage());
         }
         else
             actionText.setText("Invalid user");
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        assert userText != null;
+        userText.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode().equals(KeyCode.ENTER))
+                handleSubmitButtonAction();
+        });
+    }
 }

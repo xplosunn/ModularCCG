@@ -22,6 +22,11 @@ public class Forge {
         Text deckText = new Text("Deck 0/30");
         deckPane.getChildren().add(deckText);
 
+        VBox cardPane = new VBox();
+        leftPane.add(cardPane, 1, 0);
+        Text cardText = new Text("Card Preview");
+        cardPane.getChildren().add(cardText);
+
 
     }
 
