@@ -21,7 +21,6 @@ import static common.network.messages.clientToServer.RequestToServer.REQUEST.*;
  */
 public class ServerHandler implements Runnable{
     private final String username;
-    private Socket socket;
     private ObjectOutputStream objOut;
     private ObjectInputStream objIn;
     private String lastErrorMessage;
@@ -36,7 +35,7 @@ public class ServerHandler implements Runnable{
 
     public boolean connect(){
         try {
-            socket = new Socket(NetworkValues.SERVER_IP, NetworkValues.SERVER_PORT);
+            Socket socket = new Socket(NetworkValues.SERVER_IP, NetworkValues.SERVER_PORT);
             objOut = new ObjectOutputStream(socket.getOutputStream());
             objIn = new ObjectInputStream(socket.getInputStream());
             objOut.writeObject(new LoginRequest(username));
