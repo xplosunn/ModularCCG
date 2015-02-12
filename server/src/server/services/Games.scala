@@ -1,7 +1,7 @@
 package server.services
 
 import java.util.concurrent.ConcurrentHashMap
-import java.util.function.BiConsumer
+import java.util.function.{Consumer, BiConsumer}
 
 import common.card.Deck
 import common.game.RemoteCard
@@ -13,9 +13,20 @@ import server.game.{Duel, Player}
 import scala.collection.mutable.ArrayBuffer
 
 object Games {
-
   private val duels = new ConcurrentHashMap[Int,Duel]()
   private var queuedForDuel: (ClientHandler,Deck) = null
+
+  def duelCount: Int = duels.size()
+
+  def duelInfo: String = {
+    var res = ""
+    duels.values().forEach(new Consumer[Duel] {
+      override def accept(d: Duel){
+        res += d.p1.handler.getUserName + " vs " + d.p2.handler.getUserName + System.lineSeparator
+      }
+    })
+    res
+  }
 
   def newDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, playerOneDeck: Deck, playerTwoDeck: Deck){
     val game = new Duel(playerOneHandler, playerTwoHandler, playerOneDeck, playerTwoDeck)

@@ -3,7 +3,7 @@ package server
 import java.text.NumberFormat
 import java.util.Scanner
 
-import server.services.Users
+import server.services.{Games, Users}
 
 /**
  * Created by HugoSousa on 31-08-2014.
@@ -23,33 +23,44 @@ object ServerRun {
   }
 
   def command(cmd: Array[String]){
-    if(cmd.size > 0)
+    if(cmd.size > 0){
+      val args: Array[String] = cmd.indices.collect({case i if i > 0 => cmd(i)}).toArray
       cmd(0) match {
         case "?" => help
         case "help" => help
         case "resources" => getResources
-        case "users" => users(cmd)
+        case "duels" => duels(args)
+        case "users" => users(args)
         case "exit" => System.exit(0)
         case "quit" => System.exit(0)
         case _ => println("unknown command")
       }
+    }
   }
 
   def help {
     println("Commands: " + nl
       + ">users" + nl
+      + ">duels" + nl
       + ">resources" + nl
       + ">exit")
   }
 
-  def users(cmd: Array[String]) {
+  def duels(args: Array[String]){
+    if(args.size > 0 && args(0) == "info")
+      println(Games.duelInfo)
+    else
+      println(Games.duelCount)
+  }
+
+  def users(args: Array[String]) {
     def userHelp {
       println("users options: " + nl
         + ">count" + nl
         + ">print")
     }
-    if (cmd.size > 1)
-      cmd(1) match {
+    if (args.size > 0)
+      args(0) match {
         case "help" => userHelp
         case "?" => userHelp
         case "count" => println("" + Users.onlineCount)

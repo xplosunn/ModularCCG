@@ -7,9 +7,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-/**
- * Created by xs on 21-01-2015.
- */
 public class Forge {
     private final BorderPane root;
 
@@ -36,14 +33,10 @@ public class Forge {
         TableColumn qtMinus = new TableColumn();
         qt.getColumns().addAll(actualQt, qtPlus, qtMinus);
 
-
-
         VBox cardPane = new VBox();
         leftPane.add(cardPane, 1, 0);
         Text cardText = new Text("Card Preview");
         cardPane.getChildren().add(cardText);
-
-
     }
 
     public BorderPane getRoot() {
