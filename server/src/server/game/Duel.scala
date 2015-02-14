@@ -19,7 +19,7 @@ object Duel {
   private var gameID = -1
   val SECONDS_TO_MULLIGAN = 30
   //TODO: maybe change the time per turn to time per mainphase (?)
-  val SECONDS_PER_TURN = 90
+  val SECONDS_PER_TURN = 60
   val SECONDS_TO_CHOOSE_DEFENDERS = 30
   val EXTRA_SECONDS = 30
 
@@ -39,6 +39,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   private val mulligans = new Array[Array[Int]](2)
 
   private var _nextCardID = -1
+  private var playerDisconnection = false
 
   def nextCardID: Int = {
     synchronized{
@@ -47,8 +48,11 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     }
   }
 
+  def playerDisconnected(){
+    playerDisconnection = true
+  }
+
   protected object CurrentTurn {
-    var secondsLeft = Duel.SECONDS_PER_TURN
     var currentStep: GameSteps = GameSteps.HAND_SELECTION
 
     var defenderSecondsLeft = Duel.SECONDS_TO_CHOOSE_DEFENDERS
@@ -57,14 +61,22 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     var ongoingPhase = false
     var ended = false
 
+    var stopWatch: Stopwatch = null
+
+    def secondsLeft =
+      Duel.SECONDS_PER_TURN - stopWatch.elapsed(TimeUnit.SECONDS).asInstanceOf[Int] match {
+        case i if i > 0 => i
+        case _ => 0
+      }
+
     def reset(){
       currentStep = GameSteps.MAIN_1st
       cardsToPlay = new ArrayBuffer[GameCard]()
       summonsPlayed = new ArrayBuffer[GameSummon]()
-      secondsLeft = Duel.SECONDS_PER_TURN
       defenderSecondsLeft = Duel.SECONDS_TO_CHOOSE_DEFENDERS
       ongoingPhase = false
       ended = false
+      stopWatch = Stopwatch.createStarted()
     }
   }
 
@@ -108,6 +120,8 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     setupGame()
     try {
       while (true) {
+        if(playerDisconnection)
+          throw new GameTiedException
         prepareTurn()
         if (!CurrentTurn.ended)
           mainPhase(first = true)
@@ -121,7 +135,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       }
     } catch {
       case e: PlayerWonException => reportWin(e)
-      case e: GameTiedException => //TODO report tie
+      case e: GameTiedException => reportTie()
       case e: Throwable => e.printStackTrace() //TODO report error
     }
   }
@@ -317,16 +331,16 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     p2.handler.sendMessageToClient(phaseMessage)
     CurrentTurn.ongoingPhase = true
     CurrentTurn.cardsToPlay.remove(0,CurrentTurn.cardsToPlay.size)
-    val stopWatch = Stopwatch.createStarted()
     synchronized{
       while (CurrentTurn.ongoingPhase) {
+        val secondsLeft = CurrentTurn.secondsLeft
         if (CurrentTurn.cardsToPlay.size > 0)
           processPlayCard(CurrentTurn.synchronized {
             CurrentTurn.cardsToPlay.remove(0)
           })
-        else if (CurrentTurn.secondsLeft > 0)
+        else if(secondsLeft > 0)
           try {
-            wait(CurrentTurn.secondsLeft * 1000)
+            wait(secondsLeft * 1000)
             CurrentTurn.ongoingPhase = false
             //TODO implement extra time and maybe implement timer alert for player (?)
           } catch {
@@ -336,11 +350,6 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
           CurrentTurn.ongoingPhase = false
       }
     }
-    val secondsPassed = stopWatch.elapsed(TimeUnit.SECONDS)
-    if(secondsPassed > CurrentTurn.secondsLeft)
-      CurrentTurn.secondsLeft = 0
-    else
-      CurrentTurn.secondsLeft -= secondsPassed.asInstanceOf[Int]
   }
 
   private def attack() {
@@ -350,7 +359,6 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       p1.handler.sendMessageToClient(phaseMessage)
       p2.handler.sendMessageToClient(phaseMessage)
       CurrentTurn.ongoingPhase = true
-      val stopWatch = Stopwatch.createStarted()
       synchronized {
         while (CurrentTurn.ongoingPhase) {
           if (gameState.attackersSet) {
@@ -358,7 +366,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
             gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.attackers(id, attackerIDs)))
             CurrentTurn.ongoingPhase = false
           }
-          else if (CurrentTurn.secondsLeft > 0)
+          else
             try {
               wait(CurrentTurn.secondsLeft * 1000)
               CurrentTurn.ongoingPhase = false
@@ -366,14 +374,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
             } catch {
               case e: InterruptedException =>
             }
-          else
-            CurrentTurn.ongoingPhase = false
         }
-        val secondsPassed = stopWatch.elapsed(TimeUnit.SECONDS).asInstanceOf[Int]
-        if (secondsPassed > CurrentTurn.secondsLeft)
-          CurrentTurn.secondsLeft = 0
-        else
-          CurrentTurn.secondsLeft -= secondsPassed
       }
     }
   }
@@ -469,6 +470,12 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
 
   private def reportWin(e: PlayerWonException){
     val message = GameInfo.playerWon(id,e.player)
+    p1.handler.sendMessageToClient(message)
+    p2.handler.sendMessageToClient(message)
+  }
+
+  private def reportTie(){
+    val message = GameInfo.gameTied(id)
     p1.handler.sendMessageToClient(message)
     p2.handler.sendMessageToClient(message)
   }

@@ -89,21 +89,17 @@ object Games {
   }
 
   def disconnect(handler: ClientHandler){
-    val duelsToRemove = new ArrayBuffer[Int]()
-/*
-    for(key<- duels.keys()){
-      val duel = duels.get(key)
-      if(duel.p1.handler == handler){
-        duel.playerDisconnected(duel.p1)
-        duelsToRemove += key
+    val keysToRemove = new ArrayBuffer[Int]()
+    duels.keySet().forEach(new Consumer[Int] {
+      override def accept(key: Int) {
+        val duel = duels.get(key)
+        if(duel.p1.handler == handler || duel.p2.handler == handler){
+          duel.playerDisconnected()
+          keysToRemove += key
+        }
       }
-      else if(duel.p2.handler == handler){
-        duel.playerDisconnected(duel.p2)
-        duelsToRemove += key
-      }
-    }
-    for(key<-duelsToRemove)
+    })
+    for(key<-keysToRemove)
       duels.remove(key)
-      */
   }
 }

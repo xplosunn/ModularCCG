@@ -12,36 +12,27 @@ import server.services.Games
 import unit.UnitTestConstants
 
 import scala.collection.mutable.ArrayBuffer
+import java.util.Random
 
 object DuelTest{
   def duels = {
-    val duelsField = Games.getClass.getDeclaredField("duels")
-    if(duelsField == null) fail()
-    duelsField.setAccessible(true)
-    val duels = duelsField.get(Games) match {
+    val duelsAttempt = Games.getClass.getDeclaredMethod("server$services$Games$$duels").invoke(Games)
+    duelsAttempt match {
       case d: ConcurrentHashMap[Int, Duel] => d
       case _ => fail(); null
     }
-    duels
   }
 }
 
 class DuelTest {
   val processMillis = UnitTestConstants.processMillis
 
-  var c1: FakeClientHandler = null
-  var c2: FakeClientHandler = null
-  var deck: Deck = null
-
-  var inc = 0
+  val c1: FakeClientHandler = new FakeClientHandler("testPlayer1")
+  val c2: FakeClientHandler = new FakeClientHandler("testPlayer2")
+  val deck: Deck = new Deck
 
   @Before
   def before(){
-    c1 = new FakeClientHandler("testPlayer" + inc)
-    inc += 1
-    c2 = new FakeClientHandler("testPlayer" + inc)
-    inc += 1
-    deck = new Deck
     deck.add(new Summon, 30)
     assertTrue(DuelTest.duels.isEmpty)
   }
@@ -58,6 +49,50 @@ class DuelTest {
     Games.newDuel(c1,c2, deck, deck)
     assertFalse(DuelTest.duels.isEmpty)
     DuelTest.duels.clear()
+  }
+
+  @Test
+  def disconnect(){
+    //disconnect from a duel, wait 'til end of turn + process time, check if duel ended (thread should no longer be alive)
+    val testDuel = new FakeDuel(c1, c2, deck, deck)
+    testDuel.start()
+    val waitTime = Duel.SECONDS_PER_TURN / 4 + new Random().nextInt(Duel.SECONDS_PER_TURN/4)
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.getGameState.players.foreach(p => testDuel.mulligan(p.handler.getUserName, Array(p.hand.cards(0).id, p.hand.cards(1).id, p.hand.cards(2).id)))
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.getGameState.players.foreach(p => assertTrue(p.hand.cards.size <= 4))
+    assertTrue(testDuel.isAlive)
+    Thread.sleep(waitTime * 1000)
+    val ap = testDuel.getGameState.activePlayer
+    testDuel.playerDisconnected()
+    Thread.sleep(UnitTestConstants.processMillis)
+    assertTrue(""+testDuel.currentTurn.secondsLeft,testDuel.currentTurn.secondsLeft < Duel.SECONDS_PER_TURN *3/4)
+    Thread.sleep((Duel.SECONDS_PER_TURN - waitTime)*1000)
+    Thread.sleep(UnitTestConstants.processMillis *4)
+    assertTrue(!testDuel.isAlive)
+  }
+
+  @Test
+  def turnReaminingTime(){
+    // wait some random time during the turn, do an action, then wait the time remaining for that turn, then check if it ended
+    assertTrue(DuelTest.duels.isEmpty)
+    val testDuel = new FakeDuel(c1, c2, deck, deck)
+    testDuel.start()
+    val waitTime = Duel.SECONDS_PER_TURN / 4 + new Random().nextInt(Duel.SECONDS_PER_TURN/4)
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.getGameState.players.foreach(p => testDuel.mulligan(p.handler.getUserName, Array(p.hand.cards(0).id, p.hand.cards(1).id, p.hand.cards(2).id)))
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.getGameState.players.foreach(p => assertTrue(p.hand.cards.size <= 4))
+    assertTrue(testDuel.isAlive)
+    Thread.sleep(waitTime * 1000)
+    val ap = testDuel.getGameState.activePlayer
+    testDuel.addCardToBePlayed(ap.hand.cards(0).id)
+    Thread.sleep(UnitTestConstants.processMillis)
+    assertTrue(!ap.battlefield.cards.isEmpty)
+    assertTrue(""+testDuel.currentTurn.secondsLeft,testDuel.currentTurn.secondsLeft < Duel.SECONDS_PER_TURN *3/4)
+    Thread.sleep((Duel.SECONDS_PER_TURN - waitTime)*1000)
+    Thread.sleep(UnitTestConstants.processMillis)
+    assertTrue(testDuel.currentTurn.secondsLeft+" "+testDuel.currentTurn.currentStep, testDuel.getGameState.activePlayer != ap)
   }
 
   @Test
@@ -266,10 +301,11 @@ class DuelTest {
 
     val ap = testDuel.getGameState.activePlayer
     Thread.sleep(Duel.SECONDS_PER_TURN * 1000)
-    assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
+    assertTrue(""+testDuel.currentTurn.currentStep,testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertNotEquals(ap, testDuel.getGameState.activePlayer)
     Thread.sleep(Duel.SECONDS_PER_TURN * 1000)
-    assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
+    Thread.sleep(UnitTestConstants.processMillis * 4)
+    assertTrue(""+testDuel.currentTurn.currentStep, testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertEquals(ap, testDuel.getGameState.activePlayer)
   }
 

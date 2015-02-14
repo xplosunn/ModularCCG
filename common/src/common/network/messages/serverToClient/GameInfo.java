@@ -18,7 +18,8 @@ public class GameInfo extends MessageToClient{
         DEFENDERS,
         ON_COMBAT_ABILITY,
         ON_DEATH_ABILITY,
-        PLAYER_WON
+        PLAYER_WON,
+        TIE
     }
     public final int gameID;
     public final TYPES type;
@@ -127,6 +128,16 @@ public class GameInfo extends MessageToClient{
             case PLAYER_WON: return (String) data;
             default: return null;
         }
+    }
+
+    //Tie
+
+    /**
+     * Player won message.
+     * @param gameID
+     */
+    public static GameInfo gameTied(int gameID){
+        return new GameInfo(gameID, TYPES.TIE, null);
     }
 
     // Game change
