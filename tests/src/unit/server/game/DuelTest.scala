@@ -7,7 +7,7 @@ import common.game.GameSteps
 import common.network.messages.clientToServer.GameAction
 import org.junit.{After, Before, Test}
 import org.junit.Assert._
-import server.game.{Duel, Player}
+import server.game.Duel
 import server.services.Games
 import unit.UnitTestConstants
 
@@ -25,8 +25,6 @@ object DuelTest{
 }
 
 class DuelTest {
-  val processMillis = UnitTestConstants.processMillis
-
   val c1: FakeClientHandler = new FakeClientHandler("testPlayer1")
   val c2: FakeClientHandler = new FakeClientHandler("testPlayer2")
   val deck: Deck = new Deck
@@ -34,6 +32,7 @@ class DuelTest {
   @Before
   def before(){
     deck.add(new Summon, 30)
+    assertTrue(deck.validate)
     assertTrue(DuelTest.duels.isEmpty)
   }
 
@@ -46,9 +45,40 @@ class DuelTest {
 
   @Test
   def newDuel() {
-    Games.newDuel(c1,c2, deck, deck)
+    Games.newDuel(c1, c2, deck, deck)
     assertFalse(DuelTest.duels.isEmpty)
     DuelTest.duels.clear()
+  }
+
+  @Test
+  def defendersTime(){
+    val testDuel = new FakeDuel(c1, c2, deck, deck)
+    testDuel.start()
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.getGameState.players.foreach(p => testDuel.mulligan(p.handler.getUserName, Array(p.hand.cards(0).id, p.hand.cards(1).id, p.hand.cards(2).id)))
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.getGameState.players.foreach(p => assertTrue(p.hand.cards.size <= 4))
+    assertTrue(testDuel.isAlive)
+
+    val ap = testDuel.getGameState.activePlayer
+    testDuel.addCardToBePlayed(ap.hand.cards(0).id)
+    Thread.sleep(UnitTestConstants.processMillis)
+    assertEquals(1, ap.battlefield.cards.size)
+    testDuel.endTurn()
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.addCardToBePlayed(testDuel.getGameState.activePlayer.hand.cards(0).id)
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.endTurn()
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.nextStep()
+    Thread.sleep(UnitTestConstants.processMillis)
+    testDuel.setAttackers(Array(ap.battlefield.cards(0).id))
+    Thread.sleep(UnitTestConstants.processMillis)
+    assertEquals(GameSteps.COMBAT_Defend, testDuel.currentTurn.currentStep)
+    Thread.sleep(Duel.SECONDS_TO_CHOOSE_DEFENDERS * 1000)
+    Thread.sleep(UnitTestConstants.processMillis)
+    assertEquals(GameSteps.MAIN_2nd, testDuel.currentTurn.currentStep)
+    assertEquals(29, testDuel.getGameState.nonActivePlayer.lifeTotal)
   }
 
   @Test
@@ -63,10 +93,9 @@ class DuelTest {
     testDuel.getGameState.players.foreach(p => assertTrue(p.hand.cards.size <= 4))
     assertTrue(testDuel.isAlive)
     Thread.sleep(waitTime * 1000)
-    val ap = testDuel.getGameState.activePlayer
     testDuel.playerDisconnected()
     Thread.sleep(UnitTestConstants.processMillis)
-    assertTrue(""+testDuel.currentTurn.secondsLeft,testDuel.currentTurn.secondsLeft < Duel.SECONDS_PER_TURN *3/4)
+    assertTrue(testDuel.currentTurn.secondsLeft < Duel.SECONDS_PER_TURN * 3/4 + 1)
     Thread.sleep((Duel.SECONDS_PER_TURN - waitTime)*1000)
     Thread.sleep(UnitTestConstants.processMillis *4)
     assertTrue(!testDuel.isAlive)
@@ -116,72 +145,72 @@ class DuelTest {
     testDuel.start()
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.HAND_SELECTION))
     //Mulligans
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     testDuel.getGameState.players.foreach(p => testDuel.mulligan(p.handler.getUserName, Array(p.hand.cards(0).id, p.hand.cards(1).id, p.hand.cards(2).id)))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     //turn 1
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 4)
 
     testDuel.addCardToBePlayed(testDuel.getGameState.activePlayer.hand.cards(0).id)
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.getGameState.activePlayer.battlefield.summons.size == 1)
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     testDuel nextStep()
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_2nd))
 
     testDuel.endTurn()
     //turn 2
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 4)
 
     val ap2 = testDuel.getGameState.activePlayer
     testDuel.endTurn()
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     //turn 3
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 4)
     assertFalse(ap2.equals(testDuel.getGameState.activePlayer))
 
     testDuel.nextStep()
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Attack))
 
     val attackerID = testDuel.getGameState.activePlayer.battlefield.summons(0).id
     testDuel.setAttackers(Array(attackerID))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_2nd))
     assertTrue(testDuel.getGameState.nonActivePlayer.lifeTotal == 29)
     testDuel.endTurn()
     //turn 4
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 5)
     testDuel.nextStep()
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
 
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_2nd))
     testDuel.addCardToBePlayed(testDuel.getGameState.activePlayer.hand.cards(0).id)
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.getGameState.activePlayer.battlefield.summons.size == 1)
     testDuel.endTurn()
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     //turn 5
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 5)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     testDuel.nextStep()
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Attack))
 
     testDuel.setAttackers(Array(attackerID))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Defend))
     val defenderID = testDuel.getGameState.nonActivePlayer.battlefield.summons(0).id
     testDuel.setDefenses(Array((attackerID, defenderID)))
 
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     testDuel.getGameState.players.foreach(p =>{
       assertTrue(p.battlefield.cards.size == 0)
       assertTrue(p.pile.cards.size == 1)
@@ -209,75 +238,75 @@ class DuelTest {
     testDuel.start()
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.HAND_SELECTION))
     //Mulligans
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     val hand1 = testDuel.getGameState.activePlayer.hand.cards
     val hand2 = testDuel.getGameState.nonActivePlayer.hand.cards
     p1handler.recieveMessage(GameAction.mulligan(testDuel.id, Array(hand1(0).id, hand1(1).id, hand1(2).id)))
     p2handler.recieveMessage(GameAction.mulligan(testDuel.id, Array(hand2(0).id, hand2(1).id, hand2(2).id)))
 
     //turn 1
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 4)
 
     p2handler.recieveMessage(GameAction.playCard(testDuel.id, testDuel.getGameState.activePlayer.hand.cards(0).id))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.getGameState.activePlayer.battlefield.summons.size == 1)
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     p2handler.recieveMessage(GameAction.endStep(testDuel.id))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_2nd))
 
     p2handler.recieveMessage(GameAction.endTurn(testDuel.id))
     //turn 2
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 4)
 
     val ap2 = testDuel.getGameState.activePlayer
     p1handler.recieveMessage(GameAction.endTurn(testDuel.id))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     //turn 3
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 4)
     assertFalse(ap2.equals(testDuel.getGameState.activePlayer))
 
     p2handler.recieveMessage(GameAction.endStep(testDuel.id))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Attack))
 
     val attackerID = testDuel.getGameState.activePlayer.battlefield.summons(0).id
     p2handler.recieveMessage(GameAction.setAttackers(testDuel.id, Array(attackerID)))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_2nd))
     assertTrue(testDuel.getGameState.nonActivePlayer.lifeTotal == 29)
     p2handler.recieveMessage(GameAction.endTurn(testDuel.id))
     //turn 4
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 5)
     p1handler.recieveMessage(GameAction.endStep(testDuel.id))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
 
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_2nd))
     p1handler.recieveMessage(GameAction.playCard(testDuel.id, testDuel.getGameState.activePlayer.hand.cards(0).id))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.getGameState.activePlayer.battlefield.summons.size == 1)
     p1handler.recieveMessage(GameAction.endTurn(testDuel.id))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     //turn 5
     assertTrue(testDuel.getGameState.activePlayer.hand.cards.size == 5)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     p2handler.recieveMessage(GameAction.endStep(testDuel.id))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Attack))
 
     p2handler.recieveMessage(GameAction.setAttackers(testDuel.id, Array(attackerID)))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Defend))
     val defenderID = testDuel.getGameState.nonActivePlayer.battlefield.summons(0).id
     testDuel.setDefenses(Array((attackerID, defenderID)))
 
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     testDuel.getGameState.players.foreach(p => {
       assertTrue(p.battlefield.cards.size == 0)
       assertTrue(p.pile.cards.size == 1)
@@ -294,7 +323,7 @@ class DuelTest {
     assertTrue(testDuel.getGameState.players.forall(p => p.hand.cards.size + p.deck.cards.size == 30))
     testDuel.start()
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.HAND_SELECTION))
-    Thread.sleep(processMillis)
+    Thread.sleep(UnitTestConstants.processMillis)
     Thread.sleep(Duel.SECONDS_TO_MULLIGAN * 1000)
     assertTrue(testDuel.getGameState.players.forall(p => p.hand.cards.size + p.deck.cards.size == 30))
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
@@ -308,5 +337,4 @@ class DuelTest {
     assertTrue(""+testDuel.currentTurn.currentStep, testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertEquals(ap, testDuel.getGameState.activePlayer)
   }
-
 }

@@ -21,6 +21,7 @@ object Duel {
   //TODO: maybe change the time per turn to time per mainphase (?)
   val SECONDS_PER_TURN = 60
   val SECONDS_TO_CHOOSE_DEFENDERS = 30
+  //TODO: implement extra seconds
   val EXTRA_SECONDS = 30
 
   def nextGameID = {
@@ -118,8 +119,8 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
 
   override def run(){
     setupGame()
-    try {
-      while (true) {
+    try{
+      while(true) {
         if(playerDisconnection)
           throw new GameTiedException
         prepareTurn()
@@ -170,7 +171,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
         (findSummonInBattleField(gameState.activePlayer, attackerID), findSummonInBattleField(gameState.nonActivePlayer, defenderID))})
         .filter(nonNullTuple)
 
-      synchronized {
+      synchronized{
         gameState.setDefenders(defenses)
         interrupt()
       }
@@ -230,16 +231,15 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   }
 
   private def setupGame(){
-    val activePlayerIndex = gameState.activePlayerIndex
     val players = gameState.players
-    val names = players.collect({case p => p.handler.getUserName}).toArray
+    val names = players.map(_.handler.getUserName)
     players.foreach(p => {
       p.handler.sendMessageToClient(GameInfo.gameStarted(id, names))
 
       (0 until 6).foreach(_=> p.drawCard)
 
-      val cards = p.hand.cards.collect({case gc => new RemoteCard(gc.id, gc.owner.handler.getUserName, gc.card)}).toArray
-      p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, cards))
+      val remoteCards = p.hand.cards.map(gc => new RemoteCard(gc.id, gc.owner.handler.getUserName, gc.card)).toArray
+      p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, remoteCards))
 
       val changes: Array[GameChange] = players.filter(op => op != p).take(3).collect({case op => new CardDraw(op.handler.getUserName, null, false)}).toArray
       p.handler.sendMessageToClient(GameInfo.gameChanges(id, changes))
@@ -321,12 +321,13 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   }
 
   private def mainPhase(first: Boolean) {
-    val phaseMessage = if(first)
-      GameInfo.nextStep(id, GameSteps.MAIN_1st)
-    else{
-      CurrentTurn.currentStep = GameSteps.MAIN_2nd
-      GameInfo.nextStep(id, GameSteps.MAIN_2nd)
-    }
+    val phaseMessage =
+      if (first)
+        GameInfo.nextStep(id, GameSteps.MAIN_1st)
+      else {
+        CurrentTurn.currentStep = GameSteps.MAIN_2nd
+        GameInfo.nextStep(id, GameSteps.MAIN_2nd)
+      }
     p1.handler.sendMessageToClient(phaseMessage)
     p2.handler.sendMessageToClient(phaseMessage)
     CurrentTurn.ongoingPhase = true
@@ -361,12 +362,13 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       CurrentTurn.ongoingPhase = true
       synchronized {
         while (CurrentTurn.ongoingPhase) {
+          val secondsLeft = CurrentTurn.secondsLeft
           if (gameState.attackersSet) {
-            val attackerIDs = gameState.attackers.collect({case a => a.id}).toArray
+            val attackerIDs = gameState.attackers.map(_.id).toArray
             gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.attackers(id, attackerIDs)))
             CurrentTurn.ongoingPhase = false
           }
-          else
+          else if(secondsLeft > 0)
             try {
               wait(CurrentTurn.secondsLeft * 1000)
               CurrentTurn.ongoingPhase = false
@@ -374,6 +376,8 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
             } catch {
               case e: InterruptedException =>
             }
+          else
+            CurrentTurn.ongoingPhase = false
         }
       }
     }

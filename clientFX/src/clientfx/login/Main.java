@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 public class Main extends Application implements Initializable {
     @FXML private TextField userText;
     @FXML private Text actionText;
@@ -38,11 +37,12 @@ public class Main extends Application implements Initializable {
 
     private void loginWindow() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        Scene scene = new Scene(root, 300, 200);
+        Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
+        primaryStage.setMinWidth(300);
+        primaryStage.setMinHeight(200);
         primaryStage.show();
-
     }
 
     public void handleSubmitButtonAction(){

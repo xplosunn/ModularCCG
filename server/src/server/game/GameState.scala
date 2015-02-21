@@ -8,7 +8,7 @@ import scala.collection.mutable._
 import scala.util.Random
 
 class GameState (val players: Array[Player], val game: Game) {
-  if(players.length > 2)
+  if(players.length != 2)
     throw new IllegalArgumentException
   
   var activePlayerIndex: Int = new Random().nextInt(players.size)
@@ -39,17 +39,14 @@ class GameState (val players: Array[Player], val game: Game) {
     turnOwner.refillMana()
   }
 
-  def defendersOf(s: GameSummon): Set[GameSummon] = {
+  def defendersOf(s: GameSummon): Set[GameSummon] =
     battleSummons.get(s).get
-  }
 
-  def attackerOf(s: GameSummon): GameSummon = {
+  def attackerOf(s: GameSummon): GameSummon =
     battleSummons.collectFirst({case (gs, set) if set.contains(s) => gs}).get
-  }
 
-  def attackers: collection.Set[GameSummon] = {
+  def attackers: collection.Set[GameSummon] =
     battleSummons.keySet
-  }
 
   def attackerCount: Int = battleSummons.size
 
@@ -77,16 +74,14 @@ class GameState (val players: Array[Player], val game: Game) {
 
   def defendersSet = defendersSetThisTurn
 
-  def hasDefenders(summon: GameSummon): Boolean = {
+  def hasDefenders(summon: GameSummon): Boolean =
     battleSummons.get(summon).get.size > 0
-  }
 
-  def nextDeathTrigger: (GameSummon, Int, Int) = {
-    if(deathTriggers.size > 0){
-      return deathTriggers.remove(0)
+  def nextDeathTrigger: (GameSummon, Int, Int) =
+    deathTriggers.size match {
+      case x if x > 0 => deathTriggers.remove(0)
+      case 0 => null
     }
-    null
-  }
   
   def checkBattlefieldState() {
     players.foreach(player => {
@@ -95,7 +90,7 @@ class GameState (val players: Array[Player], val game: Game) {
       player.battlefield.cards --= summonsToKill
       player.pile.cards ++= summonsToKill
       summonsToKill.foreach(summon => {
-        (0 until summon.card.MAXIMUM_ABILITIES).toStream.takeWhile(i => summon.card.abilityLevel(i) != -1).foreach(
+        (0 until summon.card.MAXIMUM_ABILITIES).takeWhile(i => summon.card.abilityLevel(i) != -1).foreach(
         i=> {
           val abilityIndex = summon.card.abilityLibraryIndex(i)
           if (SummonAbilityLibrary.abilityList(abilityIndex).timing == SummonAbility.ON_DEATH)
@@ -106,9 +101,9 @@ class GameState (val players: Array[Player], val game: Game) {
   }
   
   def checkPlayerState() {
-    players.count(p => p.lifeTotal <= 0) match {
+    players.count(_.lifeTotal <= 0) match {
       case 0 =>
-      case 1 => throw new PlayerWonException(players.filter(p2 => p2.lifeTotal > 0)(0).handler.getUserName)
+      case 1 => throw new PlayerWonException(players.filter(_.lifeTotal > 0)(0).handler.getUserName)
       case 2 => throw new GameTiedException
     }
   }
