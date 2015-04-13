@@ -87,15 +87,15 @@ class GameState (val players: Array[Player], val game: Game) {
     players.foreach(player => {
       val summonsToKill = player.battlefield.summons.filter(gs => gs.life <= 0)
 
-      player.battlefield.cards --= summonsToKill
+      player.battlefield.summons --= summonsToKill
       player.pile.cards ++= summonsToKill
       summonsToKill.foreach(summon => {
         (0 until summon.card.MAXIMUM_ABILITIES).takeWhile(i => summon.card.abilityLevel(i) != -1).foreach(
-        i=> {
-          val abilityIndex = summon.card.abilityLibraryIndex(i)
-          if (SummonAbilityLibrary.abilityList(abilityIndex).timing == SummonAbility.ON_DEATH)
-            deathTriggers += ((summon, abilityIndex, summon.card.abilityLevel(i)))
-        })
+          i => {
+            val abilityIndex = summon.card.abilityLibraryIndex(i)
+            if (SummonAbilityLibrary.abilityList(abilityIndex).timing == SummonAbility.ON_DEATH)
+              deathTriggers += ((summon, abilityIndex, summon.card.abilityLevel(i)))
+          })
       })
     })
   }

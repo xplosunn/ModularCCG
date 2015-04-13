@@ -63,7 +63,7 @@ class DuelTest {
     val ap = testDuel.getGameState.activePlayer
     testDuel.addCardToBePlayed(ap.hand.cards(0).id)
     Thread.sleep(UnitTestConstants.processMillis)
-    assertEquals(1, ap.battlefield.cards.size)
+    assertEquals(1, ap.battlefield.summons.size)
     testDuel.endTurn()
     Thread.sleep(UnitTestConstants.processMillis)
     testDuel.addCardToBePlayed(testDuel.getGameState.activePlayer.hand.cards(0).id)
@@ -72,7 +72,7 @@ class DuelTest {
     Thread.sleep(UnitTestConstants.processMillis)
     testDuel.nextStep()
     Thread.sleep(UnitTestConstants.processMillis)
-    testDuel.setAttackers(Array(ap.battlefield.cards(0).id))
+    testDuel.setAttackers(Array(ap.battlefield.summons(0).id))
     Thread.sleep(UnitTestConstants.processMillis)
     assertEquals(GameSteps.COMBAT_Defend, testDuel.currentTurn.currentStep)
     Thread.sleep(Duel.SECONDS_TO_CHOOSE_DEFENDERS * 1000)
@@ -117,7 +117,7 @@ class DuelTest {
     val ap = testDuel.getGameState.activePlayer
     testDuel.addCardToBePlayed(ap.hand.cards(0).id)
     Thread.sleep(UnitTestConstants.processMillis)
-    assertTrue(!ap.battlefield.cards.isEmpty)
+    assertTrue(!ap.battlefield.summons.isEmpty)
     assertTrue(""+testDuel.currentTurn.secondsLeft,testDuel.currentTurn.secondsLeft < Duel.SECONDS_PER_TURN *3/4)
     Thread.sleep((Duel.SECONDS_PER_TURN - waitTime)*1000)
     Thread.sleep(UnitTestConstants.processMillis)
@@ -212,7 +212,7 @@ class DuelTest {
 
     Thread.sleep(UnitTestConstants.processMillis)
     testDuel.getGameState.players.foreach(p =>{
-      assertTrue(p.battlefield.cards.size == 0)
+      assertTrue(p.battlefield.summons.size == 0)
       assertTrue(p.pile.cards.size == 1)
     })
 
@@ -308,7 +308,7 @@ class DuelTest {
 
     Thread.sleep(UnitTestConstants.processMillis)
     testDuel.getGameState.players.foreach(p => {
-      assertTrue(p.battlefield.cards.size == 0)
+      assertTrue(p.battlefield.summons.size == 0)
       assertTrue(p.pile.cards.size == 1)
     })
 

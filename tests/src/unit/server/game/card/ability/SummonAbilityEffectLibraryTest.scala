@@ -42,7 +42,7 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
         assertTrue(cardsInPile + " " + testAbilityLevel + " " + ap.hand.cards.size, ap.hand.cards.size == (4 + Math.min(testAbilityLevel, cardsInPile)))
         assertTrue(nap.hand.cards.size + " " + napHandCardCount, nap.hand.cards.size == napHandCardCount)
 
-        ap.battlefield.cards -= testSummon
+        ap.battlefield.summons -= testSummon
         ap.pile.cards.remove(0, ap.pile.cards.size)
         assertTrue(ap.pile.cards.size == 0)
         while(ap.hand.cards.size > 4)
@@ -70,18 +70,22 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
 
       testDuel.addCardToBePlayed(testSummon.id)
       Thread.sleep(processMillis)
+      assertTrue(ap.battlefield.summons.contains(testSummon))
       assertTrue(ap.lifeTotal == 30)
       assertTrue(nap.lifeTotal == 30)
 
       ap.hand.cards += killSpell
+      assertEquals(killSpell.cost, ap.availableMana)
       testDuel.addCardToBePlayed(killSpell.id)
       Thread.sleep(processMillis)
+      assertTrue(ap.pile.cards.contains(killSpell))
+      assertTrue(ap.pile.cards.contains(testSummon))
       assertTrue(ap.lifeTotal == 30)
-      assertTrue(""+nap.lifeTotal, nap.lifeTotal == (30 - testAbilityLevel*2))
+      assertTrue(nap.lifeTotal + " " + testAbilityLevel*2, nap.lifeTotal == (30 - testAbilityLevel*2))
 
       ap.pile.cards -= testSummon
       ap.pile.cards -= killSpell
-      assertTrue(ap.battlefield.cards.size == 0)
+      assertTrue(ap.battlefield.summons.size == 0)
       assertTrue(ap.pile.cards.size == 0)
       nap.lifeTotal = 30
     }
@@ -103,18 +107,18 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
 
         val attackerArray = new Array[Int](attackingSummonsCount)
         for(i<-0 until attackingSummonsCount){
-          nap.battlefield.cards += new GameSummon(new Summon, nap, 400 + i)
+          nap.battlefield.summons += new GameSummon(new Summon, nap, 400 + i)
           attackerArray(i) = 400 + i
         }
-        assertTrue(nap.battlefield.cards.size == attackingSummonsCount)
+        assertTrue(nap.battlefield.summons.size == attackingSummonsCount)
 
         ap.hand.cards += testSummon
         assertTrue(ap.hand.cards.contains(testSummon))
         assertTrue(ap.availableMana == testSummon.cost)
         testDuel.addCardToBePlayed(testSummon.id)
         Thread.sleep(processMillis)
-        assertTrue(testAbilityLevel + " " + ap.battlefield.cards.size, ap.battlefield.cards.size == 1)
-        assertTrue(nap.battlefield.cards.size == attackingSummonsCount)
+        assertTrue(testAbilityLevel + " " + ap.battlefield.summons.size, ap.battlefield.summons.size == 1)
+        assertTrue(nap.battlefield.summons.size == attackingSummonsCount)
         testDuel.endTurn()
         Thread.sleep(processMillis)
 
@@ -124,14 +128,14 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
         testDuel.setAttackers(attackerArray)
         Thread.sleep(processMillis)
 
-        testDuel.setDefenses(Array((Integer.valueOf(400),Integer.valueOf(300))))
+        testDuel.setDefenses(Array((400,300)))
         Thread.sleep(processMillis)
 
-        assertTrue(ap.battlefield.cards.isEmpty)
-        assertTrue(nap.battlefield.cards.size == attackingSummonsCount - Math.min(attackingSummonsCount, testAbilityLevel))
+        assertTrue(ap.battlefield.summons.isEmpty)
+        assertTrue(nap.battlefield.summons.size == attackingSummonsCount - Math.min(attackingSummonsCount, testAbilityLevel))
 
         ap.pile.cards.clear()
-        nap.battlefield.cards.clear()
+        nap.battlefield.summons.clear()
         testDuel.endTurn()
         Thread.sleep(processMillis)
       }
@@ -152,9 +156,9 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
       }, ap, 301)
       val defender = new GameSummon(new Summon{}, nap, 400)
 
-      ap.battlefield.cards += undefendedEvader
-      ap.battlefield.cards += defendedEvader
-      nap.battlefield.cards += defender
+      ap.battlefield.summons += undefendedEvader
+      ap.battlefield.summons += defendedEvader
+      nap.battlefield.summons += defender
 
       testDuel.nextStep()
       Thread.sleep(processMillis)
@@ -170,7 +174,7 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
       assertTrue(defendedEvader.power == 1)
       assertTrue(defendedEvader.life == 1)
 
-      ap.battlefield.cards.clear()
+      ap.battlefield.summons.clear()
       nap.lifeTotal = 30
       testDuel.endTurn()
       Thread.sleep(processMillis)
@@ -191,7 +195,7 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
         ap.manaTotal = testSummon.cost
         ap.refillMana()
         for(i<-0 until otherSummons)
-          ap.battlefield.cards += new GameSummon(new Summon{changePowerBy(i); changeLifeBy(2*i)}, ap, 400 + i)
+          ap.battlefield.summons += new GameSummon(new Summon{changePowerBy(i); changeLifeBy(2*i)}, ap, 400 + i)
 
         for(i<-0 until otherSummons){
           assertEquals(1, ap.battlefield.summons.count(s => (s.power == 1 + i) && (s.life == 1 + 2*i)))
@@ -204,7 +208,7 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
         for(i<-0 until otherSummons)
           assertTrue(ap.battlefield.summons.count(s => (s.power == 1 + i + testAbilityLevel) && (s.life == 1 + 2*i + testAbilityLevel)) == 1)
 
-        ap.battlefield.cards.clear()
+        ap.battlefield.summons.clear()
       }
     }
 
@@ -222,7 +226,7 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
         ap.manaTotal = testSummon.cost
         ap.refillMana()
         for(i<-0 until otherSummons)
-          ap.battlefield.cards += new GameSummon(new Summon, ap, 400 + i)
+          ap.battlefield.summons += new GameSummon(new Summon, ap, 400 + i)
 
         ap.hand.cards += testSummon
         testDuel.addCardToBePlayed(testSummon.id)
@@ -234,7 +238,7 @@ class SummonAbilityEffectLibraryTest extends AbilityLibraryTest{
         assertTrue(testAbilityLevel + " " + otherSummons + " " + testSummon.power, testSummon.power == testSummon.life && testSummon.power == 1+ testAbilityLevel*otherSummons)
 
         testSummon.restoreOriginalPowerAndLife()
-        ap.battlefield.cards.clear()
+        ap.battlefield.summons.clear()
       }
     }
 

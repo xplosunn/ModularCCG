@@ -15,7 +15,9 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
   var availableMana = 0
 
   val hand = new Zone
-  val battlefield = new Zone
+  val battlefield = new SummonZone{
+    val summons = new ArrayBuffer[GameSummon]()
+  }
   val pile = new Zone
   val deck = new Zone
   setupDeck()
@@ -32,14 +34,19 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
     shuffleDeck()
   }
 
-  class Zone {
+  class Zone extends SummonZone{
     val cards = new ArrayBuffer[GameCard]()
     def summons: ArrayBuffer[GameSummon] =
       cards.collect({case s: GameSummon => s})
 
-    def drawRandom = if(cards.size > 0) cards.remove(new Random().nextInt(cards.size)) else null
-    def drawTop = if(cards.size > 0) cards.remove(cards.size-1) else null
+    def drawRandom: GameCard = if(cards.size > 0) cards.remove(new Random().nextInt(cards.size)) else null
+    def drawTop: GameCard = if(cards.size > 0) cards.remove(cards.size-1) else null
   }
+
+  trait SummonZone{
+    def summons: ArrayBuffer[GameSummon]
+  }
+
   def drawCard: CardDraw = {
     if(deck.cards.size > 0){
       hand.cards += deck.drawTop

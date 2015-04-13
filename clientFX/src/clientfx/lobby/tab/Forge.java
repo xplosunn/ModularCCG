@@ -1,5 +1,9 @@
 package clientfx.lobby.tab;
 
+import clientfx.lobby.component.CardPreview;
+import common.card.Card;
+import common.card.Summon;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
@@ -9,6 +13,8 @@ import javafx.scene.text.Text;
 
 public class Forge {
     private final BorderPane root;
+    private final CardPreview cardPreview;
+    private Card card = new Summon();
 
     public Forge() {
         root = new BorderPane();
@@ -37,6 +43,18 @@ public class Forge {
         leftPane.add(cardPane, 1, 0);
         Text cardText = new Text("Card Preview");
         cardPane.getChildren().add(cardText);
+        cardPreview = new CardPreview(card);
+        cardPane.getChildren().add(cardPreview.getNode());
+        cardPane.getChildren().add(buildPowerAndLifePanel());
+
+    }
+
+    private Node buildPowerAndLifePanel() {
+        VBox vBox = new VBox();
+
+
+
+        return vBox;
     }
 
     public BorderPane getRoot() {

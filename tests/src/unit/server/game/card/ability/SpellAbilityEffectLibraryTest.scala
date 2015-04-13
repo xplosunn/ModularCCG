@@ -19,7 +19,7 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
       for(summonsInPlay <- 1 to 6){
         for(i<-0 until summonsInPlay){
           val randomPlayer = testDuel.getGameState.players(new Random().nextInt(2))
-          randomPlayer.battlefield.cards += new GameSummon(new Summon {
+          randomPlayer.battlefield.summons += new GameSummon(new Summon {
             changePowerBy(2 * i)
             changeLifeBy(i)
           }, randomPlayer, 400 + i)
@@ -58,8 +58,8 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
           }
         }
 
-        ap.battlefield.cards.clear()
-        nap.battlefield.cards.clear()
+        ap.battlefield.summons.clear()
+        nap.battlefield.summons.clear()
         ap.pile.cards.clear()
         nap.pile.cards.clear()
       }
@@ -115,7 +115,7 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
       val testSpell = new GameSpell(new Spell {
         addAbility(testAbilityLibraryIndex, testAbilityLevel)
       }, ap, 300)
-      for(startingMana <- testSpell.cost to 20){
+      for(startingMana <- testSpell.cost to 10){
         ap.manaTotal = startingMana
         ap.refillMana()
 
@@ -143,8 +143,8 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
   @Test
   def killRandomSummon(){
     val testAbilityLibraryIndex = 3
-    assertTrue(ap.battlefield.cards.size == 0)
-    ap.battlefield.cards += new GameSummon(new Summon, ap, 500)
+    assertTrue(ap.battlefield.summons.size == 0)
+    ap.battlefield.summons += new GameSummon(new Summon, ap, 500)
 
     for(testAbilityLevel <- 1 to 3) {
       val testSpell = new GameSpell(new Spell {
@@ -156,18 +156,18 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
         ap.hand.cards += testSpell
 
 
-        assertTrue(ap.battlefield.cards.size == 1)
+        assertTrue(ap.battlefield.summons.size == 1)
         for(i<- 0 until summonsInPlay){
-          nap.battlefield.cards += new GameSummon(new Summon{changeLifeBy(new Random().nextInt(6))}, nap, 400+i)
+          nap.battlefield.summons += new GameSummon(new Summon{changeLifeBy(new Random().nextInt(6))}, nap, 400+i)
         }
-        assertTrue(nap.battlefield.cards.size == summonsInPlay)
+        assertTrue(nap.battlefield.summons.size == summonsInPlay)
 
         testDuel.addCardToBePlayed(testSpell.id)
         Thread.sleep(processMillis)
-        assertTrue(ap.battlefield.cards.size == 1)
-        assertTrue(nap.battlefield.cards.size == summonsInPlay - Math.min(summonsInPlay, testAbilityLevel))
+        assertTrue(ap.battlefield.summons.size == 1)
+        assertTrue(nap.battlefield.summons.size == summonsInPlay - Math.min(summonsInPlay, testAbilityLevel))
 
-        nap.battlefield.cards.clear()
+        nap.battlefield.summons.clear()
       }
     }
   }
@@ -226,19 +226,19 @@ class SpellAbilityEffectLibraryTest extends AbilityLibraryTest{
           ap.refillMana()
 
           for(i<- 0 until apStartingSummons)
-            ap.battlefield.cards += new GameSummon(new Summon, ap, 400+i)
+            ap.battlefield.summons += new GameSummon(new Summon, ap, 400+i)
           for(i<- 0 until napStartingSummons)
-            nap.battlefield.cards += new GameSummon(new Summon, nap, 500+i)
+            nap.battlefield.summons += new GameSummon(new Summon, nap, 500+i)
 
-          assertTrue(ap.battlefield.cards.size == apStartingSummons)
-          assertTrue(nap.battlefield.cards.size == napStartingSummons)
+          assertEquals(apStartingSummons, ap.battlefield.summons.size)
+          assertEquals(napStartingSummons, nap.battlefield.summons.size)
           testDuel.addCardToBePlayed(testSpell.id)
           Thread.sleep(processMillis)
 
-          assertTrue(ap.battlefield.cards.size == apStartingSummons - Math.min(apStartingSummons, testAbilityLevel))
-          assertTrue(nap.battlefield.cards.size == napStartingSummons - Math.min(napStartingSummons, testAbilityLevel))
-          ap.battlefield.cards.clear()
-          nap.battlefield.cards.clear()
+          assertEquals(napStartingSummons - Math.min(napStartingSummons, testAbilityLevel), nap.battlefield.summons.size)
+          assertEquals(apStartingSummons - Math.min(apStartingSummons, testAbilityLevel), ap.battlefield.summons.size)
+          ap.battlefield.summons.clear()
+          nap.battlefield.summons.clear()
 
         }
       }

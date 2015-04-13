@@ -179,7 +179,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   }
 
   private def findSummonInBattleField(owner: Player, id: Int): GameSummon = {
-    owner.battlefield.cards.collectFirst({case gc: GameSummon if (gc.id == id) => gc}).get
+    owner.battlefield.summons.collectFirst({case gc: GameSummon if (gc.id == id) => gc}).get
   }
 
   /**
@@ -194,7 +194,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     gameCard match {
       case gameCard: GameSummon =>
         CurrentTurn.summonsPlayed += gameCard
-        activePlayer.battlefield.cards += gameCard
+        activePlayer.battlefield.summons += gameCard
         (0 until gameCard.card.MAXIMUM_ABILITIES).toStream.takeWhile(i => gameCard.card.abilityLibraryIndex(i) != -1).foreach(
           i => {val index = gameCard.card.abilityLibraryIndex(i)
             if (SummonAbilityLibrary.abilityList(index).timing == SummonAbility.ON_SUMMON){

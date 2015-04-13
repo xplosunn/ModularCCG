@@ -73,9 +73,9 @@ object SpellAbilityEffectLibrary {
 
   effects(5) = new SpellAbilityEffect(true, (level: Int, state: GameState) => {
     val retn = new ArrayBuffer[GameChange]()
-    state.players.foreach((p)=>{
-      val summons = p.battlefield.summons
-      for (i <- 0 until level)
+    state.players.foreach( p =>{
+      val summons = new ArrayBuffer[GameSummon]() ++ p.battlefield.summons
+      for (_ <- 0 until level)
         if (summons.size > 0) {
           val summonToKill = summons(new Random().nextInt(summons.size))
           retn += new SummonValueChange(summonToKill.id, GameChange.Value.LIFE, 0)
