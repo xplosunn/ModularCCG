@@ -2,7 +2,7 @@ package server.game.card.ability
 
 import common.card.ability.change._
 import common.game.RemoteCard
-import server.game.card.{GameCard, GameSummon}
+import server.game.card.{BattlefieldSummon, GameCard, GameSummon}
 import server.game.{GameState, Player}
 
 import scala.collection.mutable.ArrayBuffer
@@ -18,7 +18,7 @@ object SpellAbilityEffectLibrary {
   effects(0) = new SpellAbilityEffect(true, (level: Int, state: GameState) => {
     val retn = new ArrayBuffer[GameChange]()
     state.players.foreach((p: Player) => {
-      p.battlefield.summons.foreach((s: GameSummon) => {
+      p.battlefield.foreach((s: BattlefieldSummon) => {
         s.changeLifeBy(0 - level)
         s.changePowerBy(0 - level)
         retn += new SummonValueChange(s.id, GameChange.Value.LIFE, s.life)
@@ -47,8 +47,8 @@ object SpellAbilityEffectLibrary {
 
   effects(3) = new SpellAbilityEffect(true, (level: Int, state: GameState) => {
     val retn = new ArrayBuffer[GameChange]()
-    var summons = new ArrayBuffer[GameSummon]()
-    summons ++= state.nonActivePlayer.battlefield.summons
+    var summons = new ArrayBuffer[BattlefieldSummon]()
+    summons ++= state.nonActivePlayer.battlefield
     for (i <- 0 until level)
       if (summons.size > 0) {
         val summonToKill = summons(new Random().nextInt(summons.size))
@@ -65,7 +65,7 @@ object SpellAbilityEffectLibrary {
     if (deck.size > 0)
       for (i <- 0 until level) {
         val remoteCard = new RemoteCard(state.game.nextCardID, state.activePlayer.handler.getUserName, deck(new Random().nextInt(deck.size)).card)
-        state.activePlayer.hand.cards += GameCard.build(remoteCard.card, state.activePlayer, remoteCard.id)
+        state.activePlayer.hand += GameCard.build(remoteCard.card, state.activePlayer, remoteCard.id)
         retn += new NewCard(remoteCard, GameChange.Zone.HAND)
       }
     retn
@@ -74,7 +74,7 @@ object SpellAbilityEffectLibrary {
   effects(5) = new SpellAbilityEffect(true, (level: Int, state: GameState) => {
     val retn = new ArrayBuffer[GameChange]()
     state.players.foreach( p =>{
-      val summons = new ArrayBuffer[GameSummon]() ++ p.battlefield.summons
+      val summons = new ArrayBuffer[BattlefieldSummon]() ++ p.battlefield
       for (_ <- 0 until level)
         if (summons.size > 0) {
           val summonToKill = summons(new Random().nextInt(summons.size))

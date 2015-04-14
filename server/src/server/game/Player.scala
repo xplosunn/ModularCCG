@@ -4,7 +4,7 @@ import common.card.Deck
 import common.card.ability.change.CardDraw
 import common.game.RemoteCard
 import server.ClientHandler
-import server.game.card.{GameCard, GameSummon}
+import server.game.card.{BattlefieldSummon, GameCard, GameSummon}
 
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
@@ -14,11 +14,9 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
   var manaTotal = 0
   var availableMana = 0
 
-  val hand = new Zone
-  val battlefield = new SummonZone{
-    val summons = new ArrayBuffer[GameSummon]()
-  }
-  val pile = new Zone
+  val hand = new ArrayBuffer[GameCard]()
+  val battlefield = new ArrayBuffer[BattlefieldSummon]()
+  val pile = new ArrayBuffer[GameCard]()
   val deck = new Zone
   setupDeck()
 
@@ -34,23 +32,17 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
     shuffleDeck()
   }
 
-  class Zone extends SummonZone{
+  class Zone {
     val cards = new ArrayBuffer[GameCard]()
-    def summons: ArrayBuffer[GameSummon] =
-      cards.collect({case s: GameSummon => s})
 
     def drawRandom: GameCard = if(cards.size > 0) cards.remove(new Random().nextInt(cards.size)) else null
     def drawTop: GameCard = if(cards.size > 0) cards.remove(cards.size-1) else null
   }
 
-  trait SummonZone{
-    def summons: ArrayBuffer[GameSummon]
-  }
-
   def drawCard: CardDraw = {
     if(deck.cards.size > 0){
-      hand.cards += deck.drawTop
-      val cardDrawn = hand.cards.last
+      hand += deck.drawTop
+      val cardDrawn = hand.last
       new CardDraw(handler.getUserName, new RemoteCard(cardDrawn.id, cardDrawn.owner.handler.getUserName, cardDrawn.card), false)
     }
     else{

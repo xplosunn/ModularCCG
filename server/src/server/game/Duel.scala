@@ -9,7 +9,7 @@ import common.card.ability.{SummonAbility, SummonAbilityLibrary}
 import common.game.{GameSteps, RemoteCard}
 import common.network.messages.serverToClient.GameInfo
 import server.ClientHandler
-import server.game.card.{GameSpell, GameCard, GameSummon}
+import server.game.card.{BattlefieldSummon, GameSpell, GameCard, GameSummon}
 import server.game.card.ability.{SpellAbilityEffectLibrary, SummonAbilityEffectLibrary}
 import server.game.exception.{GameTiedException, PlayerWonException}
 
@@ -142,7 +142,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   }
 
   def addCardToBePlayed(cardID: Int){
-    gameState.activePlayer.hand.cards
+    gameState.activePlayer.hand
       .filter(card => card.id == cardID && card.card.cost <= gameState.activePlayer.availableMana)
       .foreach(card => {
       gameState.activePlayer.availableMana -= card.card.cost
@@ -155,7 +155,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
 
   def setAttackers(ids: Array[Int]){
     if (CurrentTurn.currentStep == GameSteps.COMBAT_Attack && ids != null) {
-      val attackers = gameState.activePlayer.battlefield.summons.filter(s => ids.contains(s.id) && !CurrentTurn.summonsPlayed.contains(s))
+      val attackers = gameState.activePlayer.battlefield.filter(s => ids.contains(s.gameSummon.id) && !CurrentTurn.summonsPlayed.contains(s))
       synchronized {
         gameState.setAttackers(attackers)
         interrupt()
@@ -165,7 +165,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
 
   def setDefenses(defenseIDs: Array[(Int, Int)]){
     if (CurrentTurn.currentStep == GameSteps.COMBAT_Defend && gameState.attackerCount > 0 && defenseIDs != null){
-      def nonNullTuple(tuple: (GameSummon, GameSummon)) = tuple._1 != null && tuple._2 != null
+      def nonNullTuple(tuple: (BattlefieldSummon, BattlefieldSummon)) = tuple._1 != null && tuple._2 != null
 
       val defenses = defenseIDs.collect({case (attackerID, defenderID) =>
         (findSummonInBattleField(gameState.activePlayer, attackerID), findSummonInBattleField(gameState.nonActivePlayer, defenderID))})
@@ -178,8 +178,8 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     }
   }
 
-  private def findSummonInBattleField(owner: Player, id: Int): GameSummon = {
-    owner.battlefield.summons.collectFirst({case gc: GameSummon if (gc.id == id) => gc}).get
+  private def findSummonInBattleField(owner: Player, id: Int): BattlefieldSummon = {
+    owner.battlefield.collectFirst({case gc: BattlefieldSummon if gc.id == id => gc}).get
   }
 
   /**
@@ -189,16 +189,17 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
    */
   private def processPlayCard(gameCard: GameCard){
     val activePlayer = gameState.activePlayer
-    activePlayer.hand.cards -= gameCard
+    activePlayer.hand -= gameCard
     val changes = new ArrayBuffer[GameChange]()
     gameCard match {
       case gameCard: GameSummon =>
         CurrentTurn.summonsPlayed += gameCard
-        activePlayer.battlefield.summons += gameCard
+        val battlefieldSummon = new BattlefieldSummon(gameCard)
+        activePlayer.battlefield += battlefieldSummon
         (0 until gameCard.card.MAXIMUM_ABILITIES).toStream.takeWhile(i => gameCard.card.abilityLibraryIndex(i) != -1).foreach(
           i => {val index = gameCard.card.abilityLibraryIndex(i)
             if (SummonAbilityLibrary.abilityList(index).timing == SummonAbility.ON_SUMMON){
-              changes ++= SummonAbilityEffectLibrary.effects(index).apply(gameCard.card.abilityLevel(i),gameState, gameCard)
+              changes ++= SummonAbilityEffectLibrary.effects(index).apply(gameCard.card.abilityLevel(i),gameState, battlefieldSummon)
               if(SummonAbilityEffectLibrary.effects(index).changesBattleFieldState)
                 gameState.checkBattlefieldState()
             }
@@ -210,7 +211,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
             if(SpellAbilityEffectLibrary.effects(index).changesBattleFieldState)
               gameState.checkBattlefieldState()
           })
-        activePlayer.pile.cards += gameCard
+        activePlayer.pile += gameCard
     }
     val messageToAP = GameInfo.cardPlayed(id, new RemoteCard(gameCard.id, gameCard.owner.handler.getUserName, gameCard.card), changes.toArray)
     gameState.activePlayer.handler.sendMessageToClient(messageToAP)
@@ -238,7 +239,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
 
       (0 until 6).foreach(_=> p.drawCard)
 
-      val remoteCards = p.hand.cards.map(gc => new RemoteCard(gc.id, gc.owner.handler.getUserName, gc.card)).toArray
+      val remoteCards = p.hand.map(gc => new RemoteCard(gc.id, gc.owner.handler.getUserName, gc.card)).toArray
       p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, remoteCards))
 
       val changes: Array[GameChange] = players.filter(op => op != p).take(3).collect({case op => new CardDraw(op.handler.getUserName, null, false)}).toArray
@@ -270,21 +271,21 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       val player = gameState.players(i)
       //Validate mull
       if(mulligans(i) != null && mulligans(i).size == 3 &&
-        mulligans(i).forall(mullCardID => player.hand.cards.exists(gc => gc.id == mullCardID))){
+        mulligans(i).forall(mullCardID => player.hand.exists(gc => gc.id == mullCardID))){
         for(id <- mulligans(i)){
-          val cardBackToDeck = player.hand.cards.filter(gc => gc.id == id)(0)
-          player.hand.cards -= cardBackToDeck
+          val cardBackToDeck = player.hand.filter(gc => gc.id == id)(0)
+          player.hand -= cardBackToDeck
           player.deck.cards += cardBackToDeck
         }
       }
       else{
         for(_ <- 0 until 3)
-          player.deck.cards += gameState.players(i).hand.cards.remove(0)
+          player.deck.cards += gameState.players(i).hand.remove(0)
       }
       player.shuffleDeck()
       val handIDs = new Array[Int](3)
       for(j<- handIDs.indices)
-        handIDs(j) = player.hand.cards(j).id
+        handIDs(j) = player.hand(j).id
       player.handler.sendMessageToClient(GameInfo.hand(id, handIDs))
     }
   }
@@ -354,7 +355,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   }
 
   private def attack() {
-    if (gameState.activePlayer.battlefield.summons.--(CurrentTurn.summonsPlayed).size > 0) {
+    if (gameState.activePlayer.battlefield.collect({case gs => gs.gameSummon}).--(CurrentTurn.summonsPlayed).size > 0) {
       CurrentTurn.currentStep = GameSteps.COMBAT_Attack
       val phaseMessage = GameInfo.nextStep(id, GameSteps.COMBAT_Attack)
       p1.handler.sendMessageToClient(phaseMessage)
@@ -384,7 +385,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   }
 
   private def defend() {
-    if (gameState.attackerCount > 0 && gameState.nonActivePlayer.battlefield.summons.size > 0) {
+    if (gameState.attackerCount > 0 && gameState.nonActivePlayer.battlefield.size > 0) {
       CurrentTurn.currentStep = GameSteps.COMBAT_Defend
       val phaseMessage = GameInfo.nextStep(id, GameSteps.COMBAT_Defend)
       p1.handler.sendMessageToClient(phaseMessage)
@@ -461,7 +462,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   }
 
   private def processDeathTriggers() {
-    var nextDeathTrigger: (GameSummon, Int, Int) = gameState.nextDeathTrigger
+    var nextDeathTrigger: (BattlefieldSummon, Int, Int) = gameState.nextDeathTrigger
     while(nextDeathTrigger != null){
       val changeBuffer = SummonAbilityEffectLibrary.effects(nextDeathTrigger._2).apply(nextDeathTrigger._3, gameState, nextDeathTrigger._1)
       val changeArray = new Array[GameChange](0) ++ changeBuffer

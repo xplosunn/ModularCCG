@@ -1,7 +1,7 @@
 package server.game
 
 import common.card.ability.{SummonAbility, SummonAbilityLibrary}
-import server.game.card.GameSummon
+import server.game.card.{BattlefieldSummon, GameSummon}
 import server.game.exception.{GameTiedException, PlayerWonException}
 
 import scala.collection.mutable._
@@ -14,10 +14,10 @@ class GameState (val players: Array[Player], val game: Game) {
   var activePlayerIndex: Int = new Random().nextInt(players.size)
   //Holds all the summons up for combat each of the turns. The first summon in each array is the attacker
   //and the rest are blockers.
-  private val battleSummons = new HashMap[GameSummon, Set[GameSummon]] with MultiMap[GameSummon, GameSummon]
+  private val battleSummons = new HashMap[BattlefieldSummon, Set[BattlefieldSummon]] with MultiMap[BattlefieldSummon, BattlefieldSummon]
   //Holds the death triggers that haven't been processed yet. It couples the invoker with the index of
   //the ability on the SummonAbilityLibrary and the level of the ability
-  private var deathTriggers = new ArrayBuffer[(GameSummon, Int, Int)]
+  private var deathTriggers = new ArrayBuffer[(BattlefieldSummon, Int, Int)]
   private var attackersSetThisTurn = false
   private var defendersSetThisTurn = false
 
@@ -39,31 +39,31 @@ class GameState (val players: Array[Player], val game: Game) {
     turnOwner.refillMana()
   }
 
-  def defendersOf(s: GameSummon): Set[GameSummon] =
+  def defendersOf(s: BattlefieldSummon): Set[BattlefieldSummon] =
     battleSummons.get(s).get
 
-  def attackerOf(s: GameSummon): GameSummon =
+  def attackerOf(s: BattlefieldSummon): BattlefieldSummon =
     battleSummons.collectFirst({case (gs, set) if set.contains(s) => gs}).get
 
-  def attackers: collection.Set[GameSummon] =
+  def attackers: collection.Set[BattlefieldSummon] =
     battleSummons.keySet
 
   def attackerCount: Int = battleSummons.size
 
   def defenses = battleSummons
 
-  def setAttackers(attackers: ArrayBuffer[GameSummon]){
+  def setAttackers(attackers: ArrayBuffer[BattlefieldSummon]){
     synchronized{
       if(!attackersSetThisTurn){
         attackersSetThisTurn = true
-        attackers.foreach(attacker => battleSummons.put(attacker, Set[GameSummon]()))
+        attackers.foreach(attacker => battleSummons.put(attacker, Set[BattlefieldSummon]()))
       }
     }
   }
 
   def attackersSet = attackersSetThisTurn
 
-  def setDefenders(defenses: Array[(GameSummon, GameSummon)]){
+  def setDefenders(defenses: Array[(BattlefieldSummon, BattlefieldSummon)]){
     synchronized{
       if(!defendersSetThisTurn){
         defendersSetThisTurn = true
@@ -74,10 +74,10 @@ class GameState (val players: Array[Player], val game: Game) {
 
   def defendersSet = defendersSetThisTurn
 
-  def hasDefenders(summon: GameSummon): Boolean =
+  def hasDefenders(summon: BattlefieldSummon): Boolean =
     battleSummons.get(summon).get.size > 0
 
-  def nextDeathTrigger: (GameSummon, Int, Int) =
+  def nextDeathTrigger: (BattlefieldSummon, Int, Int) =
     deathTriggers.size match {
       case x if x > 0 => deathTriggers.remove(0)
       case 0 => null
@@ -85,10 +85,10 @@ class GameState (val players: Array[Player], val game: Game) {
   
   def checkBattlefieldState() {
     players.foreach(player => {
-      val summonsToKill = player.battlefield.summons.filter(gs => gs.life <= 0)
+      val summonsToKill = player.battlefield.filter(gs => gs.life <= 0)
 
-      player.battlefield.summons --= summonsToKill
-      player.pile.cards ++= summonsToKill
+      player.battlefield --= summonsToKill
+      player.pile ++= summonsToKill.collect({case gs => gs.gameSummon})
       summonsToKill.foreach(summon => {
         (0 until summon.card.MAXIMUM_ABILITIES).takeWhile(i => summon.card.abilityLevel(i) != -1).foreach(
           i => {

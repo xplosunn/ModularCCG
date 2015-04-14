@@ -10,5 +10,6 @@
     <orderEntry type="module" module-name="common" />
     <orderEntry type="library" name="scala-sdk-2.10.4" level="project" />
     <orderEntry type="library" name="scala-lib" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.10.3" level="application" />
   </component>
 </module>
