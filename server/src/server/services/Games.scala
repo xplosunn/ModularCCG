@@ -22,7 +22,7 @@ object Games {
     var res = ""
     duels.values().forEach(new Consumer[Duel] {
       override def accept(d: Duel){
-        res += d.p1.handler.getUserName + " vs " + d.p2.handler.getUserName + System.lineSeparator
+        res += d.p1.handler.userName + " vs " + d.p2.handler.userName + System.lineSeparator
       }
     })
     res

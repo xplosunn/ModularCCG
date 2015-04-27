@@ -8,9 +8,7 @@ import common.network.messages.serverToClient.{LoginResponse, MessageToClient}
 import server.services.{ErrorLog, Users, ChatRooms, Games}
 
 class ClientHandler(private val socket: Socket) extends Thread{
-  protected var userName: String = null
-  
-  def getUserName = userName
+  var userName: String = null
   
   private var objOut: ObjectOutput = null
 

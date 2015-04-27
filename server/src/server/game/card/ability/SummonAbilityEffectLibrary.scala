@@ -20,7 +20,7 @@ object SummonAbilityEffectLibrary {
       val card = invoker.owner.pile(new Random().nextInt(invoker.owner.pile.size))
       invoker.owner.pile -= card
       invoker.owner.hand += card
-      retn += new ZoneChange(card.id,invoker.owner.handler.getUserName,GameChange.Zone.HAND)
+      retn += new ZoneChange(card.id,invoker.owner.handler.userName,GameChange.Zone.HAND)
     })
     retn
   })
@@ -30,7 +30,7 @@ object SummonAbilityEffectLibrary {
     state.players.foreach( (p: Player)=>{
       if(p != invoker.owner){
         p.changeLifeBy(0-2*level)
-        retn += new PlayerValueChange(p.handler.getUserName,GameChange.Value.LIFE,p.lifeTotal)
+        retn += new PlayerValueChange(p.handler.userName,GameChange.Value.LIFE,p.lifeTotal)
       }
     })
     retn

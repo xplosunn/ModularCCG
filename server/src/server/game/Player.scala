@@ -2,6 +2,7 @@ package server.game
 
 import common.card.Deck
 import common.card.ability.change.CardDraw
+import common.card.ability.change.GameChange._
 import common.game.RemoteCard
 import server.ClientHandler
 import server.game.card.{BattlefieldSummon, GameCard, GameSummon}
@@ -43,7 +44,7 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
     if(deck.cards.size > 0){
       hand += deck.drawTop
       val cardDrawn = hand.last
-      new CardDraw(handler.getUserName, new RemoteCard(cardDrawn.id, cardDrawn.owner.handler.getUserName, cardDrawn.card), false)
+      new CardDraw(handler.userName, cardDrawn.remoteCard, false)
     }
     else{
       lifeTotal -= 4
@@ -52,7 +53,7 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
         if(cardIndex > tuple._2)
           cardIndex -= tuple._2
         else
-          return new CardDraw(handler.getUserName, new RemoteCard(game.nextCardID, handler.getUserName, tuple._1), true)
+          return new CardDraw(handler.userName, new RemoteCard(game.nextCardID, handler.userName, tuple._1), true)
       }
       null
     }

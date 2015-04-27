@@ -88,7 +88,7 @@ class GameState (val players: Array[Player], val game: Game) {
       val summonsToKill = player.battlefield.filter(gs => gs.life <= 0)
 
       player.battlefield --= summonsToKill
-      player.pile ++= summonsToKill.collect({case gs => gs.gameSummon})
+      player.pile ++= summonsToKill.map(_.gameSummon)
       summonsToKill.foreach(summon => {
         (0 until summon.card.MAXIMUM_ABILITIES).takeWhile(i => summon.card.abilityLevel(i) != -1).foreach(
           i => {
@@ -103,7 +103,7 @@ class GameState (val players: Array[Player], val game: Game) {
   def checkPlayerState() {
     players.count(_.lifeTotal <= 0) match {
       case 0 =>
-      case 1 => throw new PlayerWonException(players.filter(_.lifeTotal > 0)(0).handler.getUserName)
+      case 1 => throw new PlayerWonException(players.filter(_.lifeTotal > 0)(0).handler.userName)
       case 2 => throw new GameTiedException
     }
   }

@@ -30,7 +30,7 @@ object SpellAbilityEffectLibrary {
 
   effects(1) = new SpellAbilityEffect(false, (level: Int, state: GameState) => {
     val retn = new ArrayBuffer[GameChange]()
-    val player = state.activePlayer.handler.getUserName
+    val player = state.activePlayer.handler.userName
     for (i <- 0 until level){
       retn += state.activePlayer.drawCard
       retn += state.activePlayer.drawCard
@@ -41,7 +41,7 @@ object SpellAbilityEffectLibrary {
   effects(2) = new SpellAbilityEffect(false, (level: Int, state: GameState) => {
     val retn = new ArrayBuffer[GameChange]()
     state.activePlayer.manaTotal += level
-    retn += new PlayerValueChange(state.activePlayer.handler.getUserName, GameChange.Value.MANA, state.activePlayer.manaTotal)
+    retn += new PlayerValueChange(state.activePlayer.handler.userName, GameChange.Value.MANA, state.activePlayer.manaTotal)
     retn
   })
 
@@ -64,7 +64,7 @@ object SpellAbilityEffectLibrary {
     val deck = state.nonActivePlayer.deck.cards
     if (deck.size > 0)
       for (i <- 0 until level) {
-        val remoteCard = new RemoteCard(state.game.nextCardID, state.activePlayer.handler.getUserName, deck(new Random().nextInt(deck.size)).card)
+        val remoteCard = new RemoteCard(state.game.nextCardID, state.activePlayer.handler.userName, deck(new Random().nextInt(deck.size)).card)
         state.activePlayer.hand += GameCard.build(remoteCard.card, state.activePlayer, remoteCard.id)
         retn += new NewCard(remoteCard, GameChange.Zone.HAND)
       }

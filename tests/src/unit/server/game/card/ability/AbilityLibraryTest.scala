@@ -38,7 +38,7 @@ abstract class AbilityLibraryTest {
 
     //assertEquals(testDuel.getGameState.activePlayer.handler.getUserName, ap.handler.getUserName)
 
-    testDuel.getGameState.players.foreach(p => testDuel.mulligan(p.handler.getUserName, Array(p.hand(0).id, p.hand(1).id, p.hand(2).id)))
+    testDuel.getGameState.players.foreach(p => testDuel.mulligan(p.handler.userName, Array(p.hand(0).id, p.hand(1).id, p.hand(2).id)))
     //assertEquals(testDuel.getGameState.activePlayer.handler.getUserName, ap.handler.getUserName)
 
     Thread.sleep(processMillis)

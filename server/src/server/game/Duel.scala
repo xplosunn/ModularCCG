@@ -84,7 +84,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   def mulligan(player: String, cardIDs: Array[Int]){
     synchronized {
       if(CurrentTurn.currentStep == GameSteps.HAND_SELECTION) {
-        if (gameState.players(0).handler.getUserName == player)
+        if (gameState.players(0).handler.userName == player)
           mulligans(0) = cardIDs
         else
           mulligans(1) = cardIDs
@@ -98,7 +98,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
     mulligans(0) != null && mulligans(1) != null
 
   def isActivePlayer(s: String): Boolean =
-    gameState.activePlayer.handler.getUserName == s
+    gameState.activePlayer.handler.userName == s
 
   def nextStep(){
     if(CurrentTurn.currentStep == GameSteps.MAIN_1st)
@@ -213,7 +213,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
           })
         activePlayer.pile += gameCard
     }
-    val messageToAP = GameInfo.cardPlayed(id, new RemoteCard(gameCard.id, gameCard.owner.handler.getUserName, gameCard.card), changes.toArray)
+    val messageToAP = GameInfo.cardPlayed(id, gameCard.remoteCard, changes.toArray)
     gameState.activePlayer.handler.sendMessageToClient(messageToAP)
 
     val changesToNAP = new Array[GameChange](changes.size)
@@ -224,7 +224,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
         case any => changesToNAP(i) = any
       }
     }
-    val messageToNAP = GameInfo.cardPlayed(id, new RemoteCard(gameCard.id, gameCard.owner.handler.getUserName, gameCard.card), changesToNAP)
+    val messageToNAP = GameInfo.cardPlayed(id, gameCard.remoteCard, changesToNAP)
     gameState.nonActivePlayer.handler.sendMessageToClient(messageToNAP)
 
     processDeathTriggers()
@@ -233,16 +233,16 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
 
   private def setupGame(){
     val players = gameState.players
-    val names = players.map(_.handler.getUserName)
+    val names = players.map(_.handler.userName)
     players.foreach(p => {
       p.handler.sendMessageToClient(GameInfo.gameStarted(id, names))
 
       (0 until 6).foreach(_=> p.drawCard)
 
-      val remoteCards = p.hand.map(gc => new RemoteCard(gc.id, gc.owner.handler.getUserName, gc.card)).toArray
+      val remoteCards = p.hand.map(_.remoteCard).toArray
       p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, remoteCards))
 
-      val changes: Array[GameChange] = players.filter(op => op != p).take(3).collect({case op => new CardDraw(op.handler.getUserName, null, false)}).toArray
+      val changes: Array[GameChange] = players.filter(op => op != p).take(3).map(op => new CardDraw(op.handler.userName, null, false)).toArray
       p.handler.sendMessageToClient(GameInfo.gameChanges(id, changes))
     })
 
@@ -296,7 +296,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
 
     val cardDrawnChange = gameState.activePlayer.drawCard
 
-    val activePlayerName = gameState.activePlayer.handler.getUserName
+    val activePlayerName = gameState.activePlayer.handler.userName
     val playerChange = new PlayerValueChange(activePlayerName, GameChange.Value.MANA, gameState.activePlayer.manaTotal)
 
     val messageToNAP = GameInfo.nextTurn(id,activePlayerName,
@@ -355,7 +355,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
   }
 
   private def attack() {
-    if (gameState.activePlayer.battlefield.collect({case gs => gs.gameSummon}).--(CurrentTurn.summonsPlayed).size > 0) {
+    if (gameState.activePlayer.battlefield.map(_.gameSummon).--(CurrentTurn.summonsPlayed).size > 0) {
       CurrentTurn.currentStep = GameSteps.COMBAT_Attack
       val phaseMessage = GameInfo.nextStep(id, GameSteps.COMBAT_Attack)
       p1.handler.sendMessageToClient(phaseMessage)
@@ -394,7 +394,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       synchronized {
         while (!done) {
           if (gameState.defendersSet) {
-            val defenseIDs = gameState.defenses.collect({case (gs, d) => Array[Int](gs.id) ++ d.collect({case g => g.id})}).toArray
+            val defenseIDs = gameState.defenses.collect({case (gs, d) => Array[Int](gs.id) ++ d.map(_.id)}).toArray
             gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.defenders(id, defenseIDs)))
             done = true
           }
@@ -436,7 +436,7 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       })
       if(playerLifeChanged){
         val player = gameState.nonActivePlayer
-        battleChanges ++= Array(new PlayerValueChange(player.handler.getUserName, GameChange.Value.LIFE, player.lifeTotal))
+        battleChanges ++= Array(new PlayerValueChange(player.handler.userName, GameChange.Value.LIFE, player.lifeTotal))
       }
 
       val battleResultsMessage = GameInfo.gameChanges(id, battleChanges)

@@ -1,6 +1,7 @@
 package server.game.card
 
 import common.card.{Summon, Spell, Card}
+import common.game.RemoteCard
 import server.game.Player
 
 /**
@@ -17,6 +18,8 @@ abstract class GameCard(val card: Card, val owner: Player, val id: Int) {
   def name = card.name
 
   def cost = card.cost
+
+  def remoteCard = new RemoteCard(id, owner.handler.userName, card)
 
   override def toString: String =
     "GameCard: card->[" + card + "],owner->[" + owner + "],id->" + id

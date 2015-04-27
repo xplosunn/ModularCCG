@@ -20,9 +20,9 @@ object Users {
   }
 
   def removeLoggedClient(handler: ClientHandler){
-    ChatRooms.removeFromAllChats(handler.getUserName)
+    ChatRooms.removeFromAllChats(handler.userName)
     Games.disconnect(handler)
-    loggedClients.remove(handler.getUserName)
+    loggedClients.remove(handler.userName)
   }
 
   def onlineCount: Int = loggedClients.size()
