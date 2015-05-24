@@ -33,21 +33,20 @@ object Duel {
 }
 
 class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, playerOneDeck: Deck, playerTwoDeck: Deck) extends Thread with Game{
-  val p1 = new Player(playerOneDeck, playerOneHandler, this)
-  val p2 = new Player(playerTwoDeck, playerTwoHandler, this)
-  val id = Duel.nextGameID
-  protected val gameState = new GameState(Array(p1,p2), this)
-  private val mulligans = new Array[Array[Int]](2)
-
-  private var _nextCardID = -1
-  private var playerDisconnection = false
-
-  def nextCardID: Int = {
+  def nextCardID(): Int = {
     synchronized{
       _nextCardID += 1
       _nextCardID
     }
   }
+  val p1 = new Player(playerOneDeck, playerOneHandler, nextCardID)
+  val p2 = new Player(playerTwoDeck, playerTwoHandler, nextCardID)
+  val id = Duel.nextGameID
+  protected val gameState = new GameState(Array(p1,p2), nextCardID)
+  private val mulligans = new Array[Array[Int]](2)
+
+  private var _nextCardID = -1
+  private var playerDisconnection = false
 
   def playerDisconnected(){
     playerDisconnection = true

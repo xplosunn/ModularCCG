@@ -15,7 +15,7 @@ import scala.collection.mutable.ArrayBuffer
 import java.util.Random
 
 object DuelTest{
-  def duels = {
+  val duels = {
     val duelsAttempt = Games.getClass.getDeclaredMethod("server$services$Games$$duels").invoke(Games)
     duelsAttempt match {
       case d: ConcurrentHashMap[Int, Duel] => d

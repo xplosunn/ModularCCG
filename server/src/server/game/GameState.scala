@@ -7,7 +7,7 @@ import server.game.exception.{GameTiedException, PlayerWonException}
 import scala.collection.mutable._
 import scala.util.Random
 
-class GameState (val players: Array[Player], val game: Game) {
+class GameState (val players: Array[Player], val nextCardIdCallback: () => Int) {
   if(players.length != 2)
     throw new IllegalArgumentException
   

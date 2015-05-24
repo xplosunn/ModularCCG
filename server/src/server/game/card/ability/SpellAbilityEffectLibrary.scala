@@ -64,7 +64,7 @@ object SpellAbilityEffectLibrary {
     val deck = state.nonActivePlayer.deck.cards
     if (deck.size > 0)
       for (i <- 0 until level) {
-        val remoteCard = new RemoteCard(state.game.nextCardID, state.activePlayer.handler.userName, deck(new Random().nextInt(deck.size)).card)
+        val remoteCard = new RemoteCard(state.nextCardIdCallback(), state.activePlayer.handler.userName, deck(new Random().nextInt(deck.size)).card)
         state.activePlayer.hand += GameCard.build(remoteCard.card, state.activePlayer, remoteCard.id)
         retn += new NewCard(remoteCard, GameChange.Zone.HAND)
       }

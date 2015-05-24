@@ -10,7 +10,7 @@ import server.game.card.{BattlefieldSummon, GameCard, GameSummon}
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
-class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
+class Player(val submittedDeck: Deck, val handler: ClientHandler, nextCardIdCallback: () => Int) {
   var lifeTotal = 30
   var manaTotal = 0
   var availableMana = 0
@@ -28,7 +28,7 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
   private def setupDeck(){
     for (tuple <- submittedDeck.cards) {
       for(_ <- 0 until tuple._2)
-        deck.cards += GameCard.build(tuple._1, this, game.nextCardID)
+        deck.cards += GameCard.build(tuple._1, this, nextCardIdCallback())
     }
     shuffleDeck()
   }
@@ -53,7 +53,7 @@ class Player(val submittedDeck: Deck, val handler: ClientHandler, game: Game) {
         if(cardIndex > tuple._2)
           cardIndex -= tuple._2
         else
-          return new CardDraw(handler.userName, new RemoteCard(game.nextCardID, handler.userName, tuple._1), true)
+          return new CardDraw(handler.userName, new RemoteCard(nextCardIdCallback(), handler.userName, tuple._1), true)
       }
       null
     }

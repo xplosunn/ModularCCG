@@ -20,6 +20,8 @@ final case class HandSelected(player: String, cardIDs: Array[Int])
 final case class PlayCard(player: String, id: Int)
 final case class NextStep(player: String)
 final case class EndTurn(player: String)
+final case class SetAttackers(player: String, attackerIDs: Array[Int])
+final case class SetDefenders(player: String, attackerIDs: Array[(Int, Int)])
 
 //final case class SetTarget(ref: ActorRef)
 //final case class Queue(obj: Any)
@@ -41,17 +43,14 @@ case object StateStarted extends Data
 case object NoData extends Data
 
 
-class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, playerOneDeck: Deck, playerTwoDeck: Deck)
+class fsmDuel(val gameState: GameState)
   extends FSM[State, Data] with Actor with Game{
-
-  val p1 = new Player(playerOneDeck, playerOneHandler, this)
-  val p2 = new Player(playerTwoDeck, playerTwoHandler, this)
-  val id = Duel.nextGameID
-  val gameState = new GameState(Array(p1,p2), this)
 
   var startingHandsSelected: (Boolean, Boolean) = (false, false)
   var secondsLeftThisTurn = Duel.SECONDS_PER_TURN
   var summonsPlayedThisTurn = new ArrayBuffer[GameSummon]()
+
+  val id = Duel.nextGameID
 
   private var _nextCardID = -1
 
@@ -67,8 +66,7 @@ class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, 
   //Hand Selection State
   when(HandSelection, stateTimeout = Duel.SECONDS_TO_MULLIGAN seconds) {
     case Event(StateStarted, _) =>
-      p1.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p1.hand.map(_.remoteCard).toArray))
-      p2.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p2.hand.map(_.remoteCard).toArray))
+      gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p.hand.map(_.remoteCard).toArray)))
       stay using NoData
 
     case Event(NextStep(player), _) =>
@@ -77,20 +75,20 @@ class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, 
 
     case Event(HandSelected(player, cardIDs), _) =>
       player match {
-        case p1User if p1User == p1.handler.userName =>
+        case p1User if p1User == gameState.players(0).handler.userName =>
           startingHandsSelected = (true, startingHandsSelected._2)
-          processPlayerHand(p1, cardIDs)
-        case p2User if p2User == p2.handler.userName =>
+          processPlayerHand(gameState.players(0), cardIDs)
+        case p2User if p2User == gameState.players(1).handler.userName =>
           startingHandsSelected = (startingHandsSelected._1, true)
-          processPlayerHand(p2, cardIDs)
+          processPlayerHand(gameState.players(1), cardIDs)
       }
       if(startingHandsSelected._1 && startingHandsSelected._2)
         goto(Main_1)
       stay using NoData
 
     case Event(StateTimeout, _) =>
-      if(!startingHandsSelected._1) processPlayerHand(p1, null)
-      if(!startingHandsSelected._2) processPlayerHand(p2, null)
+      if(!startingHandsSelected._1) processPlayerHand(gameState.players(0), null)
+      if(!startingHandsSelected._2) processPlayerHand(gameState.players(1), null)
       goto(Main_1).using(StateStarted)
   }
 
@@ -117,8 +115,7 @@ class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, 
   //Main_1 State
   when(Main_1, stateTimeout = Duel.SECONDS_PER_TURN seconds){
     case Event(StateStarted,_) =>
-      p1.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st))
-      p2.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st))
+      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st)))
       stay()
 
     case Event(StateTimeout,_) =>
@@ -140,8 +137,7 @@ class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, 
   //Main_2 State
   when(Main_2, stateTimeout = secondsLeftThisTurn seconds){
     case Event(StateStarted,_) =>
-      p1.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_2nd))
-      p2.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_2nd))
+      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_2nd)))
       stay()
 
     case Event(StateTimeout,_) =>
@@ -241,14 +237,55 @@ class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, 
   //Combat_Attack State
   when(Combat_Attack, stateTimeout = Duel.SECONDS_PER_TURN seconds){
     case Event(StateStarted,_) =>
-      p1.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack))
-      p2.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack))
+      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack)))
       stay()
 
+    case Event(SetAttackers(player, attackerIDs), _) =>
+      if(player != gameState.activePlayer.handler.userName) stay()
+      gameState.setAttackers(gameState.activePlayer.battlefield.filter(s => attackerIDs.contains(s.id)))
+      goto(Combat_Defend).using(StateStarted)
 
+    case Event(NextStep(player), _) =>
+      if(player != gameState.activePlayer.handler.userName) stay()
+      goto(Main_2).using(StateStarted)
+
+    case Event(StateTimeout,_) =>
+      goto(Main_2).using(StateStarted)
+
+    case Event(EndTurn(player), _) =>
+      if(player != gameState.activePlayer.handler.userName) stay()
+      endTurn
   }
 
-  initialize
+  //Combat_Defend State
+  when(Combat_Defend, stateTimeout = Duel.SECONDS_TO_CHOOSE_DEFENDERS seconds){
+    case Event(StateStarted,_) =>
+      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack)))
+      stay()
+
+    case Event(SetDefenders(player, defenses), _) =>
+      if(player == gameState.activePlayer.handler.userName || defenses == null) stay()
+
+      def nonNullTuple(tuple: (BattlefieldSummon, BattlefieldSummon)) = tuple._1 != null && tuple._2 != null
+
+      def findSummonInBattleField(owner: Player, id: Int): BattlefieldSummon =
+        owner.battlefield.collectFirst({case gc: BattlefieldSummon if gc.id == id => gc}).get
+
+      val defenseSummons = defenses.collect({case (attackerID, defenderID) =>
+        (findSummonInBattleField(gameState.activePlayer, attackerID), findSummonInBattleField(gameState.nonActivePlayer, defenderID))})
+        .filter(nonNullTuple)
+
+      gameState.setDefenders(defenseSummons)
+
+      val defenseIDs = gameState.defenses.collect({case (gs, d) => Array[Int](gs.id) ++ d.map(_.id)}).toArray
+      gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.defenders(id, defenseIDs)))
+      goto(Combat_Battle).using(StateStarted)
+
+    case Event(StateTimeout,_) =>
+      goto(Combat_Battle).using(StateStarted)
+  }
+
+  initialize()
 
   override def postStop(){}
 }
