@@ -21,7 +21,6 @@ import java.io.IOException;
  * Created by xs on 20-01-2015.
  */
 public class Lobby {
-
     private final ServerHandler serverHandler;
     public final Chat chat;
     private final Forge forge;

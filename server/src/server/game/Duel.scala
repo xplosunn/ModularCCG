@@ -390,24 +390,24 @@ class Duel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, pla
       val phaseMessage = GameInfo.nextStep(id, GameSteps.COMBAT_Defend)
       p1.handler.sendMessageToClient(phaseMessage)
       p2.handler.sendMessageToClient(phaseMessage)
-      var done = false
+      var defendersSet = false
       synchronized {
-        while (!done) {
+        while (!defendersSet) {
           if (gameState.defendersSet) {
             val defenseIDs = gameState.defenses.collect({case (gs, d) => Array[Int](gs.id) ++ d.map(_.id)}).toArray
             gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.defenders(id, defenseIDs)))
-            done = true
+            defendersSet = true
           }
           else if (CurrentTurn.defenderSecondsLeft > 0)
             try {
               wait(CurrentTurn.defenderSecondsLeft * 1000)
-              done = true
+              defendersSet = true
               //TODO implement extra time and maybe implement timer alert for player (?)
             } catch {
               case e: InterruptedException =>
             }
           else
-            done = true
+            defendersSet = true
         }
       }
     }

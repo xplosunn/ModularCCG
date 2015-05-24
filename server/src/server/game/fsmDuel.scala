@@ -19,6 +19,7 @@ import scala.concurrent.duration._
 final case class HandSelected(player: String, cardIDs: Array[Int])
 final case class PlayCard(player: String, id: Int)
 final case class NextStep(player: String)
+final case class EndTurn(player: String)
 
 //final case class SetTarget(ref: ActorRef)
 //final case class Queue(obj: Any)
@@ -67,6 +68,7 @@ class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, 
   when(HandSelection, stateTimeout = Duel.SECONDS_TO_MULLIGAN seconds) {
     case Event(StateStarted, _) =>
       p1.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p1.hand.map(_.remoteCard).toArray))
+      p2.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p2.hand.map(_.remoteCard).toArray))
       stay using NoData
 
     case Event(NextStep(player), _) =>
@@ -116,17 +118,63 @@ class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, 
   when(Main_1, stateTimeout = Duel.SECONDS_PER_TURN seconds){
     case Event(StateStarted,_) =>
       p1.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st))
+      p2.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st))
       stay()
+
+    case Event(StateTimeout,_) =>
+      endTurn
+
+    case Event(NextStep(player), _) =>
+      if(player != gameState.activePlayer.handler.userName) stay()
+      goto(Combat_Attack).using(StateStarted)
+
+    case Event(EndTurn(player), _) =>
+      if(player != gameState.activePlayer.handler.userName) stay()
+      endTurn
 
     case Event(PlayCard(player, cardID), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      val cardsFiltered = gameState.activePlayer.hand
-        .filter(card => card.id == cardID && card.card.cost <= gameState.activePlayer.availableMana)
-      if(cardsFiltered.isEmpty) stay()
-      val cardToPlay = cardsFiltered(0)
-      gameState.activePlayer.availableMana -= cardToPlay.cost
-      processPlayCard(cardToPlay)
+      playCard(cardID)
+  }
+
+  //Main_2 State
+  when(Main_2, stateTimeout = secondsLeftThisTurn seconds){
+    case Event(StateStarted,_) =>
+      p1.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_2nd))
+      p2.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_2nd))
       stay()
+
+    case Event(StateTimeout,_) =>
+      endTurn
+
+    case Event(NextStep(player), _) =>
+      if(player != gameState.activePlayer.handler.userName) stay()
+      endTurn
+
+    case Event(EndTurn(player), _) =>
+      if(player != gameState.activePlayer.handler.userName) stay()
+      endTurn
+
+    case Event(PlayCard(player, cardID), _) =>
+      if(player != gameState.activePlayer.handler.userName) stay()
+      playCard(cardID)
+  }
+
+  def playCard(cardID: Int) = {
+    val cardsFiltered = gameState.activePlayer.hand
+      .filter(card => card.id == cardID && card.card.cost <= gameState.activePlayer.availableMana)
+    if(cardsFiltered.isEmpty) stay()
+    val cardToPlay = cardsFiltered(0)
+    gameState.activePlayer.availableMana -= cardToPlay.cost
+    processPlayCard(cardToPlay)
+    stay()
+  }
+
+  def endTurn = {
+    gameState.nextTurn()
+    summonsPlayedThisTurn.clear()
+    secondsLeftThisTurn = Duel.SECONDS_PER_TURN
+    goto(Main_1).using(StateStarted)
   }
 
   /**
@@ -188,6 +236,16 @@ class fsmDuel(playerOneHandler: ClientHandler, playerTwoHandler: ClientHandler, 
       gameState.players.foreach(player => player.handler.sendMessageToClient(message))
       nextDeathTrigger = gameState.nextDeathTrigger
     }
+  }
+
+  //Combat_Attack State
+  when(Combat_Attack, stateTimeout = Duel.SECONDS_PER_TURN seconds){
+    case Event(StateStarted,_) =>
+      p1.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack))
+      p2.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack))
+      stay()
+
+
   }
 
   initialize
