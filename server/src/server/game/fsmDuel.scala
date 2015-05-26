@@ -3,7 +3,7 @@ package server.game
 import akka.actor.{Actor, ActorRef, FSM}
 import common.card.Deck
 import common.card.ability.{SummonAbility, SummonAbilityLibrary}
-import common.card.ability.change.{CardDraw, GameChange}
+import common.card.ability.change.{PlayerValueChange, SummonValueChange, CardDraw, GameChange}
 import common.game.{GameSteps, RemoteCard}
 import common.network.messages.serverToClient.GameInfo
 import server.ClientHandler
@@ -35,11 +35,9 @@ case object HandSelection extends State
 case object Main_1 extends State
 case object Combat_Attack extends State
 case object Combat_Defend extends State
-case object Combat_Battle extends State
 case object Main_2 extends State
 
 sealed trait Data
-case object StateStarted extends Data
 case object NoData extends Data
 
 
@@ -48,7 +46,7 @@ class fsmDuel(val gameState: GameState)
 
   var startingHandsSelected: (Boolean, Boolean) = (false, false)
   var secondsLeftThisTurn = Duel.SECONDS_PER_TURN
-  var summonsPlayedThisTurn = new ArrayBuffer[GameSummon]()
+  var summonsPlayedThisTurn = new ArrayBuffer[BattlefieldSummon]()
 
   val id = Duel.nextGameID
 
@@ -61,18 +59,29 @@ class fsmDuel(val gameState: GameState)
     }
   }
 
-  startWith(HandSelection, StateStarted)
+  startWith(HandSelection, NoData)
+
+  override def preStart(){
+    gameState.players.foreach(p => {
+      p.shuffleDeck()
+      (1 to 6).foreach(_ => p.drawCard)
+      p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p.hand.map(_.remoteCard).toArray))
+    })
+  }
+
+  onTransition{
+    case _ -> Main_1 =>
+      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st)))
+    case _ -> Main_2 =>
+      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_2nd)))
+    case _ -> Combat_Attack =>
+      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack)))
+    case _ -> Combat_Defend =>
+      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Defend)))
+  }
 
   //Hand Selection State
   when(HandSelection, stateTimeout = Duel.SECONDS_TO_MULLIGAN seconds) {
-    case Event(StateStarted, _) =>
-      gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p.hand.map(_.remoteCard).toArray)))
-      stay using NoData
-
-    case Event(NextStep(player), _) =>
-      if (player != gameState.activePlayer.handler.userName) stay()
-      goto(Combat_Attack).using(StateStarted)
-
     case Event(HandSelected(player, cardIDs), _) =>
       player match {
         case p1User if p1User == gameState.players(0).handler.userName =>
@@ -83,13 +92,14 @@ class fsmDuel(val gameState: GameState)
           processPlayerHand(gameState.players(1), cardIDs)
       }
       if(startingHandsSelected._1 && startingHandsSelected._2)
-        goto(Main_1)
-      stay using NoData
+        endTurn
+      else
+        stay using NoData
 
     case Event(StateTimeout, _) =>
       if(!startingHandsSelected._1) processPlayerHand(gameState.players(0), null)
       if(!startingHandsSelected._2) processPlayerHand(gameState.players(1), null)
-      goto(Main_1).using(StateStarted)
+      goto(Main_1)
   }
 
   def processPlayerHand(player: Player, cardIDs: Array[Int]): Unit ={
@@ -114,16 +124,15 @@ class fsmDuel(val gameState: GameState)
 
   //Main_1 State
   when(Main_1, stateTimeout = Duel.SECONDS_PER_TURN seconds){
-    case Event(StateStarted,_) =>
-      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st)))
-      stay()
-
     case Event(StateTimeout,_) =>
       endTurn
 
     case Event(NextStep(player), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      goto(Combat_Attack).using(StateStarted)
+      if((gameState.activePlayer.battlefield -- summonsPlayedThisTurn).size > 0)
+        goto(Combat_Attack)
+      else
+        goto(Main_2)
 
     case Event(EndTurn(player), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
@@ -131,46 +140,55 @@ class fsmDuel(val gameState: GameState)
 
     case Event(PlayCard(player, cardID), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      playCard(cardID)
+      else{
+        playCard(cardID)
+        stay()
+      }
   }
 
   //Main_2 State
   when(Main_2, stateTimeout = secondsLeftThisTurn seconds){
-    case Event(StateStarted,_) =>
-      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_2nd)))
-      stay()
 
     case Event(StateTimeout,_) =>
       endTurn
 
     case Event(NextStep(player), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      endTurn
+      else endTurn
 
     case Event(EndTurn(player), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      endTurn
+      else endTurn
 
     case Event(PlayCard(player, cardID), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      playCard(cardID)
+      else{
+        playCard(cardID)
+        stay()
+      }
   }
 
   def playCard(cardID: Int) = {
     val cardsFiltered = gameState.activePlayer.hand
       .filter(card => card.id == cardID && card.card.cost <= gameState.activePlayer.availableMana)
-    if(cardsFiltered.isEmpty) stay()
-    val cardToPlay = cardsFiltered(0)
-    gameState.activePlayer.availableMana -= cardToPlay.cost
-    processPlayCard(cardToPlay)
-    stay()
+    if(cardsFiltered.isEmpty){
+      println("card id ->" + cardID)
+      println("ap" + gameState.activePlayer.hand.map(gc => gc.id))
+    }else {
+      val cardToPlay = cardsFiltered(0)
+      gameState.activePlayer.availableMana -= cardToPlay.cost
+      processPlayCard(cardToPlay)
+    }
   }
 
   def endTurn = {
     gameState.nextTurn()
     summonsPlayedThisTurn.clear()
     secondsLeftThisTurn = Duel.SECONDS_PER_TURN
-    goto(Main_1).using(StateStarted)
+    val draw = gameState.activePlayer.drawCard
+    gameState.activePlayer.handler.sendMessageToClient(GameInfo.nextTurn(id, gameState.activePlayer.handler.userName, Array(draw)))
+    gameState.nonActivePlayer.handler.sendMessageToClient(GameInfo.nextTurn(id, gameState.activePlayer.handler.userName, Array(new CardDraw(draw.drawingPlayer, null, draw.deckEnded))))
+    goto(Main_1)
   }
 
   /**
@@ -184,8 +202,8 @@ class fsmDuel(val gameState: GameState)
     val changes = new ArrayBuffer[GameChange]()
     gameCard match {
       case gameCard: GameSummon =>
-        summonsPlayedThisTurn += gameCard
         val battlefieldSummon = new BattlefieldSummon(gameCard)
+        summonsPlayedThisTurn += battlefieldSummon
         activePlayer.battlefield += battlefieldSummon
         (0 until gameCard.card.MAXIMUM_ABILITIES).toStream.takeWhile(i => gameCard.card.abilityLibraryIndex(i) != -1).foreach(
           i => {val index = gameCard.card.abilityLibraryIndex(i)
@@ -236,33 +254,33 @@ class fsmDuel(val gameState: GameState)
 
   //Combat_Attack State
   when(Combat_Attack, stateTimeout = Duel.SECONDS_PER_TURN seconds){
-    case Event(StateStarted,_) =>
-      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack)))
-      stay()
-
     case Event(SetAttackers(player, attackerIDs), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      gameState.setAttackers(gameState.activePlayer.battlefield.filter(s => attackerIDs.contains(s.id)))
-      goto(Combat_Defend).using(StateStarted)
+      else{
+        gameState.setAttackers(gameState.activePlayer.battlefield.filter(s => attackerIDs.contains(s.id)))
+        if(gameState.nonActivePlayer.battlefield.size > 0)
+          goto(Combat_Defend)
+        else{
+          processBattle()
+          goto(Main_2)
+        }
+
+      }
 
     case Event(NextStep(player), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      goto(Main_2).using(StateStarted)
+      else goto(Main_2)
 
     case Event(StateTimeout,_) =>
-      goto(Main_2).using(StateStarted)
+      goto(Main_2)
 
     case Event(EndTurn(player), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      endTurn
+      else endTurn
   }
 
   //Combat_Defend State
   when(Combat_Defend, stateTimeout = Duel.SECONDS_TO_CHOOSE_DEFENDERS seconds){
-    case Event(StateStarted,_) =>
-      gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack)))
-      stay()
-
     case Event(SetDefenders(player, defenses), _) =>
       if(player == gameState.activePlayer.handler.userName || defenses == null) stay()
 
@@ -279,10 +297,57 @@ class fsmDuel(val gameState: GameState)
 
       val defenseIDs = gameState.defenses.collect({case (gs, d) => Array[Int](gs.id) ++ d.map(_.id)}).toArray
       gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.defenders(id, defenseIDs)))
-      goto(Combat_Battle).using(StateStarted)
+      processBattle()
+      goto(Main_2)
 
     case Event(StateTimeout,_) =>
-      goto(Combat_Battle).using(StateStarted)
+      processBattle()
+      goto(Main_2)
+  }
+
+  private def processBattle() {
+    if (gameState.attackers != null && gameState.attackers.size > 0){
+      val phaseMessage = GameInfo.nextStep(id, GameSteps.COMBAT_Battle)
+      gameState.players.foreach(_.handler.sendMessageToClient(phaseMessage))
+      var battleChanges = new Array[GameChange](0)
+      var playerLifeChanged = false
+      gameState.defenses.foreach({case (attacker, defenders) =>
+        if(defenders.size >= 1){
+          defenders.foreach(defender => {
+            attacker.changeLifeBy(0-defender.power)
+            defender.changeLifeBy(0-attacker.power)
+            battleChanges ++= Array(new SummonValueChange(defender.id, GameChange.Value.LIFE, defender.life))
+          })
+          battleChanges ++= Array(new SummonValueChange(attacker.id, GameChange.Value.LIFE, attacker.life))
+        }else{
+          gameState.nonActivePlayer.changeLifeBy(0-attacker.power)
+          playerLifeChanged = true
+        }
+      })
+      if(playerLifeChanged){
+        val player = gameState.nonActivePlayer
+        battleChanges ++= Array(new PlayerValueChange(player.handler.userName, GameChange.Value.LIFE, player.lifeTotal))
+      }
+
+      val battleResultsMessage = GameInfo.gameChanges(id, battleChanges)
+      gameState.players.foreach(_.handler.sendMessageToClient(battleResultsMessage))
+
+      gameState.defenses.foreach(d => (d._2 + d._1).foreach(summon => {
+        (0 until summon.card.MAXIMUM_ABILITIES).toStream.takeWhile(i => summon.card.abilityLevel(i) != -1).foreach(i => {
+          if(SummonAbilityLibrary.abilityList(summon.card.abilityLibraryIndex(i)).timing == SummonAbility.ON_COMBAT){
+            val triggerChanges = SummonAbilityEffectLibrary.effects(summon.card.abilityLibraryIndex(i)).apply(summon.card.abilityLevel(i), gameState, summon)
+            if(triggerChanges.size > 0){
+              val changesArray = new Array[GameChange](0) ++ triggerChanges
+              gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.onCombatAbility(id, summon.id, changesArray)))
+            }
+          }
+        })
+      }))
+
+      gameState.checkBattlefieldState()
+      processDeathTriggers()
+      gameState.checkPlayerState()
+    }
   }
 
   initialize()
