@@ -1,5 +1,7 @@
 package unit.server.game
 
+import java.util.Random
+
 import akka.actor.{Props, ActorSystem}
 import akka.testkit.{TestFSMRef, TestActorRef}
 import common.card.{Summon, Deck}
@@ -7,6 +9,7 @@ import common.game.GameSteps
 import org.junit.Assert._
 import org.junit.{After, Before, Test}
 import server.game._
+import server.game.card.{GameSummon, BattlefieldSummon}
 import unit.UnitTestConstants
 
 import scala.collection.mutable.ArrayBuffer
@@ -32,7 +35,9 @@ class fsmDuelTest {
   def newFsmDuel = {
     val gs = new GameState(Array(new Player(deck, c1, nextCardID),new Player(deck, c2, nextCardID)), nextCardID)
     implicit val actorSystem = ActorSystem("HelloSystem")
-    val actor: TestActorRef[fsmDuel] = TestFSMRef(new fsmDuel(gs))
+    val actor: TestActorRef[fsmDuel] = TestFSMRef(new fsmDuel())
+    actor ! NewDuel(gs)
+    Thread.sleep(UnitTestConstants.processMillis)
     (actor, gs)
   }
 
@@ -100,7 +105,23 @@ class fsmDuelTest {
 
   @Test
   def turnReaminingTime() {
-
+    // wait some random time during the turn, do an action, then wait the time remaining for that turn, then check if it ended
+    val (duelActor, gameState) = newFsmDuel
+    duelActor.start()
+    Thread.sleep(UnitTestConstants.processMillis)
+    val waitTime = Duel.SECONDS_PER_TURN / 4 + new Random().nextInt(Duel.SECONDS_PER_TURN/4)
+    Thread.sleep(UnitTestConstants.processMillis)
+    gameState.players.foreach(p => duelActor ! HandSelected(p.handler.userName, Array(p.hand(0).id, p.hand(1).id, p.hand(2).id)))
+    Thread.sleep(UnitTestConstants.processMillis)
+    gameState.players.foreach(p => assertTrue(p.hand.size <= 4))
+    Thread.sleep(waitTime * 1000)
+    val ap = gameState.activePlayer
+    duelActor ! PlayCard(ap.handler.userName, ap.hand(0).id)
+    Thread.sleep(UnitTestConstants.processMillis)
+    assertTrue(ap.battlefield.nonEmpty)
+    Thread.sleep((Duel.SECONDS_PER_TURN - waitTime)*1000)
+    Thread.sleep(UnitTestConstants.processMillis)
+    assertTrue(gameState.activePlayer != ap)
   }
 
   @Test
@@ -184,5 +205,47 @@ class fsmDuelTest {
       assertTrue(p.pile.size == 1)
     })
 
+  }
+
+  @Test
+  def attackForWin(){
+    val (duelActor, gameState) = newFsmDuel
+
+    duelActor.start()
+    assertEquals(HandSelection, duelActor.underlyingActor.stateName)
+    //Mulligans
+    Thread.sleep(UnitTestConstants.processMillis)
+    gameState.players.foreach(p => duelActor ! HandSelected(p.handler.userName, Array(p.hand(0).id, p.hand(1).id, p.hand(2).id)))
+    Thread.sleep(UnitTestConstants.processMillis)
+
+    assertEquals(Main_1, duelActor.underlyingActor.stateName)
+    gameState.activePlayer.battlefield += new BattlefieldSummon(new GameSummon(new Summon{power(30)}, gameState.activePlayer, 300))
+    duelActor ! NextStep(gameState.activePlayer.handler.userName)
+    Thread.sleep(UnitTestConstants.processMillis)
+
+    assertEquals(Combat_Attack, duelActor.underlyingActor.stateName)
+
+    duelActor ! SetAttackers(gameState.activePlayer.handler.userName, Array(300))
+
+    Thread.sleep(UnitTestConstants.processMillis)
+
+    assertEquals(0, gameState.nonActivePlayer.lifeTotal)
+    assertEquals(Available, duelActor.underlyingActor.stateName)
+  }
+
+  @Test
+  def unExpectedMessage(){
+    val (duelActor, gameState) = newFsmDuel
+    duelActor.start()
+    assertEquals(HandSelection, duelActor.underlyingActor.stateName)
+
+    Thread.sleep(UnitTestConstants.processMillis)
+    duelActor ! EndTurn(gameState.activePlayer.handler.userName)
+    //Mulligans
+    Thread.sleep(UnitTestConstants.processMillis)
+    gameState.players.foreach(p => duelActor ! HandSelected(p.handler.userName, Array(p.hand(0).id, p.hand(1).id, p.hand(2).id)))
+    Thread.sleep(UnitTestConstants.processMillis)
+
+    assertEquals(Main_1, duelActor.underlyingActor.stateName)
   }
 }

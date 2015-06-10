@@ -1,6 +1,9 @@
 package server.game
 
+import java.util.concurrent.TimeUnit
+
 import akka.actor.{Actor, ActorRef, FSM}
+import com.google.common.base.Stopwatch
 import common.card.Deck
 import common.card.ability.{SummonAbility, SummonAbilityLibrary}
 import common.card.ability.change.{PlayerValueChange, SummonValueChange, CardDraw, GameChange}
@@ -9,6 +12,7 @@ import common.network.messages.serverToClient.GameInfo
 import server.ClientHandler
 import server.game.card.ability.{SpellAbilityEffectLibrary, SummonAbilityEffectLibrary}
 import server.game.card.{GameSpell, BattlefieldSummon, GameSummon, GameCard}
+import server.game.exception.{GameTiedException, PlayerWonException}
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.duration._
 
@@ -16,6 +20,7 @@ import scala.concurrent.duration._
  * Created by HugoSousa on 14-04-2015.
  */
 // received events
+final case class NewDuel(gameState: GameState)
 final case class HandSelected(player: String, cardIDs: Array[Int])
 final case class PlayCard(player: String, id: Int)
 final case class NextStep(player: String)
@@ -31,6 +36,7 @@ final case class SetDefenders(player: String, attackerIDs: Array[(Int, Int)])
 
 // states
 sealed trait State
+case object Available extends State
 case object HandSelection extends State
 case object Main_1 extends State
 case object Combat_Attack extends State
@@ -41,14 +47,15 @@ sealed trait Data
 case object NoData extends Data
 
 
-class fsmDuel(val gameState: GameState)
-  extends FSM[State, Data] with Actor with Game{
+class fsmDuel extends FSM[State, Data] with Game{
 
   var startingHandsSelected: (Boolean, Boolean) = (false, false)
   var secondsLeftThisTurn = Duel.SECONDS_PER_TURN
   var summonsPlayedThisTurn = new ArrayBuffer[BattlefieldSummon]()
 
   val id = Duel.nextGameID
+  
+  var gameState: GameState = null
 
   private var _nextCardID = -1
 
@@ -59,17 +66,15 @@ class fsmDuel(val gameState: GameState)
     }
   }
 
-  startWith(HandSelection, NoData)
-
-  override def preStart(){
-    gameState.players.foreach(p => {
-      p.shuffleDeck()
-      (1 to 6).foreach(_ => p.drawCard)
-      p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p.hand.map(_.remoteCard).toArray))
-    })
-  }
+  startWith(Available, NoData)
 
   onTransition{
+    case Available -> HandSelection =>
+      gameState.players.foreach(p => {
+        p.shuffleDeck()
+        (1 to 6).foreach(_ => p.drawCard)
+        p.handler.sendMessageToClient(GameInfo.handPreMulligan(id, p.hand.map(_.remoteCard).toArray))
+      })
     case _ -> Main_1 =>
       gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st)))
     case _ -> Main_2 =>
@@ -78,6 +83,15 @@ class fsmDuel(val gameState: GameState)
       gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack)))
     case _ -> Combat_Defend =>
       gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Defend)))
+    case _ -> Available =>
+      gameState = null
+  }
+
+  //Available State
+  when(Available) {
+    case Event(NewDuel(gs), _) =>
+      gameState = gs
+      goto(HandSelection).using(NoData)
   }
 
   //Hand Selection State
@@ -104,7 +118,7 @@ class fsmDuel(val gameState: GameState)
 
   def processPlayerHand(player: Player, cardIDs: Array[Int]): Unit ={
     if(cardIDs != null && cardIDs.size == 3 &&
-      cardIDs.forall(mullCardID => player.hand.exists(gc => gc.id == mullCardID))){
+      cardIDs.forall(mullCardID => player.hand.exists(_.id == mullCardID))){
       for(id <- cardIDs){
         val cardBackToDeck = player.hand.filter(gc => gc.id == id)(0)
         player.hand -= cardBackToDeck
@@ -141,8 +155,17 @@ class fsmDuel(val gameState: GameState)
     case Event(PlayCard(player, cardID), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
       else{
-        playCard(cardID)
-        stay()
+        try{
+          playCard(cardID)
+          stay()
+        }catch{
+          case e: PlayerWonException =>
+            playerWon(e)
+            goto(Available)
+          case e: GameTiedException =>
+            gameTied(e)
+            goto(Available)
+        }
       }
   }
 
@@ -163,8 +186,17 @@ class fsmDuel(val gameState: GameState)
     case Event(PlayCard(player, cardID), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
       else{
-        playCard(cardID)
-        stay()
+        try{
+          playCard(cardID)
+          stay()
+        }catch{
+          case e: PlayerWonException =>
+            playerWon(e)
+            goto(Available)
+          case e: GameTiedException =>
+            gameTied(e)
+            goto(Available)
+        }
       }
   }
 
@@ -237,7 +269,16 @@ class fsmDuel(val gameState: GameState)
     gameState.nonActivePlayer.handler.sendMessageToClient(messageToNAP)
 
     processDeathTriggers()
-    gameState.checkPlayerState()
+    try {
+      gameState.checkPlayerState()
+    }catch{
+      case e: PlayerWonException =>
+        playerWon(e)
+        goto(Available)
+      case e: GameTiedException =>
+        gameTied(e)
+        goto(Available)
+    }
   }
 
   private def processDeathTriggers() {
@@ -261,8 +302,17 @@ class fsmDuel(val gameState: GameState)
         if(gameState.nonActivePlayer.battlefield.size > 0)
           goto(Combat_Defend)
         else{
-          processBattle()
-          goto(Main_2)
+          try{
+            processBattle()
+            goto(Main_2)
+          }catch{
+            case e: PlayerWonException =>
+              playerWon(e)
+              goto(Available)
+            case e: GameTiedException =>
+              gameTied(e)
+              goto(Available)
+          }
         }
 
       }
@@ -297,12 +347,30 @@ class fsmDuel(val gameState: GameState)
 
       val defenseIDs = gameState.defenses.collect({case (gs, d) => Array[Int](gs.id) ++ d.map(_.id)}).toArray
       gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.defenders(id, defenseIDs)))
-      processBattle()
-      goto(Main_2)
+      try{
+        processBattle()
+        goto(Main_2)
+      }catch{
+        case e: PlayerWonException =>
+          playerWon(e)
+          goto(Available)
+        case e: GameTiedException =>
+          gameTied(e)
+          goto(Available)
+      }
 
     case Event(StateTimeout,_) =>
-      processBattle()
-      goto(Main_2)
+      try{
+        processBattle()
+        goto(Main_2)
+      }catch{
+        case e: PlayerWonException =>
+          playerWon(e)
+          goto(Available)
+        case e: GameTiedException =>
+          gameTied(e)
+          goto(Available)
+      }
   }
 
   private def processBattle() {
@@ -350,7 +418,17 @@ class fsmDuel(val gameState: GameState)
     }
   }
 
+  private def playerWon(e: PlayerWonException){
+    gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.playerWon(id, e.player)))
+  }
+
+  private def gameTied(e: GameTiedException){
+    gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.gameTied(id)))
+  }
+
   initialize()
 
   override def postStop(){}
+
+
 }
