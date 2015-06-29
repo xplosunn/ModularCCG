@@ -67,7 +67,7 @@ class MessagesToClientTest {
     lastMsg match{
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.GAME_STARTED)
+        assertTrue(msg.`type` == GameInfo.TYPE.GAME_STARTED)
         assertTrue(msg.playerNames().size == playerNames.size)
         for(i<- playerNames.indices)
           assertTrue(msg.playerNames()(i) == playerNames(i))
@@ -90,7 +90,7 @@ class MessagesToClientTest {
     lastMsg match{
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.NEXT_STEP)
+        assertTrue(msg.`type` == GameInfo.TYPE.NEXT_STEP)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == step)
         assertTrue(msg.card == null)
@@ -112,7 +112,7 @@ class MessagesToClientTest {
     lastMsg match{
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.CARD_PLAYED)
+        assertTrue(msg.`type` == GameInfo.TYPE.CARD_PLAYED)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == null)
         assertTrue(msg.card.id == remoteCard.id)
@@ -137,7 +137,7 @@ class MessagesToClientTest {
     lastMsg match{
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.NEXT_TURN)
+        assertTrue(msg.`type` == GameInfo.TYPE.NEXT_TURN)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == null)
         assertTrue(msg.card == null)
@@ -159,7 +159,7 @@ class MessagesToClientTest {
     lastMsg match{
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.GAME_CHANGES)
+        assertTrue(msg.`type` == GameInfo.TYPE.GAME_CHANGES)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == null)
         assertTrue(msg.card == null)
@@ -181,7 +181,7 @@ class MessagesToClientTest {
     lastMsg match{
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.PLAYER_WON)
+        assertTrue(msg.`type` == GameInfo.TYPE.PLAYER_WON)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == null)
         assertTrue(msg.card == null)
@@ -202,7 +202,7 @@ class MessagesToClientTest {
     lastMsg match{
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.ATTACKERS)
+        assertTrue(msg.`type` == GameInfo.TYPE.ATTACKERS)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == null)
         assertTrue(msg.card == null)
@@ -225,7 +225,7 @@ class MessagesToClientTest {
     lastMsg match{
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.DEFENDERS)
+        assertTrue(msg.`type` == GameInfo.TYPE.DEFENDERS)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == null)
         assertTrue(msg.card == null)
@@ -252,7 +252,7 @@ class MessagesToClientTest {
     lastMsg match {
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.ON_DEATH_ABILITY)
+        assertTrue(msg.`type` == GameInfo.TYPE.ON_DEATH_ABILITY)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == null)
         assertTrue(msg.card == null)
@@ -274,7 +274,7 @@ class MessagesToClientTest {
     lastMsg match {
       case msg: GameInfo =>
         assertTrue(msg.gameID == gameID)
-        assertTrue(msg.`type` == GameInfo.TYPES.ON_COMBAT_ABILITY)
+        assertTrue(msg.`type` == GameInfo.TYPE.ON_COMBAT_ABILITY)
         assertTrue(msg.playerNames == null)
         assertTrue(msg.step == null)
         assertTrue(msg.card == null)

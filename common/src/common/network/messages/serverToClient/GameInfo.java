@@ -6,7 +6,7 @@ import common.card.ability.change.GameChange;
 import scala.Tuple2;
 
 public class GameInfo extends MessageToClient{
-    public static enum TYPES {
+    public static enum TYPE {
         GAME_STARTED,
         HAND_PRE_MULLIGAN,
         HAND,
@@ -22,10 +22,10 @@ public class GameInfo extends MessageToClient{
         TIE
     }
     public final int gameID;
-    public final TYPES type;
+    public final TYPE type;
     private final Object data;
 
-    private GameInfo(int gameID, TYPES type, Object data){
+    private GameInfo(int gameID, TYPE type, Object data){
         this.gameID = gameID;
         this.type = type;
         this.data = data;
@@ -39,32 +39,32 @@ public class GameInfo extends MessageToClient{
      * @param playerNames the usernames of each of the players ordered by turn sequence
      */
     public static GameInfo gameStarted(int gameID, String[] playerNames){
-        return new GameInfo(gameID, TYPES.GAME_STARTED, playerNames);
+        return new GameInfo(gameID, TYPE.GAME_STARTED, playerNames);
     }
 
     public String[] playerNames() {
-        return type == TYPES.GAME_STARTED ? (String[]) data : null;
+        return type == TYPE.GAME_STARTED ? (String[]) data : null;
     }
 
     // Hand pre mulligan
 
     public static GameInfo handPreMulligan(int gameID, RemoteCard[] cards){
-        return new GameInfo(gameID, TYPES.HAND_PRE_MULLIGAN, cards);
+        return new GameInfo(gameID, TYPE.HAND_PRE_MULLIGAN, cards);
 
     }
 
     public RemoteCard[] getCards(){
-        return type == TYPES.HAND_PRE_MULLIGAN ? (RemoteCard[]) data : null;
+        return type == TYPE.HAND_PRE_MULLIGAN ? (RemoteCard[]) data : null;
     }
 
     // Hand
 
     public static GameInfo hand(int gameID, int[] cardIDs){
-        return new GameInfo(gameID, TYPES.HAND, cardIDs);
+        return new GameInfo(gameID, TYPE.HAND, cardIDs);
     }
 
     public int[] getCardIDs(){
-        return type == TYPES.HAND ? (int[]) data : null;
+        return type == TYPE.HAND ? (int[]) data : null;
     }
 
     // Next Step
@@ -75,11 +75,11 @@ public class GameInfo extends MessageToClient{
      * @param step the step starting
      */
     public static GameInfo nextStep(int gameID, GameSteps step){
-        return new GameInfo(gameID, TYPES.NEXT_STEP, step);
+        return new GameInfo(gameID, TYPE.NEXT_STEP, step);
     }
 
     public GameSteps step(){
-        return type == TYPES.NEXT_STEP ? (GameSteps) data : null;
+        return type == TYPE.NEXT_STEP ? (GameSteps) data : null;
     }
 
     // Card played
@@ -91,11 +91,11 @@ public class GameInfo extends MessageToClient{
      * @param changes
      */
     public static GameInfo cardPlayed(int gameID, RemoteCard remoteCard, GameChange[] changes ){
-        return new GameInfo(gameID, TYPES.CARD_PLAYED, new Tuple2<RemoteCard,GameChange[]>(remoteCard,changes));
+        return new GameInfo(gameID, TYPE.CARD_PLAYED, new Tuple2<RemoteCard,GameChange[]>(remoteCard,changes));
     }
 
     public RemoteCard card(){
-        return type == TYPES.CARD_PLAYED ? ((Tuple2<RemoteCard,GameChange[]>)data)._1() : null;
+        return type == TYPE.CARD_PLAYED ? ((Tuple2<RemoteCard,GameChange[]>)data)._1() : null;
     }
 
     // Next Turn
@@ -107,7 +107,7 @@ public class GameInfo extends MessageToClient{
      * @param changes
      */
     public static GameInfo nextTurn(int gameID, String player, GameChange[] changes){
-        return new GameInfo(gameID, TYPES.NEXT_TURN, new Tuple2<String, GameChange[]>(player, changes));
+        return new GameInfo(gameID, TYPE.NEXT_TURN, new Tuple2<String, GameChange[]>(player, changes));
     }
 
     //Player Won
@@ -118,7 +118,7 @@ public class GameInfo extends MessageToClient{
      * @param winner
      */
     public static GameInfo playerWon(int gameID, String winner){
-        return new GameInfo(gameID, TYPES.PLAYER_WON, winner);
+        return new GameInfo(gameID, TYPE.PLAYER_WON, winner);
     }
 
     //Next turn && Player Won
@@ -137,7 +137,7 @@ public class GameInfo extends MessageToClient{
      * @param gameID
      */
     public static GameInfo gameTied(int gameID){
-        return new GameInfo(gameID, TYPES.TIE, null);
+        return new GameInfo(gameID, TYPE.TIE, null);
     }
 
     // Game change
@@ -148,7 +148,7 @@ public class GameInfo extends MessageToClient{
      * @param changes
      */
     public static GameInfo gameChanges(int gameID, GameChange[] changes){
-        return new GameInfo(gameID, TYPES.GAME_CHANGES, changes);
+        return new GameInfo(gameID, TYPE.GAME_CHANGES, changes);
     }
 
 
@@ -160,11 +160,11 @@ public class GameInfo extends MessageToClient{
      * @param attackerIDs
      */
     public static GameInfo attackers(int gameID, int[] attackerIDs){
-        return new GameInfo(gameID, TYPES.ATTACKERS, attackerIDs);
+        return new GameInfo(gameID, TYPE.ATTACKERS, attackerIDs);
     }
 
     public int[] attackerIDs(){
-        return type == TYPES.ATTACKERS ? (int[]) data : null;
+        return type == TYPE.ATTACKERS ? (int[]) data : null;
     }
 
     //Defenders
@@ -175,11 +175,11 @@ public class GameInfo extends MessageToClient{
      * @param defenseIDs
      */
     public static GameInfo defenders(int gameID, int[][] defenseIDs){
-        return new GameInfo(gameID, TYPES.DEFENDERS, defenseIDs);
+        return new GameInfo(gameID, TYPE.DEFENDERS, defenseIDs);
     }
 
     public int[][] defenseIDs(){
-        return type == TYPES.DEFENDERS ? (int[][]) data : null;
+        return type == TYPE.DEFENDERS ? (int[][]) data : null;
     }
 
     //On death and on combat ability
@@ -191,14 +191,14 @@ public class GameInfo extends MessageToClient{
      * @param changes
      */
     public static GameInfo onDeathAbility(int gameID, int summonID, GameChange[] changes){
-        return new GameInfo(gameID, TYPES.ON_DEATH_ABILITY, new Tuple2<Integer, GameChange[]>(summonID, changes));
+        return new GameInfo(gameID, TYPE.ON_DEATH_ABILITY, new Tuple2<Integer, GameChange[]>(summonID, changes));
     }
     public static GameInfo onCombatAbility(int gameID, int summonID, GameChange[] changes){
-        return new GameInfo(gameID, TYPES.ON_COMBAT_ABILITY, new Tuple2<Integer, GameChange[]>(summonID, changes));
+        return new GameInfo(gameID, TYPE.ON_COMBAT_ABILITY, new Tuple2<Integer, GameChange[]>(summonID, changes));
     }
 
     public Integer summonID(){
-        return (type == TYPES.ON_DEATH_ABILITY || type == TYPES.ON_COMBAT_ABILITY) ? ((Tuple2<Integer, GameChange[]>) data)._1() : null;
+        return (type == TYPE.ON_DEATH_ABILITY || type == TYPE.ON_COMBAT_ABILITY) ? ((Tuple2<Integer, GameChange[]>) data)._1() : null;
     }
 
     //Multiple
@@ -219,51 +219,57 @@ public class GameInfo extends MessageToClient{
         switch (type) {
             case GAME_STARTED:
                 for(int i = 0; i < playerNames().length; i++)
-                    output += playerNames()[i] + " , ";
+                    output += playerNames()[i] + (i < playerNames().length - 1 ? " , " : "");
                 break;
+
             case HAND_PRE_MULLIGAN:
                 for(int i = 0; i < getCards().length; i++)
-                    output += getCards()[i] + " , ";
+                    output += getCards()[i] + (i < getCards().length - 1 ? " , " : "");
                 break;
+
             case HAND:
                 for(int i = 0; i < getCardIDs().length; i++)
-                    output += getCardIDs()[i] + " , ";
+                    output += getCardIDs()[i] + (i < getCardIDs().length - 1 ? " , " : "");
                 break;
-            case GAME_CHANGES:
-                for(int i = 0; i < changes().length; i++)
-                    output += changes()[i] + " , ";
-                break;
+
             case NEXT_TURN:
                 output += player() + "|";
+            case GAME_CHANGES:
                 for(int i = 0; i < changes().length; i++)
-                    output += changes()[i] + " , ";
+                    output += changes()[i] + (i < changes().length - 1 ? " , " : "");
                 break;
+
             case NEXT_STEP:
                 output += step();
                 break;
+
             case CARD_PLAYED:
                 output += card() + "|";
                 for(int i = 0; i < changes().length; i++)
-                    output += changes()[i] + " , ";
+                    output += changes()[i] + (i < changes().length - 1 ? " , " : "");
                 break;
+
             case ATTACKERS:
                 for(int i = 0; i < attackerIDs().length; i++)
-                    output += attackerIDs()[i] + " , ";
+                    output += attackerIDs()[i] + (i < attackerIDs().length - 1 ? " , " : "");
                 break;
+
             case DEFENDERS:
                 for(int i = 0; i < defenseIDs().length; i++){
                     output += defenseIDs()[i][0] + "-";
                     for (int j = 1; j < defenseIDs()[i].length; j++)
-                        output += defenseIDs()[i][j] + ",";
+                        output += defenseIDs()[i][j] + (j < defenseIDs()[i].length ? "," : "");
                     output += "|";
                 }
                 break;
+
             case ON_COMBAT_ABILITY:
             case ON_DEATH_ABILITY:
                 output += summonID() + "|";
                 for(int i = 0; i < changes().length; i++)
                     output += changes()[i] + " , ";
                 break;
+
             case PLAYER_WON:
                 output += player();
                 break;

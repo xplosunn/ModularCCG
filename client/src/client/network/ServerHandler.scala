@@ -80,37 +80,37 @@ class ServerHandler(val username: String) extends Thread {
 
       case info: GameInfo =>
         info.`type` match{
-          case GameInfo.TYPES.GAME_STARTED=>
+          case GameInfo.TYPE.GAME_STARTED=>
             val gamePanel = new DuelTab(ClientSession.SessionVars.serverHandler.username,info.gameID,info.playerNames)
             val window = ClientSession.SessionVars.mainWindow
             if(window != null){
               window.addGameTab(info.gameID, gamePanel)
               Games.newDuel(gamePanel)
             }
-          case GameInfo.TYPES.HAND_PRE_MULLIGAN =>
+          case GameInfo.TYPE.HAND_PRE_MULLIGAN =>
             Games.handPreMulligan(info.gameID, info.getCards)
-          case GameInfo.TYPES.HAND =>
+          case GameInfo.TYPE.HAND =>
             Games.hand(info.gameID, info.getCardIDs)
 
-          case GameInfo.TYPES.CARD_PLAYED=>
+          case GameInfo.TYPE.CARD_PLAYED=>
             Games.cardPlayed(info.gameID,info.card,info.changes)
 
-          case GameInfo.TYPES.GAME_CHANGES=>
+          case GameInfo.TYPE.GAME_CHANGES=>
             Games.applyGameChanges(info.gameID,info.changes)
 
-          case GameInfo.TYPES.ATTACKERS =>
+          case GameInfo.TYPE.ATTACKERS =>
             Games.attackersAnnounced(info.gameID, info.attackerIDs)
-          case GameInfo.TYPES.DEFENDERS =>
-          case GameInfo.TYPES.ON_COMBAT_ABILITY => Games.combatAbility(info.gameID, info.summonID(), info.changes())
-          case GameInfo.TYPES.ON_DEATH_ABILITY => Games.deathAbility(info.gameID, info.summonID(), info.changes())
+          case GameInfo.TYPE.DEFENDERS =>
+          case GameInfo.TYPE.ON_COMBAT_ABILITY => Games.combatAbility(info.gameID, info.summonID(), info.changes())
+          case GameInfo.TYPE.ON_DEATH_ABILITY => Games.deathAbility(info.gameID, info.summonID(), info.changes())
 
-          case GameInfo.TYPES.NEXT_STEP=>
+          case GameInfo.TYPE.NEXT_STEP=>
             Games.nextStep(info.gameID,info.step)
 
-          case GameInfo.TYPES.NEXT_TURN=>
+          case GameInfo.TYPE.NEXT_TURN=>
             Games.nextTurn(info.gameID,info.player,info.changes)
 
-          case GameInfo.TYPES.PLAYER_WON=>
+          case GameInfo.TYPE.PLAYER_WON=>
             Games.playerWon(info.gameID, info.player)
         }
     }
