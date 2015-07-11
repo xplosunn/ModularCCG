@@ -253,7 +253,7 @@ class DuelTest {
     Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.getGameState.activePlayer.battlefield.size == 1)
     Thread.sleep(UnitTestConstants.processMillis)
-    p2handler.recieveMessage(GameAction.endStep(testDuel.id))
+    p2handler.recieveMessage(GameAction.nextStep(testDuel.id, GameSteps.MAIN_1st))
     Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_2nd))
 
@@ -270,7 +270,7 @@ class DuelTest {
     assertTrue(testDuel.getGameState.activePlayer.hand.size == 4)
     assertFalse(ap2.equals(testDuel.getGameState.activePlayer))
 
-    p2handler.recieveMessage(GameAction.endStep(testDuel.id))
+    p2handler.recieveMessage(GameAction.nextStep(testDuel.id, GameSteps.MAIN_1st))
     Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Attack))
 
@@ -284,7 +284,7 @@ class DuelTest {
     Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
     assertTrue(testDuel.getGameState.activePlayer.hand.size == 5)
-    p1handler.recieveMessage(GameAction.endStep(testDuel.id))
+    p1handler.recieveMessage(GameAction.nextStep(testDuel.id, GameSteps.MAIN_1st))
     Thread.sleep(UnitTestConstants.processMillis)
 
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_2nd))
@@ -296,7 +296,7 @@ class DuelTest {
     //turn 5
     assertTrue(testDuel.getGameState.activePlayer.hand.size == 5)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.MAIN_1st))
-    p2handler.recieveMessage(GameAction.endStep(testDuel.id))
+    p2handler.recieveMessage(GameAction.nextStep(testDuel.id, GameSteps.MAIN_1st))
     Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(testDuel.currentTurn.currentStep.equals(GameSteps.COMBAT_Attack))
 

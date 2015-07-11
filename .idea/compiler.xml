@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="DEFAULT_COMPILER" value="Javac" />
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -15,7 +14,16 @@
     </wildcardResourcePatterns>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
+        <processor name="pa.kunit.processors.KUnitProcessor" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/Downloads/KUnitSkeleton/KUnitSkeleton" />
+        </processorPath>
+      </profile>
+      <profile default="false" name="asserts" enabled="true">
+        <processor name="pa.kunit.processors.KUnitProcessor" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/Downloads/KUnitSkeleton/KUnitSkeleton/src" />
+        </processorPath>
       </profile>
     </annotationProcessing>
   </component>

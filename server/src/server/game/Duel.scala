@@ -24,6 +24,8 @@ object Duel {
   //TODO: implement extra seconds
   val EXTRA_SECONDS = 30
 
+  val SECONDS_TO_ACT = 30
+
   def nextGameID = {
     synchronized{
       gameID += 1

@@ -22,6 +22,7 @@ class StepPanel(val duelTab: DuelTab) extends FlowPanel{
   private val battlePhase = new Button("Battle"){ enabled = false }
   private val main2ndPhase = new Button("Main"){ enabled = false }
   private val highlightColor = new Color(50,50,50)
+  private var currentStep = GameSteps.HAND_SELECTION
 
   background = Color.WHITE
   playersTurn.background = Color.WHITE
@@ -41,7 +42,7 @@ class StepPanel(val duelTab: DuelTab) extends FlowPanel{
   private val nextStep = new Button("Next Step"){
     reactions +={
       case ButtonClicked(b) =>
-        SessionVars.serverHandler.Duel.nextStep(duelTab.gameID)
+        SessionVars.serverHandler.Duel.nextStep(duelTab.gameID, currentStep)
 
     }
   }
@@ -98,6 +99,7 @@ class StepPanel(val duelTab: DuelTab) extends FlowPanel{
   contents += nextTurn
 
   def nextStep(step: GameSteps, ownTurn: Boolean){
+    currentStep = step
     main1stPhase.background = Color.WHITE
     attackPhase.background = Color.WHITE
     defendPhase.background = Color.WHITE

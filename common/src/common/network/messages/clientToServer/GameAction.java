@@ -1,10 +1,11 @@
 package common.network.messages.clientToServer;
 
+import common.game.GameSteps;
 import scala.Int;
 import scala.Tuple2;
 
 public class GameAction extends MessageToServer {
-    public static enum ACTIONS{
+    public enum ACTIONS{
         PLAY_CARD,
         MULLIGAN,
         SET_ATTACKERS,
@@ -59,13 +60,18 @@ public class GameAction extends MessageToServer {
         return (action == ACTIONS.SET_DEFENDERS) ? (Tuple2<Int,Int>[]) data : null;
     }
 
-    //Next step and End turn
+    //End turn
     public static GameAction endTurn(int gameID){
         return new GameAction(gameID, ACTIONS.END_TURN, null);
     }
 
-    public static GameAction endStep(int gameID){
-        return new GameAction(gameID, ACTIONS.NEXT_STEP, null);
+    //Next Step
+    public static GameAction nextStep(int gameID, GameSteps currentStep){
+        return new GameAction(gameID, ACTIONS.NEXT_STEP, currentStep);
+    }
+
+    public GameSteps getCurrentStep(){
+        return (action == ACTIONS.NEXT_STEP) ? (GameSteps) data : null;
     }
 
     //Multiple

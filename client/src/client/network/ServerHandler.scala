@@ -8,6 +8,7 @@ import client.game.Games
 import client.window.tab.panel.GraphicalRemoteCard
 import client.window.tab.{DuelTab, LobbyTab}
 import common.card.Deck
+import common.game.GameSteps
 import common.network.NetworkValues
 import common.network.messages.clientToServer.{ChatToServer, GameAction, LoginRequest, RequestToServer}
 import common.network.messages.serverToClient._
@@ -132,8 +133,8 @@ class ServerHandler(val username: String) extends Thread {
       objOut.writeObject(GameAction.endTurn(gameID))
     }
 
-    def nextStep(gameID: Int){
-      objOut.writeObject(GameAction.endStep(gameID))
+    def nextStep(gameID: Int, step: GameSteps){
+      objOut.writeObject(GameAction.nextStep(gameID, step))
     }
 
     def playCard(gameID: Int, graphicalCard: GraphicalRemoteCard){

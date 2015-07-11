@@ -92,7 +92,7 @@ class fsmDuelTest {
     Thread.sleep(UnitTestConstants.processMillis)
     fsm ! EndTurn(ap.handler.userName)
     Thread.sleep(UnitTestConstants.processMillis)
-    fsm ! NextStep(ap.handler.userName)
+    fsm ! NextStep(ap.handler.userName, GameSteps.MAIN_1st)
     Thread.sleep(UnitTestConstants.processMillis)
     fsm ! SetAttackers(ap.handler.userName, Array(ap.battlefield(0).id))
     Thread.sleep(UnitTestConstants.processMillis)
@@ -104,23 +104,20 @@ class fsmDuelTest {
   }
 
   @Test
-  def turnReaminingTime() {
-    // wait some random time during the turn, do an action, then wait the time remaining for that turn, then check if it ended
+  def timeToAct() {
     val (duelActor, gameState) = newFsmDuel
     duelActor.start()
-    Thread.sleep(UnitTestConstants.processMillis)
-    val waitTime = Duel.SECONDS_PER_TURN / 4 + new Random().nextInt(Duel.SECONDS_PER_TURN/4)
     Thread.sleep(UnitTestConstants.processMillis)
     gameState.players.foreach(p => duelActor ! HandSelected(p.handler.userName, Array(p.hand(0).id, p.hand(1).id, p.hand(2).id)))
     Thread.sleep(UnitTestConstants.processMillis)
     gameState.players.foreach(p => assertTrue(p.hand.size <= 4))
-    Thread.sleep(waitTime * 1000)
     val ap = gameState.activePlayer
     duelActor ! PlayCard(ap.handler.userName, ap.hand(0).id)
     Thread.sleep(UnitTestConstants.processMillis)
     assertTrue(ap.battlefield.nonEmpty)
-    Thread.sleep((Duel.SECONDS_PER_TURN - waitTime)*1000)
-    Thread.sleep(UnitTestConstants.processMillis)
+    Thread.sleep(Duel.SECONDS_TO_ACT*1000 + UnitTestConstants.processMillis)
+    assertEquals(Main_2, duelActor.underlyingActor.stateName)
+    Thread.sleep(Duel.SECONDS_TO_ACT*1000 + UnitTestConstants.processMillis)
     assertTrue(gameState.activePlayer != ap)
   }
 
@@ -144,7 +141,7 @@ class fsmDuelTest {
     assertEquals(1, gameState.activePlayer.battlefield.size)
     assertEquals(3, gameState.activePlayer.hand.size)
     Thread.sleep(UnitTestConstants.processMillis)
-    duelActor ! NextStep(gameState.activePlayer.handler.userName)
+    duelActor ! NextStep(gameState.activePlayer.handler.userName, GameSteps.MAIN_1st)
     Thread.sleep(UnitTestConstants.processMillis)
     assertEquals(Main_2, duelActor.underlyingActor.stateName)
     val ap = gameState.activePlayer
@@ -163,7 +160,7 @@ class fsmDuelTest {
     assertEquals(4, gameState.activePlayer.hand.size)
     assertNotEquals(ap2, gameState.activePlayer)
 
-    duelActor ! NextStep(gameState.activePlayer.handler.userName)
+    duelActor ! NextStep(gameState.activePlayer.handler.userName, GameSteps.MAIN_1st)
     Thread.sleep(UnitTestConstants.processMillis)
     assertEquals(Combat_Attack, duelActor.underlyingActor.stateName)
 
@@ -177,7 +174,7 @@ class fsmDuelTest {
     Thread.sleep(UnitTestConstants.processMillis)
     assertEquals(Main_1, duelActor.underlyingActor.stateName)
     assertEquals(5, gameState.activePlayer.hand.size)
-    duelActor ! NextStep(gameState.activePlayer.handler.userName)
+    duelActor ! NextStep(gameState.activePlayer.handler.userName, GameSteps.MAIN_1st)
     Thread.sleep(UnitTestConstants.processMillis)
 
     assertEquals(Main_2, duelActor.underlyingActor.stateName)
@@ -189,7 +186,7 @@ class fsmDuelTest {
     //turn 5
     assertEquals(5, gameState.activePlayer.hand.size)
     assertEquals(Main_1, duelActor.underlyingActor.stateName)
-    duelActor ! NextStep(gameState.activePlayer.handler.userName)
+    duelActor ! NextStep(gameState.activePlayer.handler.userName, GameSteps.MAIN_1st)
     Thread.sleep(UnitTestConstants.processMillis)
     assertEquals(Combat_Attack, duelActor.underlyingActor.stateName)
 
@@ -197,14 +194,14 @@ class fsmDuelTest {
     Thread.sleep(UnitTestConstants.processMillis)
     assertEquals(Combat_Defend, duelActor.underlyingActor.stateName)
     val defenderID = gameState.nonActivePlayer.battlefield(0).id
-    duelActor ! SetDefenders(gameState.activePlayer.handler.userName, Array((attackerID, defenderID)))
+    duelActor ! SetDefenders(gameState.nonActivePlayer.handler.userName, Array((attackerID, defenderID)))
 
     Thread.sleep(UnitTestConstants.processMillis)
+    assertEquals(Main_2, duelActor.underlyingActor.stateName)
     gameState.players.foreach(p =>{
-      assertTrue(p.battlefield.size == 0)
-      assertTrue(p.pile.size == 1)
+      assertEquals(1, p.pile.size)
+      assertEquals(0, p.battlefield.size)
     })
-
   }
 
   @Test
@@ -220,7 +217,7 @@ class fsmDuelTest {
 
     assertEquals(Main_1, duelActor.underlyingActor.stateName)
     gameState.activePlayer.battlefield += new BattlefieldSummon(new GameSummon(new Summon{power(30)}, gameState.activePlayer, 300))
-    duelActor ! NextStep(gameState.activePlayer.handler.userName)
+    duelActor ! NextStep(gameState.activePlayer.handler.userName, GameSteps.MAIN_1st)
     Thread.sleep(UnitTestConstants.processMillis)
 
     assertEquals(Combat_Attack, duelActor.underlyingActor.stateName)
@@ -231,6 +228,25 @@ class fsmDuelTest {
 
     assertEquals(0, gameState.nonActivePlayer.lifeTotal)
     assertEquals(Available, duelActor.underlyingActor.stateName)
+  }
+
+  @Test
+  def wrongCurrentStepInNextStepMessage() {
+    val (duelActor, gameState) = newFsmDuel
+    duelActor.start()
+    assertEquals(HandSelection, duelActor.underlyingActor.stateName)
+
+    //Mulligans
+    Thread.sleep(UnitTestConstants.processMillis)
+    gameState.players.foreach(p => duelActor ! HandSelected(p.handler.userName, Array(p.hand(0).id, p.hand(1).id, p.hand(2).id)))
+    Thread.sleep(UnitTestConstants.processMillis)
+
+    assertEquals(Main_1, duelActor.underlyingActor.stateName)
+    Thread.sleep(UnitTestConstants.processMillis + (Duel.SECONDS_TO_ACT*1000) / 2)
+    duelActor ! NextStep(gameState.activePlayer.handler.userName, GameSteps.MAIN_2nd)
+    assertEquals(Main_1, duelActor.underlyingActor.stateName)
+    Thread.sleep(UnitTestConstants.processMillis + (Duel.SECONDS_TO_ACT*1000) / 2)
+    assertEquals(Main_2, duelActor.underlyingActor.stateName)
   }
 
   @Test

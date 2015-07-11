@@ -4,7 +4,7 @@ import java.util.Random
 
 import client.window.tab.panel.GraphicalRemoteCard
 import common.card.Summon
-import common.game.RemoteCard
+import common.game.{GameSteps, RemoteCard}
 import common.network.messages.clientToServer.{ChatToServer, GameAction}
 import org.junit.Assert.{assertEquals, assertTrue, fail}
 import org.junit._
@@ -45,7 +45,8 @@ class MessagesToServerTest {
 
   @Test def gameAction(){
     val gameID = new Random().nextInt()
-    MessagesToServerTest.fakeClient.Duel.nextStep(gameID)
+    val randomStep = GameSteps.values()(new Random().nextInt(GameSteps.values().length))
+    MessagesToServerTest.fakeClient.Duel.nextStep(gameID, randomStep)
     Thread.sleep(UnitTestConstants.processMillis)
     MessagesToServerTest.server.handlers.get(0).recievedMessages.lastElement() match{
       case msg: GameAction =>
@@ -54,6 +55,7 @@ class MessagesToServerTest {
         assertTrue(msg.getAttackerIDs == null)
         assertTrue(msg.getCardID == -1)
         assertTrue(msg.getDefenses == null)
+        assertEquals(randomStep, msg.getCurrentStep)
       case msg => fail("" + msg.getClass.getName)
     }
 

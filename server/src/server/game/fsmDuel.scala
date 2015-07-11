@@ -9,7 +9,7 @@ import common.card.ability.{SummonAbility, SummonAbilityLibrary}
 import common.card.ability.change.{PlayerValueChange, SummonValueChange, CardDraw, GameChange}
 import common.game.{GameSteps, RemoteCard}
 import common.network.messages.serverToClient.GameInfo
-import server.ClientHandler
+import server.{game, ClientHandler}
 import server.game.card.ability.{SpellAbilityEffectLibrary, SummonAbilityEffectLibrary}
 import server.game.card.{GameSpell, BattlefieldSummon, GameSummon, GameCard}
 import server.game.exception.{GameTiedException, PlayerWonException}
@@ -23,7 +23,7 @@ import scala.concurrent.duration._
 final case class NewDuel(gameState: GameState)
 final case class HandSelected(player: String, cardIDs: Array[Int])
 final case class PlayCard(player: String, id: Int)
-final case class NextStep(player: String)
+final case class NextStep(player: String, currentStep: GameSteps)
 final case class EndTurn(player: String)
 final case class SetAttackers(player: String, attackerIDs: Array[Int])
 final case class SetDefenders(player: String, attackerIDs: Array[(Int, Int)])
@@ -45,16 +45,14 @@ case object Main_2 extends State
 
 sealed trait Data
 case object NoData extends Data
+case class StartingHandsSelected(_1: Boolean, _2: Boolean) extends Data
 
 
 class fsmDuel extends FSM[State, Data] with Game{
-
-  var startingHandsSelected: (Boolean, Boolean) = (false, false)
-  var secondsLeftThisTurn = Duel.SECONDS_PER_TURN
   var summonsPlayedThisTurn = new ArrayBuffer[BattlefieldSummon]()
 
   val id = Duel.nextGameID
-  
+
   var gameState: GameState = null
 
   private var _nextCardID = -1
@@ -77,26 +75,36 @@ class fsmDuel extends FSM[State, Data] with Game{
       })
     case _ -> Main_1 =>
       gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_1st)))
+      updateTimeout()
     case _ -> Main_2 =>
       gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.MAIN_2nd)))
+      updateTimeout()
     case _ -> Combat_Attack =>
       gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Attack)))
+      updateTimeout()
     case _ -> Combat_Defend =>
       gameState.players.foreach(_.handler.sendMessageToClient(GameInfo.nextStep(id, GameSteps.COMBAT_Defend)))
+      updateTimeout()
     case _ -> Available =>
       gameState = null
+      cancelTimer("UNHANDLED_MESSAGE_TIMEOUT")
+  }
+
+  def updateTimeout() {
+    setTimer("UNHANDLED_MESSAGE_TIMEOUT", StateTimeout, Duel.SECONDS_TO_ACT seconds, false)
   }
 
   //Available State
   when(Available) {
     case Event(NewDuel(gs), _) =>
       gameState = gs
-      goto(HandSelection).using(NoData)
+      goto(HandSelection).using(StartingHandsSelected(false, false))
   }
 
   //Hand Selection State
-  when(HandSelection, stateTimeout = Duel.SECONDS_TO_MULLIGAN seconds) {
-    case Event(HandSelected(player, cardIDs), _) =>
+  when(HandSelection, stateTimeout = Duel.SECONDS_TO_ACT seconds) {
+    case Event(HandSelected(player, cardIDs), StartingHandsSelected(_1, _2)) =>
+      var startingHandsSelected = (_1, _2)
       player match {
         case p1User if p1User == gameState.players(0).handler.userName =>
           startingHandsSelected = (true, startingHandsSelected._2)
@@ -108,11 +116,11 @@ class fsmDuel extends FSM[State, Data] with Game{
       if(startingHandsSelected._1 && startingHandsSelected._2)
         endTurn
       else
-        stay using NoData
+        stay using StartingHandsSelected(startingHandsSelected._1, startingHandsSelected._2)
 
-    case Event(StateTimeout, _) =>
-      if(!startingHandsSelected._1) processPlayerHand(gameState.players(0), null)
-      if(!startingHandsSelected._2) processPlayerHand(gameState.players(1), null)
+    case Event(StateTimeout, StartingHandsSelected(_1, _2)) =>
+      if(!_1) processPlayerHand(gameState.players(0), null)
+      if(!_2) processPlayerHand(gameState.players(1), null)
       goto(Main_1)
   }
 
@@ -137,24 +145,29 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Main_1 State
-  when(Main_1, stateTimeout = Duel.SECONDS_PER_TURN seconds){
+  when(Main_1, stateTimeout = Duel.SECONDS_TO_ACT seconds){
     case Event(StateTimeout,_) =>
-      endTurn
-
-    case Event(NextStep(player), _) =>
-      if(player != gameState.activePlayer.handler.userName) stay()
       if((gameState.activePlayer.battlefield -- summonsPlayedThisTurn).size > 0)
+        goto(Combat_Attack)
+      else
+        goto(Main_2)
+
+    case Event(NextStep(player, currentStep), _) =>
+      if(player != gameState.activePlayer.handler.userName || currentStep != GameSteps.MAIN_1st)
+        stay()
+      else if((gameState.activePlayer.battlefield -- summonsPlayedThisTurn).size > 0)
         goto(Combat_Attack)
       else
         goto(Main_2)
 
     case Event(EndTurn(player), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
-      endTurn
+      else endTurn
 
     case Event(PlayCard(player, cardID), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
       else{
+        updateTimeout()
         try{
           playCard(cardID)
           stay()
@@ -170,13 +183,12 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Main_2 State
-  when(Main_2, stateTimeout = secondsLeftThisTurn seconds){
-
+  when(Main_2, stateTimeout = Duel.SECONDS_TO_ACT seconds){
     case Event(StateTimeout,_) =>
       endTurn
 
-    case Event(NextStep(player), _) =>
-      if(player != gameState.activePlayer.handler.userName) stay()
+    case Event(NextStep(player, currentStep), _) =>
+      if(player != gameState.activePlayer.handler.userName || currentStep != GameSteps.MAIN_2nd) stay()
       else endTurn
 
     case Event(EndTurn(player), _) =>
@@ -187,6 +199,7 @@ class fsmDuel extends FSM[State, Data] with Game{
       if(player != gameState.activePlayer.handler.userName) stay()
       else{
         try{
+          updateTimeout()
           playCard(cardID)
           stay()
         }catch{
@@ -216,7 +229,6 @@ class fsmDuel extends FSM[State, Data] with Game{
   def endTurn = {
     gameState.nextTurn()
     summonsPlayedThisTurn.clear()
-    secondsLeftThisTurn = Duel.SECONDS_PER_TURN
     val draw = gameState.activePlayer.drawCard
     gameState.activePlayer.handler.sendMessageToClient(GameInfo.nextTurn(id, gameState.activePlayer.handler.userName, Array(draw)))
     gameState.nonActivePlayer.handler.sendMessageToClient(GameInfo.nextTurn(id, gameState.activePlayer.handler.userName, Array(new CardDraw(draw.drawingPlayer, null, draw.deckEnded))))
@@ -294,7 +306,7 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Combat_Attack State
-  when(Combat_Attack, stateTimeout = Duel.SECONDS_PER_TURN seconds){
+  when(Combat_Attack, stateTimeout = Duel.SECONDS_TO_ACT seconds){
     case Event(SetAttackers(player, attackerIDs), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
       else{
@@ -314,11 +326,10 @@ class fsmDuel extends FSM[State, Data] with Game{
               goto(Available)
           }
         }
-
       }
 
-    case Event(NextStep(player), _) =>
-      if(player != gameState.activePlayer.handler.userName) stay()
+    case Event(NextStep(player, currentStep), _) =>
+      if(player != gameState.activePlayer.handler.userName || currentStep != GameSteps.COMBAT_Attack) stay()
       else goto(Main_2)
 
     case Event(StateTimeout,_) =>
@@ -330,33 +341,35 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Combat_Defend State
-  when(Combat_Defend, stateTimeout = Duel.SECONDS_TO_CHOOSE_DEFENDERS seconds){
+  when(Combat_Defend, stateTimeout = Duel.SECONDS_TO_ACT seconds){
     case Event(SetDefenders(player, defenses), _) =>
       if(player == gameState.activePlayer.handler.userName || defenses == null) stay()
+      else {
+        def nonNullTuple(tuple: (BattlefieldSummon, BattlefieldSummon)) = tuple._1 != null && tuple._2 != null
 
-      def nonNullTuple(tuple: (BattlefieldSummon, BattlefieldSummon)) = tuple._1 != null && tuple._2 != null
+        def findSummonInBattleField(owner: Player, id: Int): BattlefieldSummon =
+          owner.battlefield.collectFirst({ case gc: BattlefieldSummon if gc.id == id => gc }).get
 
-      def findSummonInBattleField(owner: Player, id: Int): BattlefieldSummon =
-        owner.battlefield.collectFirst({case gc: BattlefieldSummon if gc.id == id => gc}).get
+        val defenseSummons = defenses.collect({ case (attackerID, defenderID) =>
+          (findSummonInBattleField(gameState.activePlayer, attackerID), findSummonInBattleField(gameState.nonActivePlayer, defenderID))
+        })
+          .filter(nonNullTuple)
 
-      val defenseSummons = defenses.collect({case (attackerID, defenderID) =>
-        (findSummonInBattleField(gameState.activePlayer, attackerID), findSummonInBattleField(gameState.nonActivePlayer, defenderID))})
-        .filter(nonNullTuple)
+        gameState.setDefenders(defenseSummons)
 
-      gameState.setDefenders(defenseSummons)
-
-      val defenseIDs = gameState.defenses.collect({case (gs, d) => Array[Int](gs.id) ++ d.map(_.id)}).toArray
-      gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.defenders(id, defenseIDs)))
-      try{
-        processBattle()
-        goto(Main_2)
-      }catch{
-        case e: PlayerWonException =>
-          playerWon(e)
-          goto(Available)
-        case e: GameTiedException =>
-          gameTied(e)
-          goto(Available)
+        val defenseIDs = gameState.defenses.collect({ case (gs, d) => Array[Int](gs.id) ++ d.map(_.id) }).toArray
+        gameState.players.foreach(p => p.handler.sendMessageToClient(GameInfo.defenders(id, defenseIDs)))
+        try {
+          processBattle()
+          goto(Main_2)
+        } catch {
+          case e: PlayerWonException =>
+            playerWon(e)
+            goto(Available)
+          case e: GameTiedException =>
+            gameTied(e)
+            goto(Available)
+        }
       }
 
     case Event(StateTimeout,_) =>
@@ -429,6 +442,5 @@ class fsmDuel extends FSM[State, Data] with Game{
   initialize()
 
   override def postStop(){}
-
 
 }
