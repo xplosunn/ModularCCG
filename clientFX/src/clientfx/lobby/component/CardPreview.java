@@ -4,15 +4,14 @@ import common.card.Card;
 import common.card.Summon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 
 /**
  * Created by HugoSousa on 08-03-2015.
@@ -38,7 +37,7 @@ public class CardPreview {
             powerLabel.setText("");
             lifeLabel.setText("");
         } else {
-            nameLabel.setText(card.name());
+            nameLabel.setText("  [" + card.cost() + "] " + card.name());
             if(card instanceof Summon){
                 Summon summon = (Summon) card;
                 powerLabel.setText("" + summon.power());
@@ -58,20 +57,30 @@ public class CardPreview {
 
     private void buildLayout(){
         BorderPane container = new BorderPane();
+        container.setBackground(new Background(new BackgroundFill(Paint.valueOf("#cdc"), null, null)));
+        container.setMaxHeight(350);
         container.setTop(nameLabel);
 
         VBox center = new VBox();
+        center.setAlignment(Pos.BOTTOM_CENTER);
         center.getChildren().add(new ImageView(image));
-        center.getChildren().add(new ListView(abilityList));
+        ListView listView = new ListView(abilityList);
+        Label leftGap = new Label("   ");
+        Label rightGap = new Label("   ");
+        HBox listViewHolder = new HBox();
+        listViewHolder.getChildren().addAll(leftGap, listView, rightGap);
+        center.getChildren().add(listViewHolder);
         container.setCenter(center);
 
         GridPane bottom = new GridPane();
+        powerLabel.setAlignment(Pos.BASELINE_LEFT);
+        lifeLabel.setAlignment(Pos.BASELINE_RIGHT);
+        bottom.setAlignment(Pos.BASELINE_CENTER);
+        bottom.setHgap(170);
         bottom.add(powerLabel, 0, 0);
         bottom.add(lifeLabel, 1, 0);
         container.setBottom(bottom);
-        FlowPane pane = new FlowPane(container);
 
-        node = pane;
-
+        node = container;
     }
 }

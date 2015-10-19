@@ -7,7 +7,6 @@ import common.network.messages.clientToServer.{RequestToServer, ChatToServer}
 
 
 object ChatRooms {
-
   private val rooms = new ConcurrentHashMap[String, ChatRoom]()
   rooms.put("main", new ChatRoom("main"))
 

@@ -102,7 +102,7 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Hand Selection State
-  when(HandSelection, stateTimeout = Duel.SECONDS_TO_ACT seconds) {
+  when(HandSelection, stateTimeout = Duel.SECONDS_TO_MULLIGAN seconds) {
     case Event(HandSelected(player, cardIDs), StartingHandsSelected(_1, _2)) =>
       var startingHandsSelected = (_1, _2)
       player match {
@@ -145,7 +145,7 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Main_1 State
-  when(Main_1, stateTimeout = Duel.SECONDS_TO_ACT seconds){
+  when(Main_1){
     case Event(StateTimeout,_) =>
       if((gameState.activePlayer.battlefield -- summonsPlayedThisTurn).size > 0)
         goto(Combat_Attack)
@@ -183,7 +183,7 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Main_2 State
-  when(Main_2, stateTimeout = Duel.SECONDS_TO_ACT seconds){
+  when(Main_2){
     case Event(StateTimeout,_) =>
       endTurn
 
@@ -306,7 +306,7 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Combat_Attack State
-  when(Combat_Attack, stateTimeout = Duel.SECONDS_TO_ACT seconds){
+  when(Combat_Attack){
     case Event(SetAttackers(player, attackerIDs), _) =>
       if(player != gameState.activePlayer.handler.userName) stay()
       else{
@@ -341,7 +341,7 @@ class fsmDuel extends FSM[State, Data] with Game{
   }
 
   //Combat_Defend State
-  when(Combat_Defend, stateTimeout = Duel.SECONDS_TO_ACT seconds){
+  when(Combat_Defend){
     case Event(SetDefenders(player, defenses), _) =>
       if(player == gameState.activePlayer.handler.userName || defenses == null) stay()
       else {
